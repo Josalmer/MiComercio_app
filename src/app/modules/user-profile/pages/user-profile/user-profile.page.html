@@ -1,0 +1,12 @@
+<ion-content>
+  <app-page-layout>
+    <div layout-position="content" style="margin-top: 35px;">
+      <app-user-form (userEmitter)="updateUser($event)" [user]="user" [newUser]="false" *ngIf="user"></app-user-form>
+      <div text-center>
+        <ion-button class="btn width-great" (click)="logout()" color="danger">
+          {{ 'USER.LOGOUT' | translate }}
+        </ion-button>
+      </div>
+    </div>
+  </app-page-layout>
+</ion-content>

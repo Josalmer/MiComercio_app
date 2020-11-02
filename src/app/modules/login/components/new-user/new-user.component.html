@@ -1,0 +1,4 @@
+<app-user-form (userEmitter)="createAccount($event)" [newUser]="true"></app-user-form>
+<div class="container margin-15" style="margin-bottom: 40px;">
+    <span class="main-color-text" (click)="backToLogin() ">{{ 'LOGIN.BACK_LOGIN' | translate }}</span>
+</div>

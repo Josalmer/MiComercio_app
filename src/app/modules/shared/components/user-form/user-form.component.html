@@ -1,0 +1,21 @@
+<form padding [formGroup]="form" (submit)="submitUser()">
+  <div class="container" text-center>
+    <ion-text class="title" style="margin-bottom: 20px;">{{ (newUser ? 'LOGIN.CREATE_ACCOUNT' : 'USER.USER_PROFILE') | translate }}</ion-text>
+    <ion-input class="input" formControlName="email" type="text" [placeholder]="'USER.EMAIL' | translate" text-center margin-bottom></ion-input>
+    <ion-input class="input" formControlName="name" type="text" [placeholder]="'USER.NAME' | translate" text-center margin-bottom></ion-input>
+    <ion-input class="input" formControlName="surname" type="text" [placeholder]="'USER.SURNAME' | translate" text-center margin-bottom></ion-input>
+    <ion-input class="input" formControlName="phone" type="tel" [placeholder]="'USER.PHONE' | translate" text-center margin-bottom></ion-input>
+    <ion-input class="input" formControlName="password" type="password" [placeholder]="'USER.PASSWORD' | translate" text-center margin-bottom *ngIf="newUser"></ion-input>
+    <ion-input class="input" formControlName="confirmPass" type="password" [placeholder]="'USER.REPEAT_PASS' | translate" text-center margin-bottom *ngIf="newUser"></ion-input>
+
+    <ion-text color="danger" class="bold" *ngIf="form.get('email').hasError('email') && form.get('email').touched">{{ 'LOGIN.EMAIL_ERROR' | translate }}</ion-text>
+    <ion-text color="danger" class="bold" *ngIf="newUser && form.get('password').hasError('minlength') && form.get('password').touched">{{ 'LOGIN.PASS_ERROR' | translate }}</ion-text>
+    <ion-text color="danger" class="bold" *ngIf="newUser && form.get('phone').hasError('pattern') && form.get('phone').touched">{{ 'LOGIN.PHONE_ERROR' | translate }}</ion-text>
+    <ion-text color="danger" class="bold" *ngIf="newUser && form.hasError('notSame') && form.get('confirmPass').touched">{{ 'LOGIN.PASSWORDS_NOT_MATCH' | translate }}</ion-text>
+  </div>
+  <div text-center>
+    <ion-button [disabled]="form.invalid" class="btn width-great" type="submit" color="maincolor">
+      {{ (newUser ? 'LOGIN.CREATE_ACCOUNT' : 'USER.EDIT_PROFILE') | translate }}
+    </ion-button>
+  </div>
+</form>

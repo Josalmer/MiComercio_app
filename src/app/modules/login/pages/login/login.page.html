@@ -1,0 +1,14 @@
+<ion-content>
+  <app-page-layout>
+    <ion-row layout-position="main">
+      <ion-col>
+        <ion-img id="logo" src="../../../../assets/img/logo.png" alt=""></ion-img>
+      </ion-col>
+    </ion-row>
+    <div layout-position="content">
+      <app-new-session (selectAction)="currentAction = $event" *ngIf="currentAction == 'login'"></app-new-session>
+      <app-new-user (selectAction)="currentAction = $event" *ngIf="currentAction == 'newUser'"></app-new-user>
+      <app-recover-password (selectAction)="currentAction = $event" *ngIf="currentAction == 'recoverPass'"></app-recover-password>
+    </div>
+  </app-page-layout>
+</ion-content>

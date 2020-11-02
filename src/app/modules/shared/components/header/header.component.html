@@ -1,0 +1,13 @@
+<ion-row class="nav-bar">
+  <ion-col>
+    <ion-fab-button *ngIf="pathRoute" class="back-btn" color="maincolor" (click)="navigateBack()">
+      <ion-icon name="arrow-back-outline"></ion-icon>
+    </ion-fab-button>
+  </ion-col>
+  <ion-col style="flex:3;">
+    <ng-content select='[header-position="main"]'></ng-content>
+  </ion-col>
+  <ion-col>
+    <ng-content select='[header-position="buttons"]'></ng-content>
+  </ion-col>
+</ion-row>

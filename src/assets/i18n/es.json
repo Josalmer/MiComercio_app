@@ -1,0 +1,67 @@
+{
+  "COMMON": {
+    "ACCEPT": "Aceptar",
+    "CONFIRM": "Confirmar",
+    "CANCEL": "Cancelar",
+    "DELETE": "Eliminar",
+    "ACTION_ALERT": "Esta acción no se puede deshacer",
+    "SEARCH": "Buscar",
+    "FROM": "De",
+    "TO": "a",
+    "FROM_DATE": "Del",
+    "TO_DATE": "al",
+    "NO_RESPONSE_FROM_SERVER": "No se pudo establecer conexión con nuestros servidores, disculpe las molestias",
+    "UNDEFINED_ERROR": "Se ha producido un error, disculpe las molestias"
+  },
+  "USER": {
+    "EMAIL": "Email",
+    "PASSWORD": "Contraseña",
+    "NAME": "Nombre",
+    "SURNAME": "Apellidos",
+    "PHONE": "Teléfono",
+    "REPEAT_PASS": "Repetir contraseña",
+    "EDIT_PROFILE": "Editar perfil",
+    "USER_PROFILE": "Perfil personal",
+    "CORRECTLY_EDITED": "Usuario editado correctamente",
+    "EDIT_ERROR": "No se puedo actualizar el perfil de usuario",
+    "LOGOUT": "Logout"
+  },
+  "LOGIN": {
+    "LOGIN": "Login",
+    "REGISTER": "Registrarse",
+    "NEW_USER": "Nuevo usuario",
+    "FORGOT_PASSWORD": "Recordar contraseña",
+    "EMAIL_TAKEN": "El email indicado ya esta en uso",
+    "BACK_LOGIN": "Volver a inicio de sesión",
+    "CREATE_ACCOUNT": "Crear cuenta",
+    "RECOVER_PASS_SENT": "Se han enviado las instrucciones para restablecer la contraseña",
+    "EMAIL_ERROR": "Email incorrecto",
+    "PASS_ERROR": "La contraseña debe tener 6 carácteres como mínimo",
+    "PHONE_ERROR": "Teléfono incorrecto",
+    "PASSWORDS_NOT_MATCH": "Las contraseñas no coinciden",
+    "INSERT_EMAIL": "Indique email para restablecer la contraseña"
+  },
+  "DAYS": {
+    "MONDAY": "Lunes",
+    "TUESDAY": "Martes",
+    "WEDNESDAY": "Miércoles",
+    "THURSDAY": "Jueves",
+    "FRIDAY": "Viernes",
+    "SATURDAY": "Sábado",
+    "SUNDAY": "Domingo"
+  },
+  "MONTHS": {
+    "JANUARY": "Enero",
+    "FEBRUARY": "Febrero",
+    "MARCH": "Marzo",
+    "APRIL": "Abril",
+    "MAY": "Mayo",
+    "JUNE": "Junio",
+    "JULY": "Julio",
+    "AUGUST": "Agosto",
+    "SEPTEMBER": "Septiembre",
+    "OCTOBER": "Octubre",
+    "NOVEMBER": "Noviembre",
+    "DECEMBER": "Diciembre"
+  }
+}
