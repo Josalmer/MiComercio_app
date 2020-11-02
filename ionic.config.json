@@ -1,0 +1,7 @@
+{
+  "name": "MiComercio",
+  "integrations": {
+    "cordova": {}
+  },
+  "type": "angular"
+}
