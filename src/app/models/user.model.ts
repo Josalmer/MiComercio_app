@@ -4,7 +4,7 @@ export class User {
   name: string;
   surname: string;
   phone: string;
-  userRole: Date;
+  userRole: string;
   password: string;
 
   constructor(user) {

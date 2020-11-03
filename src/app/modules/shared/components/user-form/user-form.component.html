@@ -1,6 +1,27 @@
+<div class="container" text-center>
+  <ion-row>
+    <ion-col>
+      <ion-text class="title" style="margin-bottom: 20px;">{{ (newUser ? 'LOGIN.CREATE_ACCOUNT' : 'USER.USER_PROFILE') | translate }}</ion-text>
+    </ion-col>
+  </ion-row>
+  <ion-row style="margin-top: 10px;">
+    <ion-col>
+      <label class="minimum-text main-color-text">Tipo de cuenta</label>
+    </ion-col>
+  </ion-row>
+  <ion-row style="min-width: 80%;">
+    <ion-col>
+      <label class="minimum-text main-color-text">Usuario</label>
+      <input name="userRole" type="radio" style="margin-left: 10px;" [(ngModel)]="userRole" [value]="'user'" [disabled]="!newUser"/>
+    </ion-col>
+    <ion-col>
+      <label class="minimum-text main-color-text">Manager</label>
+      <input name="userRole" type="radio" style="margin-left: 10px;" [(ngModel)]="userRole" [value]="'manager'" [disabled]="!newUser"/>
+    </ion-col>
+  </ion-row>
+</div>
 <form padding [formGroup]="form" (submit)="submitUser()">
   <div class="container" text-center>
-    <ion-text class="title" style="margin-bottom: 20px;">{{ (newUser ? 'LOGIN.CREATE_ACCOUNT' : 'USER.USER_PROFILE') | translate }}</ion-text>
     <ion-input class="input" formControlName="email" type="text" [placeholder]="'USER.EMAIL' | translate" text-center margin-bottom></ion-input>
     <ion-input class="input" formControlName="name" type="text" [placeholder]="'USER.NAME' | translate" text-center margin-bottom></ion-input>
     <ion-input class="input" formControlName="surname" type="text" [placeholder]="'USER.SURNAME' | translate" text-center margin-bottom></ion-input>

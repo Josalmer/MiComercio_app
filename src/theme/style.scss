@@ -50,12 +50,20 @@ $greatWidth: 80%;
 .title {
   color: $mainColor;
   font-weight: bold;
-  font-size: 1.3rem;
+  font-size: 1.5rem;
 }
 
 .subtitle {
   font-weight: bold;
-  font-size: 1.15rem;
+  font-size: 1.3rem;
+}
+
+.minimum-text {
+  font-size: 1.2rem;
+}
+
+span {
+  font-size: 1.2rem;
 }
 
 .flex {
@@ -89,6 +97,8 @@ $greatWidth: 80%;
 }
 
 .btn {
+  font-size: 1.3rem;
+  font-weight: bolder;
   margin: auto;
   display: block;
   margin-bottom: 15px;
@@ -130,6 +140,7 @@ $greatWidth: 80%;
 }
 
 .input {
+  font-size: 1.2rem;
   border: 1px solid $mainColor;
   color: $mainColor;
   border-radius: 4px;

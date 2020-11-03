@@ -22,7 +22,7 @@ export class ToastMessageService {
       message: message,
       color: color,
       position: 'top',
-      duration: 6000,
+      duration: 4000,
       buttons: [
         {
           text: 'Ok',

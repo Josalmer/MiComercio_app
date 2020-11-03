@@ -11,6 +11,7 @@ export class UserFormComponent implements OnInit {
   @Input() user: User;
   @Output() userEmitter = new EventEmitter();
 
+  userRole: string;
   form: FormGroup;
 
   constructor(
@@ -22,6 +23,7 @@ export class UserFormComponent implements OnInit {
   }
 
   createNewUserForm(): void {
+    this.userRole = 'user';
     if (this.form) { return; }
 
     this.form = this.fb.group({
@@ -35,6 +37,7 @@ export class UserFormComponent implements OnInit {
   }
 
   createEditUserForm(): void {
+    this.userRole = this.user.userRole;
     if (this.form) { return; }
 
     this.form = this.fb.group({
@@ -55,7 +58,8 @@ export class UserFormComponent implements OnInit {
       name: this.form.value.name,
       surname: this.form.value.surname,
       phone: this.form.value.phone,
-      password: this.form.value.password
+      password: this.form.value.password,
+      organization_manager: this.userRole === 'manager'
     };
     this.userEmitter.emit(newUserObject);
   }
