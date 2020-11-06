@@ -6,16 +6,16 @@
   </ion-row>
   <ion-row style="margin-top: 10px;">
     <ion-col>
-      <label class="minimum-text main-color-text">Tipo de cuenta</label>
+      <label class="minimum-text main-color-text">{{ 'USER.ACCOUNT_TYPE' | translate }}</label>
     </ion-col>
   </ion-row>
   <ion-row style="min-width: 80%;">
     <ion-col>
-      <label class="minimum-text main-color-text">Usuario</label>
+      <label class="minimum-text main-color-text">{{ 'USER.USER' | translate }}</label>
       <input name="userRole" type="radio" style="margin-left: 10px;" [(ngModel)]="userRole" [value]="'user'" [disabled]="!newUser"/>
     </ion-col>
     <ion-col>
-      <label class="minimum-text main-color-text">Manager</label>
+      <label class="minimum-text main-color-text">{{ 'USER.BUSINESS' | translate }}</label>
       <input name="userRole" type="radio" style="margin-left: 10px;" [(ngModel)]="userRole" [value]="'manager'" [disabled]="!newUser"/>
     </ion-col>
   </ion-row>

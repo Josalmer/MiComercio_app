@@ -24,7 +24,10 @@
     "USER_PROFILE": "Perfil personal",
     "CORRECTLY_EDITED": "Usuario editado correctamente",
     "EDIT_ERROR": "No se puedo actualizar el perfil de usuario",
-    "LOGOUT": "Logout"
+    "LOGOUT": "Logout",
+    "USER": "Usuario",
+    "BUSINESS": "Negocio",
+    "ACCOUNT_TYPE": "Tipo de cuenta"
   },
   "LOGIN": {
     "LOGIN": "Login",
