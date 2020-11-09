@@ -1,0 +1,18 @@
+<form padding [formGroup]="form" (submit)="login()" style="margin-top: 20px;">
+  <h1 style="margin-bottom: 30px;" class="title flex center">Mi Comercio</h1>
+  <div text-center class="container">
+    <ion-input class="input" formControlName="email" type="text" placeholder="Email" (keyup.enter)="goNextField(password)" text-center margin-bottom></ion-input>
+    <ion-input #password class="input" formControlName="password" type="password" placeholder="Contraseña" (keyup.enter)="login()" text-center margin-bottom></ion-input>
+  </div>
+  <div text-center>
+    <ion-button class="btn width-great" type="submit" color="maincolor">{{ 'LOGIN.LOGIN' | translate }}</ion-button>
+    <div class="container flex column">
+      <div>
+        <span class="main-color-text" (click)="newAccount()">{{ 'LOGIN.REGISTER' | translate }}</span>
+      </div>
+      <div class="margin-5">
+        <span class="main-color-text" (click)="recoverPass()">{{ 'LOGIN.FORGOT_PASSWORD' | translate }}</span>
+      </div>
+    </div>
+  </div>
+</form>

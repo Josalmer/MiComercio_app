@@ -1,0 +1,167 @@
+$mainColor: #6666FF;
+$secondColor: #A9C4EB;
+$greatWidth: 80%;
+
+// COMMON
+* {
+  font-family: 'Lucida-Grande' !important;
+}
+
+#logo {
+  max-width: 40%;
+  display: block;
+  margin: auto;
+  margin-top: 30px;
+  margin-bottom: 40px;
+}
+
+.nav-bar {
+  align-items: center;
+  margin-bottom: 5px;
+
+  ion-icon{
+    font-size: 1.4rem;
+  }
+}
+
+.main-color-text {
+  color: $mainColor;
+}
+
+.second-color-text {
+  color: $secondColor;
+}
+
+.width-great {
+  min-width: $greatWidth;
+  max-width: $greatWidth;
+}
+
+.width-100 {
+  min-width: 100%;
+  max-width: 100%;
+}
+
+.width-90 {
+  min-width: 90%;
+  max-width: 90%;
+}
+
+.title {
+  color: $mainColor;
+  font-weight: bold;
+  font-size: 1.5rem;
+}
+
+.subtitle {
+  font-weight: bold;
+  font-size: 1.3rem;
+}
+
+.minimum-text {
+  font-size: 1.2rem;
+}
+
+span {
+  font-size: 1.2rem;
+}
+
+.flex {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.center {
+  text-align: center;
+}
+
+.column {
+  flex-direction: column;
+}
+
+.margin-0 {
+  margin: 0px;
+}
+
+.margin-5 {
+  margin: 5px !important;
+}
+
+.margin-15 {
+  margin: 15px;
+}
+
+.margin-auto {
+  margin: auto;
+}
+
+.btn {
+  font-size: 1.3rem;
+  font-weight: bolder;
+  margin: auto;
+  display: block;
+  margin-bottom: 15px;
+  margin-top: 15px;
+  border-radius: 4px;
+  white-space: normal;
+  text-transform: inherit;
+
+  ion-icon {
+    padding: 10px;
+    font-size: 2rem;
+  }
+}
+
+.back-btn{
+  padding: 10px;
+
+  ion-icon{
+    font-size: 1.4rem;
+  }
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: auto;
+  font-weight: 500;
+  max-width: $greatWidth;
+}
+
+.alert {
+  text-align: center;
+  margin-bottom: 10px;
+  margin: 10px;
+  display: block;
+  min-width: $greatWidth;
+  max-width: $greatWidth;
+}
+
+.input {
+  font-size: 1.2rem;
+  border: 1px solid $mainColor;
+  color: $mainColor;
+  border-radius: 4px;
+  margin: auto;
+  margin-bottom: 10px;
+
+  input, textarea {
+    padding-left: 10px !important;
+  }
+}
+
+.card-right-icon {
+  align-self: center;
+  outline: none;
+
+  button {
+    background: none;
+  }
+
+  ion-icon{
+    color: $mainColor;
+    font-size: 22px;
+  }
+}

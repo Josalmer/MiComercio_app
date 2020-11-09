@@ -1,0 +1,15 @@
+<ion-tabs>
+  <ion-tab-bar color="secondcolor" style="display: flex;" slot="bottom">
+    <ion-tab-button (click)="navigateToCalendar()">
+      <ion-icon color="maincolor" name="calendar-outline"></ion-icon>
+    </ion-tab-button>
+
+    <ion-tab-button (click)="navigateToCompanies()">
+      <ion-icon color="maincolor" [name]="user() ? 'search-outline' : 'home-outline'"></ion-icon>
+    </ion-tab-button>
+
+    <ion-tab-button (click)="navigateToProfile()">
+      <ion-icon color="maincolor" name="person-outline"></ion-icon>
+    </ion-tab-button>
+  </ion-tab-bar>
+</ion-tabs>
