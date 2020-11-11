@@ -165,3 +165,90 @@ span {
     font-size: 22px;
   }
 }
+
+// COMPANIES
+
+.search-bar{
+  max-width: $greatWidth;
+  margin: auto;
+  padding: 0;
+
+  .searchbar-input-container{
+    height: 44px;
+    margin-bottom: 20px;
+  }
+}
+
+.company-card {
+  min-width: $greatWidth;
+  max-width: $greatWidth;
+  margin: auto;
+  background-color: $secondColor;
+  color: $mainColor;
+  text-align: center;
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+
+.card-img {
+  object-fit: cover;
+
+  width: 100%;
+  height: 150px;
+}
+
+.company-img {
+  object-fit: cover;
+
+  width: 100%;
+  height: 160px;
+}
+
+.day-card {
+  background-color: $secondColor;
+  margin: 5px; 
+  color: $mainColor;
+  padding: 0 15px;
+}
+
+.day-card-title {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  h2{
+    font-size: 18px;
+    margin-top: 8px;
+    margin-bottom: 8px;
+  }
+  ion-icon{
+    background: none;
+    outline: none;
+    color: $mainColor;
+    font-size: 22px;
+  }
+}
+
+.hour-card {
+  background-color: $mainColor;
+  color: white;
+  padding: 0 8px;
+  margin: 5px;
+  width: 100%;
+  h2{
+    font-size: 15px;
+    margin-top: 4px;
+    margin-bottom: 4px;
+  }
+  ion-icon{
+    background: none;
+    outline: none;
+    color: white;
+    font-size: 22px;
+  }
+}
+
+.company-form-label {
+  align-self: flex-start;
+  margin-bottom: 4px;
+}
