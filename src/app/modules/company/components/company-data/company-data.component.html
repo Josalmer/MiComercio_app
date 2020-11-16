@@ -1,3 +1,3 @@
 <h3 class="subtitle center">{{ company.category + ' > ' + company.type }}</h3>
-<h6 class="center" *ngIf="company.direction">{{printDirection()}}</h6>
+<h6 class="center" *ngIf="company.address">{{printDirection()}}</h6>
 <img class="company-img" [src]="company.logo" alt="" *ngIf="company.logo">

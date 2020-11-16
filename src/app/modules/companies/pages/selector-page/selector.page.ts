@@ -7,6 +7,7 @@ import { UserService } from 'src/app/services/user.service';
 })
 export class SelectorPage implements OnInit {
   userRole = 'user';
+  creatingCompany = false;
 
   constructor(
     private userService: UserService

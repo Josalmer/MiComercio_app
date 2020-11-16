@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { CompaniesService } from 'src/app/services/companies.service';
 import { Router } from '@angular/router';
 import { UtilsService } from 'src/app/services/utils.service';
@@ -10,6 +10,7 @@ import { Company } from 'src/app/models/company.model';
   templateUrl: 'companies-management.page.html'
 })
 export class CompaniesManagementPage implements OnInit {
+  @Output() createCompany = new EventEmitter();
 
   userCompanies: Company[] = [];
 
@@ -17,7 +18,7 @@ export class CompaniesManagementPage implements OnInit {
     private companiesService: CompaniesService,
     private router: Router,
     private utils: UtilsService
-  ) {}
+  ) { }
 
   ngOnInit(): void {
     this.loadUserCompanies();

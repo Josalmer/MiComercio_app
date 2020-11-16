@@ -11,7 +11,9 @@
     "FROM_DATE": "Del",
     "TO_DATE": "al",
     "NO_RESPONSE_FROM_SERVER": "No se pudo establecer conexión con nuestros servidores, disculpe las molestias",
-    "UNDEFINED_ERROR": "Se ha producido un error, disculpe las molestias"
+    "UNDEFINED_ERROR": "Se ha producido un error, disculpe las molestias",
+    "YES": "Sí",
+    "NO": "No"
   },
   "USER": {
     "EMAIL": "Email",
@@ -60,6 +62,7 @@
     "INSERT_EMAIL": "Indique email para restablecer la contraseña"
   },
   "COMPANIES": {
+    "NAME": "Nombre",
     "SEARCH_TITLE": "Reserva tu cita",
     "NO_SEARCH_MATCH": "No hay negocios para la búsqueda introducida",
     "NO_APPOINTMENTS": "Aún no ha solicitado cita",
@@ -101,7 +104,16 @@
     "MAIN_SCHEDULE": "Horario principal",
     "SPECIAL_SCHEDULE": "Horario excepcional",
     "DELETE_SPECIAL_SCHEDULE": "Eliminar horario excepcional",
-    "SCHEDULE_DELETED": "Horario excepcional eliminado correctamente"
+    "SCHEDULE_DELETED": "Horario excepcional eliminado correctamente",
+    "ADD_COMPANY": "Añadir negocio",
+    "NEW_COMPANY": "Nuevo negocio",
+    "PUBLISHED": "Publicada",
+    "CATEGORY": "Categoría",
+    "TYPE": "Tipo",
+    "IMAGE": "Imagen del negocio",
+    "NAME_AND_TYPE_MANDATORY": "Nombre y tipo obligatorio",
+    "NAME_USED": "El nombre introducido ya esta en uso",
+    "MINIMUM_DATA": "Debe introducir estos datos mínimos para añadir un negocio (la imagen es opcional). <br><br> Su negocio no será visible para los usuarios hasta que lo marque como publicado. <br><br> Podrá publicar su negocio y completar la información desde la vista de administración de negocio."
   },
   "DAYS": {
     "MONDAY": "Lunes",

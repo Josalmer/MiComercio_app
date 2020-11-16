@@ -4,6 +4,7 @@ import { SelectorPage } from './pages/selector-page/selector.page';
 import { SharedModule } from '../shared/shared.module';
 import { CompaniesPage } from './pages/companies/companies.page';
 import { CompaniesManagementPage } from './pages/companies-management/companies-management.page';
+import { NewCompanyFormPage } from './pages/new-company-form/new-company-form.page';
 
 @NgModule({
   imports: [
@@ -18,7 +19,8 @@ import { CompaniesManagementPage } from './pages/companies-management/companies-
   declarations: [
     SelectorPage,
     CompaniesPage,
-    CompaniesManagementPage
+    CompaniesManagementPage,
+    NewCompanyFormPage
   ]
 })
 export class CompaniesModule {}

@@ -9,6 +9,13 @@
     </div>
 
     <div layout-position="content">
+
+      <div text-center>
+        <ion-button (click)="createCompany.emit()" class="btn width-great" color="maincolor">
+          {{ 'COMPANIES.ADD_COMPANY' | translate }}
+        </ion-button>
+      </div>
+
       <ion-row *ngIf="userCompanies.length == 0">
         <h5 class="title margin-15 center flex"> {{ "COMPANIES.NO_COMPANIES_OWED" | translate }} </h5>
       </ion-row>

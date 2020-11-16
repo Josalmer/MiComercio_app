@@ -9,6 +9,18 @@ export class CompaniesService {
 
   constructor( private http: HttpClient ) { }
 
+  getCategories(): Observable<any> {
+    return this.http.get('categories');
+  }
+
+  getTypes(): Observable<any> {
+    return this.http.get('types');
+  }
+
+  createCompany(params: any): Observable<any> {
+    return this.http.post('companies', params);
+  }
+
   getCompanies(): Observable<any> {
     return this.http.get('companies');
   }
@@ -23,5 +35,9 @@ export class CompaniesService {
 
   updateCompany(id, params): Observable<any> {
     return this.http.patch('companies/' + id, params);
+  }
+
+  updateCompanyImage(id, params): Observable<any> {
+    return this.http.patch('company_image/' + id, params);
   }
 }

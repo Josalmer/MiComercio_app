@@ -19,6 +19,7 @@ export class Company {
   phone: string;
   description: string;
   address: Address;
+  published: boolean;
 
   constructor(company) {
     Object.assign(this, company);
