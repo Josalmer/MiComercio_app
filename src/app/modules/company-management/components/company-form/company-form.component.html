@@ -1,17 +1,7 @@
-<div class="width-great margin-auto" text-center>
-  <ion-row style="margin-top: 10px;">
-    <ion-col>
-      <label class="main-color-text company-form-label">{{ 'COMPANIES.PUBLISHED' | translate }}</label>
-    </ion-col>
-    <ion-col>
-      <input name="userRole" type="radio" style="margin-right: 8px;" [(ngModel)]="published" [value]="false"/>
-      <label class="main-color-text company-form-label">{{ 'COMMON.NO' | translate }}</label>
-    </ion-col>
-    <ion-col>
-      <input name="userRole" type="radio" style="margin-right: 8px;" [(ngModel)]="published" [value]="true"/>
-      <label class="main-color-text company-form-label">{{ 'COMMON.YES' | translate }}</label>
-    </ion-col>
-  </ion-row>
+<div text-center>
+  <ion-button class="btn width-great" [color]="company.published ? 'danger' : 'maincolor'" (click)="togglePublished()">
+    {{ (company.published ? 'COMPANIES.HIDE_COMPANY' : 'COMPANIES.PUBLISH_COMPANY') | translate }}
+  </ion-button>
 </div>
 <form padding [formGroup]="form" (submit)="submitCompany()">
   <div class="container" text-center> 

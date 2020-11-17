@@ -108,12 +108,14 @@
     "ADD_COMPANY": "Añadir negocio",
     "NEW_COMPANY": "Nuevo negocio",
     "PUBLISHED": "Publicada",
+    "PUBLISH_COMPANY": "Publicar negocio",
+    "HIDE_COMPANY": "Ocultar negocio",
     "CATEGORY": "Categoría",
     "TYPE": "Tipo",
     "IMAGE": "Imagen del negocio",
     "NAME_AND_TYPE_MANDATORY": "Nombre y tipo obligatorio",
     "NAME_USED": "El nombre introducido ya esta en uso",
-    "MINIMUM_DATA": "Debe introducir estos datos mínimos para añadir un negocio (la imagen es opcional). <br><br> Su negocio no será visible para los usuarios hasta que lo marque como publicado. <br><br> Podrá publicar su negocio y completar la información desde la vista de administración de negocio."
+    "MINIMUM_DATA": "Para crear un negocio es necesario indicar su nombre y tipo. <br><br> Podrá completar el resto de información desde la vista de administración de negocio. <br><br> Su negocio no será visible para los usuarios hasta que lo marque como publicado desde la vista de administración de negocio."
   },
   "DAYS": {
     "MONDAY": "Lunes",

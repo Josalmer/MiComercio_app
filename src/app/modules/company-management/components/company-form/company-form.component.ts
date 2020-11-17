@@ -4,6 +4,7 @@ import { Company } from 'src/app/models/company.model';
 import { CompaniesService } from 'src/app/services/companies.service';
 import { ToastMessageService } from 'src/app/services/toast-messages.service';
 import { TranslateService } from '@ngx-translate/core';
+import { AlertController } from '@ionic/angular';
 
 @Component({
   selector: 'app-company-form',
@@ -20,7 +21,8 @@ export class CompanyFormComponent implements OnInit {
     public fb: FormBuilder,
     private companiesService: CompaniesService,
     private toastMessageService: ToastMessageService,
-    private translate: TranslateService
+    private translate: TranslateService,
+    private alertController: AlertController
   ) { }
 
   ngOnInit() {
@@ -85,5 +87,36 @@ export class CompanyFormComponent implements OnInit {
         this.toastMessageService.showMessage(error.error.error[0], 'danger');
       }
     );
+  }
+
+  async togglePublished() {
+    const translated: any = {};
+    this.translate.get((this.company.published ? 'COMPANIES.HIDE_COMPANY' : 'COMPANIES.PUBLISH_COMPANY')).subscribe(response => translated.header = response);
+    this.translate.get('COMMON.ACTION_ALERT').subscribe(response => translated.message = response);
+    this.translate.get('COMMON.CONFIRM').subscribe(response => translated.confirm = response);
+    this.translate.get('COMMON.CANCEL').subscribe(response => translated.cancel = response);
+
+    const alert = await this.alertController.create({
+      backdropDismiss: false,
+      header: translated.header,
+      message: translated.message,
+      buttons: [
+        {
+          text: translated.confirm,
+          handler: () => {
+            this.published = !this.published;
+            this.submitCompany();
+          }
+        },
+        {
+          text: translated.cancel,
+          role: 'cancel',
+          handler: () => {
+          }
+        }
+      ]
+    });
+
+    await alert.present();
   }
 }
