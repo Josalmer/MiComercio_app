@@ -1,0 +1,51 @@
+<ion-content *ngIf="types">
+  <app-page-layout>
+    <div layout-position="main">
+      <ion-row>
+        <ion-col>
+          <ion-fab-button class="back-btn" color="maincolor" (click)="backFromCreatingCompany.emit()">
+            <ion-icon name="arrow-back-outline"></ion-icon>
+          </ion-fab-button>
+        </ion-col>
+        <ion-col style="flex:3;">
+          <h2 class="title margin-15 center flex">{{ "COMPANIES.NEW_COMPANY" | translate }}</h2>
+        </ion-col>
+        <ion-col></ion-col>
+      </ion-row>
+    </div>
+
+    <div layout-position="content" class="container">
+      <ion-row class="width-100">
+        <ion-col>
+          <label class="main-color-text company-form-label" [innerHTML]="'COMPANIES.MINIMUM_DATA' | translate"></label>
+        </ion-col>
+      </ion-row>
+      <ion-row class="width-100">
+        <ion-col>
+          <label class="main-color-text company-form-label">{{ 'COMPANIES.NAME' | translate }}</label>
+          <ion-input class="input" [(ngModel)]="name" type="text" [placeholder]="'COMPANIES.NAME' | translate" text-center margin-bottom></ion-input>
+        </ion-col>
+      </ion-row>
+      <ion-row class="width-100">
+        <ion-col>
+          <label class="main-color-text company-form-label">{{ 'COMPANIES.TYPE' | translate }}</label>
+          <ion-select [placeholder]="'COMPANIES.TYPE' | translate" [(ngModel)]="type" [cancelText]="'COMMON.CANCEL' | translate" [okText]="'COMMON.ACCEPT' | translate">
+            <ion-select-option *ngFor="let type of types" [value]="type">{{type.name}}</ion-select-option>
+          </ion-select>
+        </ion-col>
+      </ion-row>
+      <ion-row class="width-100">
+        <ion-col>
+          <label class="main-color-text company-form-label">{{ 'COMPANIES.IMAGE' | translate }}</label>
+          <ion-button color="secondcolor">
+            <ion-icon name="camera" slot="icon-only"></ion-icon>
+            <ion-input no-padding type="file" class="file-input" (ionChange)="onInputFileChange($event)"></ion-input>
+          </ion-button>
+        </ion-col>
+      </ion-row>
+      <ion-button class="btn width-100" color="maincolor" (click)="createCompany()">
+        {{ 'COMPANIES.ADD_COMPANY' | translate }}
+      </ion-button>
+    </div>
+  </app-page-layout>
+</ion-content>

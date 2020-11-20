@@ -1,0 +1,31 @@
+<ion-content *ngIf="company">
+  <app-page-layout>
+    <div layout-position="main">
+      <app-header pathRoute="/companies">
+        <ion-row header-position="main">
+          <ion-col>
+            <h2 class="title center">{{ company.name }}</h2>
+          </ion-col>
+        </ion-row>
+      </app-header>
+    </div>
+
+    <div layout-position="content">
+      <div class="container">
+        <ion-row class="width-100">
+          <img class="company-img" [src]="company.logo" alt="" *ngIf="company.logo">
+          <ion-col>
+            <ion-button color="secondcolor">
+              <ion-icon name="camera" slot="icon-only"></ion-icon>
+              <ion-input no-padding type="file" class="file-input" (ionChange)="onInputFileChange($event)"></ion-input>
+            </ion-button>
+          </ion-col>
+        </ion-row>
+      </div>
+      <h3 class="subtitle main-color-text center">{{ company.category + ' > ' + company.type }}</h3>
+
+      <app-edit-company [company]="company" (reloadCompany)="loadCompany()" *ngIf="view === 'edit'"></app-edit-company>
+
+    </div>
+  </app-page-layout>
+</ion-content>

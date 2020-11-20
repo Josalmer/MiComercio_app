@@ -1,0 +1,43 @@
+<div class="container" text-center>
+  <ion-row style="margin-top: 10px;">
+    <ion-col>
+    </ion-col>
+  </ion-row>
+  <ion-row style="min-width: 100%;">
+    <ion-col>
+      <label class="minimum-text main-color-text">{{ 'USER.PAYMENT_TYPE' | translate }}</label>
+      <ion-select class="input-select" [(ngModel)]="paymentPreferences.type" [placeholder]="'USER.PAYMENT_TYPE' | translate" color="mainColor" [cancelText]="'COMMON.CANCEL' | translate" [okText]="'COMMON.ACCEPT' | translate">
+        <ion-select-option [value]="type" *ngFor="let type of types">{{('USER.' + type) | translate}}</ion-select-option>
+      </ion-select>
+    </ion-col>
+  </ion-row>
+  <ion-row style="min-width: 100%;" *ngIf="paymentPreferences.type === 'card'">
+    <ion-col>
+      <label class="minimum-text main-color-text">{{ 'USER.CARD_NUMBER' | translate }}</label>
+      <ion-input class="input" type="number" [placeholder]="'USER.CARD_NUMBER' | translate" [(ngModel)]="paymentPreferences.number" text-center margin-bottom></ion-input>
+      <label class="minimum-text main-color-text">{{ 'USER.EXPIRATION_DATE' | translate }}</label>
+      <ion-row>
+        <ion-col size=6>
+          <ion-input class="input" type="number" maxlength=2 [placeholder]="'USER.EXPIRATION_MONTH' | translate" [(ngModel)]="paymentPreferences.expirationMonth" text-center margin-bottom></ion-input>
+        </ion-col>
+        <ion-col size=6>
+          <ion-input class="input" type="number" maxlength=2 [placeholder]="'USER.EXPIRATION_YEAR' | translate" [(ngModel)]="paymentPreferences.expirationYear" text-center margin-bottom></ion-input>
+        </ion-col>
+      </ion-row>
+    </ion-col>
+  </ion-row>
+  <ion-row style="min-width: 100%;" *ngIf="paymentPreferences.type === 'bank'">
+    <ion-col>
+      <label class="minimum-text main-color-text">{{ 'USER.BANK_NAME' | translate }}</label>
+      <ion-input class="input" type="text" [placeholder]="'USER.BANK_NAME' | translate" [(ngModel)]="paymentPreferences.bank" text-center margin-bottom></ion-input>
+      <label class="minimum-text main-color-text">{{ 'USER.BANK_NUMBER' | translate }}</label>
+      <ion-input class="input" type="text" [placeholder]="'USER.BANK_NUMBER' | translate" [(ngModel)]="paymentPreferences.number" text-center margin-bottom></ion-input>
+    </ion-col>
+  </ion-row>
+</div>  
+
+<div text-center>
+  <ion-button [disabled]="invalidData()" (click)="updateData()" class="btn width-great" type="submit" color="maincolor">
+    {{ 'USER.SAVE_PAYMENT_PREFERENCES' | translate }}
+  </ion-button>
+</div>

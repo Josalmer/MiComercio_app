@@ -7,12 +7,14 @@ import { PageLayoutComponent } from './components/page-layout/page-layout.compon
 import { TranslateModule } from '@ngx-translate/core';
 import { UserFormComponent } from './components/user-form/user-form.component';
 import { TranslationService } from 'src/app/services/translation.service';
+import { SearchBarComponent } from './components/search-bar/search-bar.component';
 
 @NgModule({
   declarations: [
     HeaderComponent,
     PageLayoutComponent,
-    UserFormComponent
+    UserFormComponent,
+    SearchBarComponent
   ],
   imports: [
     CommonModule,
@@ -29,7 +31,8 @@ import { TranslationService } from 'src/app/services/translation.service';
     TranslateModule,
     HeaderComponent,
     PageLayoutComponent,
-    UserFormComponent
+    UserFormComponent,
+    SearchBarComponent
   ],
   providers: [
     TranslationService

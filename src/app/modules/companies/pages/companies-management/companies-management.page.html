@@ -1,0 +1,34 @@
+<ion-content>
+  <app-page-layout>
+    <div layout-position="main">
+      <ion-row>
+        <ion-col>
+          <h2 class="title margin-15 center flex">{{ "COMPANIES.YOUR_COMPANIES" | translate }}</h2>
+        </ion-col>      
+      </ion-row>
+    </div>
+
+    <div layout-position="content">
+
+      <div text-center>
+        <ion-button (click)="createCompany.emit()" class="btn width-great" color="maincolor">
+          {{ 'COMPANIES.ADD_COMPANY' | translate }}
+        </ion-button>
+      </div>
+
+      <ion-row *ngIf="userCompanies.length == 0">
+        <h5 class="title margin-15 center flex"> {{ "COMPANIES.NO_COMPANIES_OWED" | translate }} </h5>
+      </ion-row>
+      <ion-row *ngFor="let company of userCompanies" (click)="goToCompany(company.id)">
+        <ion-card class="company-card">
+          <div *ngIf="company.logo">
+            <img *ngIf="company.published" class="seal" src="../../../../assets/img/published.png" alt="">
+            <img class="card-img" [src]="company.logo" alt="">
+          </div>
+          <h2 class="title center flex">{{company.name}}</h2>
+          <h6 class="center flex margin-15" *ngIf="company.address">{{printDirection(company.address)}}</h6>
+        </ion-card>
+      </ion-row>
+    </div>
+  </app-page-layout>
+</ion-content>

@@ -4,7 +4,7 @@ $greatWidth: 80%;
 
 // COMMON
 * {
-  font-family: 'Lucida-Grande' !important;
+  font-family: 'Arial' !important;
 }
 
 #logo {
@@ -97,7 +97,7 @@ span {
 }
 
 .btn {
-  font-size: 1.3rem;
+  font-size: 1.1rem;
   font-weight: bolder;
   margin: auto;
   display: block;
@@ -164,4 +164,130 @@ span {
     color: $mainColor;
     font-size: 22px;
   }
+}
+
+.input-select {
+  margin: 10px 0 10px 0;
+  border-color: $mainColor !important;
+  border-width: 1px !important;
+  border-style: solid !important;
+}
+
+// COMPANIES
+
+.search-bar{
+  max-width: $greatWidth;
+  margin: auto;
+  padding: 0;
+
+  .searchbar-input-container{
+    height: 44px;
+    margin-bottom: 20px;
+  }
+}
+
+.company-card {
+  min-width: $greatWidth;
+  max-width: $greatWidth;
+  margin: auto;
+  background-color: $secondColor;
+  color: $mainColor;
+  text-align: center;
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+
+.card-img {
+  object-fit: cover;
+
+  width: 100%;
+  height: 150px;
+}
+
+.company-img {
+  object-fit: cover;
+
+  width: 100%;
+  height: 160px;
+}
+
+.day-card {
+  background-color: $secondColor;
+  margin: 5px; 
+  color: $mainColor;
+  padding: 0 15px;
+}
+
+.day-card-title {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  h2{
+    font-size: 18px;
+    margin-top: 8px;
+    margin-bottom: 8px;
+  }
+  ion-icon{
+    background: none;
+    outline: none;
+    color: $mainColor;
+    font-size: 22px;
+  }
+}
+
+.hour-card {
+  background-color: $mainColor;
+  color: white;
+  padding: 0 8px;
+  margin: 5px;
+  width: 100%;
+  h2{
+    font-size: 15px;
+    margin-top: 4px;
+    margin-bottom: 4px;
+  }
+  ion-icon{
+    background: none;
+    outline: none;
+    color: white;
+    font-size: 22px;
+  }
+}
+
+.company-form-label {
+  align-self: flex-start;
+  margin-bottom: 4px;
+}
+
+.seal {
+  position: absolute;
+  right: 0;
+  max-width: 4em;
+}
+
+.pending-company-card {
+  min-width: 100%;
+  max-width: 100%;
+  padding: 1em;
+  margin: auto;
+  background-color: rgba(255, 255, 0, 0.5);
+  font-size: 1rem;
+  text-align: center;
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+
+// PROFILE
+
+.pending-card {
+  min-width: $greatWidth;
+  max-width: $greatWidth;
+  padding: 1em;
+  margin: auto;
+  background-color: rgba(255, 255, 0, 0.5);
+  font-size: 1rem;
+  text-align: center;
+  margin-top: 10px;
+  margin-bottom: 10px;
 }

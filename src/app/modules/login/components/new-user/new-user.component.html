@@ -1,4 +1,9 @@
+<ion-row class="width-great margin-auto center">
+  <ion-col>
+    <ion-text class="title" style="margin-bottom: 20px;">{{ 'LOGIN.CREATE_ACCOUNT' | translate }}</ion-text>
+  </ion-col>
+</ion-row>
 <app-user-form (userEmitter)="createAccount($event)" [newUser]="true"></app-user-form>
 <div class="container margin-15" style="margin-bottom: 40px;">
-    <span class="main-color-text" (click)="backToLogin() ">{{ 'LOGIN.BACK_LOGIN' | translate }}</span>
+  <span class="main-color-text" (click)="backToLogin() ">{{ 'LOGIN.BACK_LOGIN' | translate }}</span>
 </div>

@@ -1,15 +1,10 @@
 <div class="container" text-center>
-  <ion-row>
-    <ion-col>
-      <ion-text class="title" style="margin-bottom: 20px;">{{ (newUser ? 'LOGIN.CREATE_ACCOUNT' : 'USER.USER_PROFILE') | translate }}</ion-text>
-    </ion-col>
-  </ion-row>
   <ion-row style="margin-top: 10px;">
     <ion-col>
       <label class="minimum-text main-color-text">{{ 'USER.ACCOUNT_TYPE' | translate }}</label>
     </ion-col>
   </ion-row>
-  <ion-row style="min-width: 80%;">
+  <ion-row style="min-width: 100%;">
     <ion-col>
       <label class="minimum-text main-color-text">{{ 'USER.USER' | translate }}</label>
       <input name="userRole" type="radio" style="margin-left: 10px;" [(ngModel)]="userRole" [value]="'user'" [disabled]="!newUser"/>

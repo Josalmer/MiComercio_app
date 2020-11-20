@@ -1,0 +1,44 @@
+<div text-center>
+  <ion-button class="btn width-great" [color]="company.published ? 'danger' : 'maincolor'" (click)="togglePublished()">
+    {{ (company.published ? 'COMPANIES.HIDE_COMPANY' : 'COMPANIES.PUBLISH_COMPANY') | translate }}
+  </ion-button>
+</div>
+<form padding [formGroup]="form" (submit)="submitCompany()">
+  <div class="container" text-center> 
+    <label class="main-color-text company-form-label">{{ 'COMPANIES.DIRECTION' | translate }}</label>
+    <ion-input class="input" formControlName="direction" type="text" [placeholder]="'COMPANIES.DIRECTION' | translate" text-center margin-bottom></ion-input>
+    <label class="main-color-text company-form-label">{{ 'COMPANIES.TOWN' | translate }}</label>
+    <ion-input class="input" formControlName="town" type="text" [placeholder]="'COMPANIES.TOWN' | translate" text-center margin-bottom></ion-input>
+    <label class="main-color-text company-form-label">{{ 'COMPANIES.PROVINCE' | translate }}</label>
+    <ion-input class="input" formControlName="province" type="text" [placeholder]="'COMPANIES.PROVINCE' | translate" text-center margin-bottom></ion-input>
+    <label class="main-color-text company-form-label">{{ 'COMPANIES.CP' | translate }}</label>
+    <ion-input class="input" formControlName="cp" type="text" [placeholder]="'COMPANIES.CP' | translate" text-center margin-bottom></ion-input>
+    <label class="main-color-text company-form-label">{{ 'COMPANIES.COUNTRY' | translate }}</label>
+    <ion-input class="input" formControlName="country" type="text" [placeholder]="'COMPANIES.COUNTRY' | translate" text-center margin-bottom></ion-input>
+    <label class="main-color-text company-form-label">Web</label>
+    <ion-input class="input" formControlName="web" type="text" [placeholder]="'Web'" text-center margin-bottom></ion-input>
+    <label class="main-color-text company-form-label">Mail</label>
+    <ion-input class="input" formControlName="mail" type="email" [placeholder]="'Mail'" text-center margin-bottom></ion-input>
+    <label class="main-color-text company-form-label">{{ 'COMPANIES.PHONE' | translate }}</label>
+    <ion-input class="input" formControlName="phone" type="tel" [placeholder]="'COMPANIES.PHONE' | translate" text-center margin-bottom></ion-input>
+    <label class="main-color-text company-form-label">{{ 'COMPANIES.APPOINTMENT_DURATION' | translate }}</label>
+    <ion-input class="input" formControlName="appointmentDuration" type="number" [placeholder]="'COMPANIES.APPOINTMENT_DURATION' | translate" text-center margin-bottom></ion-input>
+    <label class="main-color-text company-form-label">{{ 'COMPANIES.SIMULTANEOUS_APPOINTMENTS_NUMBER' | translate }}</label>
+    <ion-input class="input" formControlName="simultaneousNumber" type="number" [placeholder]="'COMPANIES.SIMULTANEOUS_APPOINTMENTS_NUMBER' | translate" text-center margin-bottom></ion-input>
+    <label class="main-color-text company-form-label">{{ 'COMPANIES.DIARY_CLIENT_LIMIT' | translate }}</label>
+    <ion-input class="input" formControlName="diaryClientLimit" type="number" [placeholder]="'COMPANIES.DIARY_CLIENT_LIMIT' | translate" text-center margin-bottom></ion-input>
+    <label class="main-color-text company-form-label">{{ 'COMPANIES.MONTHLY_CLIENT_LIMIT' | translate }}</label>
+    <ion-input class="input" formControlName="monthlyClientLimit" type="number" [placeholder]="'COMPANIES.MONTHLY_CLIENT_LIMIT' | translate" text-center margin-bottom></ion-input>
+    <label class="main-color-text company-form-label">{{ 'COMPANIES.LATITUDE' | translate }}</label>
+    <ion-input class="input" formControlName="latitude" type="text" [placeholder]="'COMPANIES.LATITUDE' | translate" text-center margin-bottom></ion-input>
+    <label class="main-color-text company-form-label">{{ 'COMPANIES.LONGITUDE' | translate }}</label>
+    <ion-input class="input" formControlName="longitude" type="text" [placeholder]="'COMPANIES.LONGITUDE' | translate" text-center margin-bottom></ion-input>
+    <label class="main-color-text company-form-label">{{ 'COMPANIES.DESCRIPTION' | translate }}</label>
+    <ion-textarea class="input" rows="4" formControlName="description" type="text" [placeholder]="'COMPANIES.DESCRIPTION' | translate" text-center margin-bottom></ion-textarea>
+  </div>
+  <div text-center>
+    <ion-button [disabled]="form.invalid" class="btn width-great" type="submit" color="maincolor">
+      {{ 'COMPANIES.EDIT_COMPANY' | translate }}
+    </ion-button>
+  </div>
+</form>
