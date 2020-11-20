@@ -1,3 +1,5 @@
+import { PaymentPreference } from './payment-preference';
+
 export class User {
   id: string;
   email: string;
@@ -6,6 +8,7 @@ export class User {
   phone: string;
   userRole: string;
   password: string;
+  paymentPreference: PaymentPreference;
 
   constructor(user) {
     Object.assign(this, user);

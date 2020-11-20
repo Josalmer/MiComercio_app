@@ -22,6 +22,7 @@
       <ion-row *ngFor="let company of userCompanies" (click)="goToCompany(company.id)">
         <ion-card class="company-card">
           <div *ngIf="company.logo">
+            <img *ngIf="company.published" class="seal" src="../../../../assets/img/published.png" alt="">
             <img class="card-img" [src]="company.logo" alt="">
           </div>
           <h2 class="title center flex">{{company.name}}</h2>

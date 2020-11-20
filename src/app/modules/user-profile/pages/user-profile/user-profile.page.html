@@ -1,7 +1,31 @@
-<ion-content>
+<ion-content *ngIf="user">
   <app-page-layout>
     <div layout-position="content" style="margin-top: 35px;">
-      <app-user-form (userEmitter)="updateUser($event)" [user]="user" [newUser]="false" *ngIf="user"></app-user-form>
+      <ion-row class="width-great margin-auto center">
+        <ion-col>
+          <ion-text class="title" style="margin-bottom: 20px;">{{ 'USER.USER_PROFILE' | translate }}</ion-text>
+        </ion-col>
+      </ion-row>
+
+      <div *ngIf="user.userRole === 'manager'">
+        <ion-row *ngIf="pendingValidation() || pendingPaymentData()">
+          <ion-col>
+            <ion-card class="pending-card" style="color: black;" *ngIf="pendingValidation()">{{ 'USER.PENDING_VALIDATION' | translate }}</ion-card>
+            <ion-card class="pending-card" style="color: red;" *ngIf="pendingPaymentData()">{{ 'USER.PENDING_DATA' | translate }}</ion-card>
+          </ion-col>
+        </ion-row>
+        <ion-row class="width-great margin-auto">
+          <ion-col size='6'>
+            <ion-button class="btn" style="margin-top: 0px; margin-bottom: 0px;" [color]="view === 'personal' ? 'maincolor' : 'secondcolor'"  (click)="toggleView('personal')"><ion-icon name='person-circle-outline'></ion-icon></ion-button>
+          </ion-col>
+          <ion-col size='6'>
+            <ion-button class="btn" style="margin-top: 0px; margin-bottom: 0px;" [color]="view === 'payment' ? 'maincolor' : 'secondcolor'" (click)="toggleView('payment')"><ion-icon name='card-outline'></ion-icon></ion-button>
+          </ion-col>
+        </ion-row>
+      </div>
+
+      <app-user-form *ngIf="view === 'personal'" (userEmitter)="updateUser($event)" [user]="user" [newUser]="false"></app-user-form>
+      <app-payment-preferences *ngIf="view === 'payment'" (updatePreferences)="updatePaymentPreference($event)" [paymentPreferences]="user.paymentPreference"></app-payment-preferences>
       <div text-center>
         <ion-button class="btn width-great" (click)="logout()" color="danger">
           {{ 'USER.LOGOUT' | translate }}

@@ -1,6 +1,6 @@
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { CompaniesService } from 'src/app/services/companies.service';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { UtilsService } from 'src/app/services/utils.service';
 import { Address } from 'src/app/models/address.model';
 import { Company } from 'src/app/models/company.model';
@@ -17,11 +17,14 @@ export class CompaniesManagementPage implements OnInit {
   constructor(
     private companiesService: CompaniesService,
     private router: Router,
-    private utils: UtilsService
+    private utils: UtilsService,
+    private route: ActivatedRoute
   ) { }
 
   ngOnInit(): void {
-    this.loadUserCompanies();
+    this.route.params.subscribe(params => {
+      this.loadUserCompanies();
+    });
   }
 
   loadUserCompanies(): void {

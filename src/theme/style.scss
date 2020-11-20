@@ -4,7 +4,7 @@ $greatWidth: 80%;
 
 // COMMON
 * {
-  font-family: 'Lucida-Grande' !important;
+  font-family: 'Arial' !important;
 }
 
 #logo {
@@ -97,7 +97,7 @@ span {
 }
 
 .btn {
-  font-size: 1.3rem;
+  font-size: 1.1rem;
   font-weight: bolder;
   margin: auto;
   display: block;
@@ -164,6 +164,13 @@ span {
     color: $mainColor;
     font-size: 22px;
   }
+}
+
+.input-select {
+  margin: 10px 0 10px 0;
+  border-color: $mainColor !important;
+  border-width: 1px !important;
+  border-style: solid !important;
 }
 
 // COMPANIES
@@ -251,4 +258,36 @@ span {
 .company-form-label {
   align-self: flex-start;
   margin-bottom: 4px;
+}
+
+.seal {
+  position: absolute;
+  right: 0;
+  max-width: 4em;
+}
+
+.pending-company-card {
+  min-width: 100%;
+  max-width: 100%;
+  padding: 1em;
+  margin: auto;
+  background-color: rgba(255, 255, 0, 0.5);
+  font-size: 1rem;
+  text-align: center;
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+
+// PROFILE
+
+.pending-card {
+  min-width: $greatWidth;
+  max-width: $greatWidth;
+  padding: 1em;
+  margin: auto;
+  background-color: rgba(255, 255, 0, 0.5);
+  font-size: 1rem;
+  text-align: center;
+  margin-top: 10px;
+  margin-bottom: 10px;
 }

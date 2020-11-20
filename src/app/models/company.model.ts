@@ -20,6 +20,7 @@ export class Company {
   description: string;
   address: Address;
   published: boolean;
+  validated: boolean;
 
   constructor(company) {
     Object.assign(this, company);

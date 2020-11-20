@@ -36,6 +36,12 @@ export class UserService {
         );
     }
 
+    updatePaymentPreferences(params) {
+        return this.http.patch('update_manager_preferences', params).pipe(
+            tap(response => this.applicationUser.next(response))
+        );
+    }
+
     getApplicationUser(): Observable<any> {
         return this.applicationUser.asObservable().pipe( filter(x => x) );
     }

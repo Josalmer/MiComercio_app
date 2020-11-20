@@ -29,7 +29,19 @@
     "LOGOUT": "Logout",
     "USER": "Usuario",
     "BUSINESS": "Negocio",
-    "ACCOUNT_TYPE": "Tipo de cuenta"
+    "ACCOUNT_TYPE": "Tipo de cuenta",
+    "PENDING_DATA": "Debe rellenar sus preferencias de pago para que el administrador del sistema pueda validar su cuenta y mostrar sus negocios como confiables",
+    "PENDING_VALIDATION": "Estamos validando sus preferencias de pago, recibirá una notificación cuando termine el proceso",
+    "SAVE_PAYMENT_PREFERENCES": "Guardar preferencias de pago",
+    "PAYMENT_TYPE": "Forma de pago",
+    "card": "Tarjeta",
+    "bank": "Domiciliación bancaria",
+    "CARD_NUMBER": "Número de tarjeta",
+    "BANK_NUMBER": "Número de cuenta",
+    "BANK_NAME": "Entidad bancaria",
+    "EXPIRATION_DATE": "Fecha de vencimiento",
+    "EXPIRATION_MONTH": "Mes de vencimiento",
+    "EXPIRATION_YEAR": "Año de vencimiento"
   },
   "LOGIN": {
     "LOGIN": "Login",
@@ -115,7 +127,8 @@
     "IMAGE": "Imagen del negocio",
     "NAME_AND_TYPE_MANDATORY": "Nombre y tipo obligatorio",
     "NAME_USED": "El nombre introducido ya esta en uso",
-    "MINIMUM_DATA": "Para crear un negocio es necesario indicar su nombre y tipo. <br><br> Podrá completar el resto de información desde la vista de administración de negocio. <br><br> Su negocio no será visible para los usuarios hasta que lo marque como publicado desde la vista de administración de negocio."
+    "MINIMUM_DATA": "Para crear un negocio es necesario indicar su nombre y tipo. <br><br> Podrá completar el resto de información desde la vista de administración de negocio. <br><br> Su negocio no será visible para los usuarios hasta que lo marque como publicado desde la vista de administración de negocio.",
+    "PENDING_COMPANY": "Los administradores de Mi Comercio aún no han verificado los datos de este negocio"
   },
   "DAYS": {
     "MONDAY": "Lunes",

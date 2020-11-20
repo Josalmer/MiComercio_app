@@ -6,6 +6,7 @@ import { SessionService } from 'src/app/modules/login/services/session.service';
 import { LoginService } from 'src/app/modules/login/services/login.service';
 import { NavController } from '@ionic/angular';
 import { User } from 'src/app/models/user.model';
+import { PaymentPreference } from 'src/app/models/payment-preference';
 
 @Component({
   selector: 'app-user-profile',
@@ -13,6 +14,7 @@ import { User } from 'src/app/models/user.model';
 })
 export class UserProfilePage implements OnInit {
   user: User;
+  view = 'personal';
 
   constructor(
     private userService: UserService,
@@ -33,8 +35,30 @@ export class UserProfilePage implements OnInit {
     );
   }
 
+  toggleView(selection: string): void {
+    if (this.view !== selection) {
+      this.loadUser();
+      this.view = selection;
+    }
+  }
+
   updateUser(editUserObject: User): void {
     this.userService.updateUser(editUserObject).subscribe(
+      response => {
+        this.translate.get("USER.CORRECTLY_EDITED").subscribe(
+          translated => this.toastMessageService.showMessage(translated, 'success')
+        );
+      },
+      error => {
+        this.translate.get("USER.EDIT_ERROR").subscribe(
+          translated => this.toastMessageService.showMessage(translated, 'danger')
+        );
+      }
+    );
+  }
+
+  updatePaymentPreference(_newPaymentPreference: PaymentPreference): void {
+    this.userService.updatePaymentPreferences({newPaymentPreference: _newPaymentPreference}).subscribe(
       response => {
         this.translate.get("USER.CORRECTLY_EDITED").subscribe(
           translated => this.toastMessageService.showMessage(translated, 'success')
@@ -56,6 +80,13 @@ export class UserProfilePage implements OnInit {
         this.navCtrl.navigateRoot(['/login']);
       }
     );
+  }
 
+  pendingPaymentData(): boolean {
+    return this.user.paymentPreference.type === null || this.user.paymentPreference.number === null;
+  }
+
+  pendingValidation(): boolean {
+    return !this.pendingPaymentData() && !this.user.paymentPreference.validated;
   }
 }

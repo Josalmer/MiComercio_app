@@ -1,3 +1,8 @@
+<ion-row *ngIf="!company.validated">
+  <ion-col>
+    <ion-card class="pending-company-card" style="color: red;">{{ 'COMPANIES.PENDING_COMPANY' | translate }}</ion-card>
+  </ion-col>
+</ion-row>
 <h3 class="subtitle center">{{ company.category + ' > ' + company.type }}</h3>
 <h6 class="center" *ngIf="company.address">{{printDirection()}}</h6>
 <img class="company-img" [src]="company.logo" alt="" *ngIf="company.logo">

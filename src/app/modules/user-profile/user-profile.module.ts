@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { RouterModule } from '@angular/router';
 import { SharedModule } from '../shared/shared.module';
+import { PaymentPreferencesComponent } from './components/payment-preferences/payment-preferences.component';
 import { UserProfilePage } from './pages/user-profile/user-profile.page';
 
 @NgModule({
@@ -14,7 +15,8 @@ import { UserProfilePage } from './pages/user-profile/user-profile.page';
     ])
   ],
   declarations: [
-    UserProfilePage
+    UserProfilePage,
+    PaymentPreferencesComponent
   ]
 })
 export class UserProfileModule {}
