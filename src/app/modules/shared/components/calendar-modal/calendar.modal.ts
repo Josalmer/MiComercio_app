@@ -253,12 +253,12 @@ export class CalendarModal implements OnInit {
     return date < this.calendar.today;
   }
 
-  getHourStyle(freeSlots: number): {} {
+  getCardtyle(freeSlots: number): {} {
     const style = {};
     if (freeSlots === 0) {
-      style['color'] = 'red';
+      style['border-left-color'] = 'red';
     } else {
-      style['color'] = 'green';
+      style['border-left-color'] = 'green';
       style['font-weight'] = 'bold';
     }
     return style;

@@ -30,7 +30,7 @@
 
       <h5 class="title center" *ngIf="selectedDate.events.length == 0 && selectedTime">{{'CALENDAR.NO_APPOINTMENTS' | translate}}</h5>
 
-      <ion-card class="calendar-events-card" (click)="requestAppointment(event)" *ngFor="let event of selectedDate.events" [ngStyle]="getHourStyle(event.freeSlot)">
+      <ion-card class="calendar-events-card" (click)="requestAppointment(event)" *ngFor="let event of selectedDate.events" [ngStyle]="getCardtyle(event.freeSlot)">
         <ion-row>
           <ion-col>
             <p>{{ ('CALENDAR.FROM' | translate) +  (event.startTime | date: ' HH:mm ') + ('CALENDAR.TO' | translate) + (event.endTime | date: ' HH:mm')}}</p>
