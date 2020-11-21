@@ -32,7 +32,7 @@
     "ACCOUNT_TYPE": "Tipo de cuenta",
     "PENDING_DATA": "Debe rellenar sus preferencias de pago para que el administrador del sistema pueda validar su cuenta y mostrar sus negocios como confiables",
     "PENDING_VALIDATION": "Estamos validando sus preferencias de pago, recibirá una notificación cuando termine el proceso",
-    "SAVE_PAYMENT_PREFERENCES": "Guardar preferencias de pago",
+    "SAVE_PAYMENT_PREFERENCES": "Guardar preferencias",
     "PAYMENT_TYPE": "Forma de pago",
     "card": "Tarjeta",
     "bank": "Domiciliación bancaria",
@@ -129,6 +129,34 @@
     "NAME_USED": "El nombre introducido ya esta en uso",
     "MINIMUM_DATA": "Para crear un negocio es necesario indicar su nombre y tipo. <br><br> Podrá completar el resto de información desde la vista de administración de negocio. <br><br> Su negocio no será visible para los usuarios hasta que lo marque como publicado desde la vista de administración de negocio.",
     "PENDING_COMPANY": "Los administradores de Mi Comercio aún no han verificado los datos de este negocio"
+  },
+  "APPOINTMENTS": {
+    "NAME": "Nombre",
+    "TYPE": "Tipo",
+    "REQUESTED_DATE": "Fecha de solicitud",
+    "START_DATE": "Cita",
+    "CANCEL": "Cancelar cita",
+    "NEW_APPOINTMENT": "Solicitar cita",
+    "APPOINTMENT_DATE": "Fecha y hora de la cita",
+    "APPOINTMENT_AT": "Hora de la cita: ",
+    "REQUEST": "Solicitar",
+    "APPOINTMENT_DATA": "Datos de la cita",
+    "CLIENT_NAME": "Nombre del cliente: ",
+    "CLIENT_PHONE": "Teléfono del cliente: ",
+    "CORRECTLY_CREATED": "Cita registrada con éxito",
+    "CORRECTLY_CANCELLED": "Cita cancelada con éxito",
+    "NOT_CANCELLED": "No se puedo cancelar la cita",
+    "CREATED_BY_MANAGER": "Creada por gestor el"
+  },
+  "CALENDAR": {
+    "NO_APPOINTMENTS": "No hay citas para el día seleccionado",
+    "NO_EVENTS": "Sin eventos",
+    "FROM": "De",
+    "TO": "a",
+    "FREE": "Libres",
+    "OF": "de",
+    "SELECT_COMPANY": "Seleccionar negocio",
+    "ALL": "Todos"
   },
   "DAYS": {
     "MONDAY": "Lunes",

@@ -14,16 +14,20 @@
       <div class="container">
         <ion-row class="width-100">
           <img class="company-img" [src]="company.logo" alt="" *ngIf="company.logo">
-          <ion-col>
-            <ion-button color="secondcolor">
-              <ion-icon name="camera" slot="icon-only"></ion-icon>
-              <ion-input no-padding type="file" class="file-input" (ionChange)="onInputFileChange($event)"></ion-input>
-            </ion-button>
-          </ion-col>
         </ion-row>
       </div>
       <h3 class="subtitle main-color-text center">{{ company.category + ' > ' + company.type }}</h3>
 
+      <ion-row class="width-great margin-auto">
+        <ion-col size='6'>
+          <ion-button class="btn" style="margin-top: 0px; margin-bottom: 0px;" [color]="view === 'gestion' ? 'maincolor' : 'secondcolor'"  (click)="toggleView('gestion')"><ion-icon name='people-circle-outline'></ion-icon></ion-button>
+        </ion-col>
+        <ion-col size='6'>
+          <ion-button class="btn" style="margin-top: 0px; margin-bottom: 0px;" [color]="view === 'edit' ? 'maincolor' : 'secondcolor'" (click)="toggleView('edit')"><ion-icon name='options-outline'></ion-icon></ion-button>
+        </ion-col>
+      </ion-row>
+
+      <app-company-gestion [company]="company" [selectedDate]="selectedDate" (changeDate)="selectedDate = $event" (reloadCompany)="loadCompany()" *ngIf="view === 'gestion'"></app-company-gestion>
       <app-edit-company [company]="company" (reloadCompany)="loadCompany()" *ngIf="view === 'edit'"></app-edit-company>
 
     </div>

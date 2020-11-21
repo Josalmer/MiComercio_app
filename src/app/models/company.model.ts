@@ -1,4 +1,6 @@
 import { Address } from './address.model';
+import { Hour } from './hour.model';
+import { SpecialSchedule } from './special-schedule.model';
 
 export class Company {
   id: string;
@@ -21,6 +23,8 @@ export class Company {
   address: Address;
   published: boolean;
   validated: boolean;
+  hours: Hour[];
+  specialSchedules: SpecialSchedule[];
 
   constructor(company) {
     Object.assign(this, company);

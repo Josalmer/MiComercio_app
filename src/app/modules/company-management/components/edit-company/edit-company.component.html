@@ -1,1 +1,5 @@
+<ion-button class="btn width-great" color='maincolor' (click)="editMainSchedule()">{{ 'COMPANIES.SHOW_SCHEDULE' | translate }}</ion-button>
+
+<ion-button class="btn width-great" color='maincolor' (click)="showSpecialSchedules = !showSpecialSchedules">{{ (showSpecialSchedules ? 'COMPANIES.HIDE_SPECIAL_SCHEDULES' : 'COMPANIES.SHOW_SPECIAL_SCHEDULES') | translate }}</ion-button>
+<app-special-schedules *ngIf="showSpecialSchedules" [company]="company" [schedules]="company.specialSchedules" (reloadCompany)="reloadCompany.emit()"></app-special-schedules>
 <app-company-form class="width-great" style="margin-top: 10px" [company]="company" (companyEmitter)="reloadCompany.emit()"></app-company-form>

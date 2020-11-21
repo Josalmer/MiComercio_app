@@ -13,7 +13,7 @@ export class CompanyManagementPage implements OnInit {
   company: Company;
   selectedDate: Date = new Date();
 
-  view = 'edit';
+  view = 'gestion';
 
   constructor(
     private companiesService: CompaniesService,
@@ -45,23 +45,5 @@ export class CompanyManagementPage implements OnInit {
       this.loadCompany();
       this.view = selection;
     }
-  }
-
-  onInputFileChange(event) {
-    event.target.getInputElement().then(el => {
-      if (el.files && el.files[0]) {
-        const image = el.files[0];
-        let reader = new FileReader();
-        reader.onload = () => this.updateLogo(reader.result);
-        reader.readAsDataURL(image);
-      }
-    });
-  }
-
-  updateLogo(base64Image) {
-    const edited_logo_object = { logo: base64Image };
-    this.companiesService.updateCompanyImage(this.companyId, edited_logo_object).subscribe(
-      response => this.company  = response
-    );
   }
 }
