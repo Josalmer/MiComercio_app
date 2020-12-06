@@ -1,0 +1,27 @@
+<ion-content>
+  <app-page-layout>
+    <div layout-position="main">
+      <ion-fab vertical="top" horizontal="start" slot="fixed">
+        <ion-fab-button class="back-btn" color="maincolor" (click)="cancel()">
+          <ion-icon name="arrow-back-outline"></ion-icon>
+        </ion-fab-button>
+      </ion-fab>
+      <ion-row style="margin-top: 20px;">
+        <ion-col>
+          <h2 class="title center">{{ (mainSchedule() ? 'COMPANIES.MAIN_SCHEDULE': 'COMPANIES.SPECIAL_SCHEDULE') | translate }}</h2>
+          <h3 *ngIf="mainSchedule()" class="subtitle main-color-text center">{{ company.name }}</h3>
+          <h3 *ngIf="specialSchedule()" class="subtitle main-color-text center">{{ ('COMMON.FROM_DATE' | translate) + ' ' + (schedule.startDate | date: 'dd/MM ') + ('COMMON.TO_DATE' | translate) + ' ' + (schedule.endDate | date: 'dd/MM')}}</h3>
+        </ion-col>
+      </ion-row>
+    </div>
+    <div layout-position="content">
+      <ng-container *ngIf="specialSchedule()">
+        <app-week-day class="flex" [day]="weekDay" [scheduleId]="schedule.id" [hours]="filterHours(weekDay)" *ngFor="let weekDay of weekDays" (newHourEmitter)="addHour($event)" (deleteHourEmitter)="deleteHour($event)"></app-week-day>
+      </ng-container>
+      <ng-container *ngIf="mainSchedule()">
+        <app-week-day class="flex" [day]="weekDay" [companyId]="company.id" [hours]="filterHours(weekDay)" *ngFor="let weekDay of weekDays" (newHourEmitter)="addHour($event)" (deleteHourEmitter)="deleteHour($event)"></app-week-day>
+      </ng-container>
+      <ion-button *ngIf="specialSchedule()" class="btn width-great" color='maincolor' (click)="deleteScheduleAlert()">{{ 'COMPANIES.DELETE_SPECIAL_SCHEDULE' | translate }}<ion-icon style="padding-left: 25px; font-size: 1.7rem;" name="trash"></ion-icon></ion-button>
+    </div>
+  </app-page-layout>
+</ion-content>

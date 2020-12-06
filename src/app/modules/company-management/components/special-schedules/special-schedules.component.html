@@ -1,0 +1,16 @@
+<div *ngFor="let schedule of schedules" class="container">
+  <ion-card class="day-card width-100">
+    <ion-row class="day-card-title">
+      <ion-col size="10">
+        <h2>{{ ('COMMON.FROM_DATE' | translate) + ' ' + (schedule.startDate | date: 'dd/MM ') + ('COMMON.TO_DATE' | translate) + ' ' + (schedule.endDate | date: 'dd/MM')}}</h2>
+      </ion-col>
+      <ion-col size="2">
+        <ion-icon name='settings' (click)="editSchedule(schedule)"></ion-icon>
+      </ion-col>
+    </ion-row>
+  </ion-card>
+</div>
+
+<h5 class="width-great subtitle main-color-text margin-auto" *ngIf="schedules.length === 0">{{'COMPANIES.NO_SPECIAL_SCHEDULES' | translate}}</h5>
+
+<ion-button class="btn width-great" color='maincolor' (click)="newSpecialSchedule()">{{ 'COMPANIES.CREATE_SPECIAL_SCHEDULE' | translate }}</ion-button>

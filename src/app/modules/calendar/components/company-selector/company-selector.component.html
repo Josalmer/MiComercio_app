@@ -1,0 +1,9 @@
+<ion-list>
+  <ion-item>
+    <ion-label>{{'CALENDAR.SELECT_COMPANY' | translate}}</ion-label>
+    <ion-select #C color="maincolor" [(ngModel)]="selection" [compareWith]="compareWith" [okText]="'COMMON.ACCEPT' | translate" [cancelText]="'COMMON.CANCEL' | translate" (ionChange)="toggleCompany(C.value)">
+      <ion-select-option value="all">{{'CALENDAR.ALL' | translate}}</ion-select-option>
+      <ion-select-option *ngFor="let company of managerCompanies" [value]="company.id">{{company.name}}</ion-select-option>
+    </ion-select>
+  </ion-item>
+</ion-list>

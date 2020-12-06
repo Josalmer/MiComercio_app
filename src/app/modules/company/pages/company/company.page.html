@@ -16,9 +16,14 @@
     <div layout-position="content" class="container">
       <app-company-data [company]="company"></app-company-data>
 
-      <ion-button class="btn width-100" color="maincolor">
+      <h5 *ngIf="userAppointments.length === 0">{{'COMPANIES.NO_APPOINTMENTS' | translate}}</h5>
+
+      <app-appointment-card class="width-100" *ngFor="let appointment of userAppointments" [appointment]="appointment" (deleteAppointment)="removeAppointment($event)" [role]="'user'" [section]="'company'"></app-appointment-card>
+
+      <ion-button class="btn width-100" color="maincolor" (click)="requestAppointment()">
         {{ 'COMPANIES.REQUEST_APPOINTMENT' | translate }}
       </ion-button>
+      <ion-button *ngIf="company.fistAvailableAppointment" class="btn width-100 margin-5" color='maincolor' (click)="requestFirstAvailableAppointment()">{{ 'COMPANIES.FIRST_AVAILABLE_APPOINTMENT' | translate }}: {{company.fistAvailableAppointment.start | date: 'dd/MM/yyyy  HH:mm' }}<ion-icon style="padding-left: 20px;" name="archive"></ion-icon></ion-button>
 
       <h5>{{company.description}}</h5>
     </div>

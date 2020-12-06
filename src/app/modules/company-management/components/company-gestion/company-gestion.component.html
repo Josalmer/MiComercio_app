@@ -1,0 +1,8 @@
+<ion-button *ngIf="company.fistAvailableAppointment" class="btn width-great" color='maincolor' (click)="requestFirstAvailableAppointment()">{{ 'COMPANIES.FIRST_AVAILABLE_APPOINTMENT' | translate }}: {{company.fistAvailableAppointment.start | date: 'dd/MM/yyyy  HH:mm' }}<ion-icon style="padding-left: 20px;" name="archive"></ion-icon></ion-button>
+<ion-button class="btn width-great" color='maincolor' (click)="showCalendar()">{{ 'COMPANIES.SHOWING_DAY' | translate }}: {{selectedDate | date: 'dd/MM/yyyy' }}<ion-icon style="padding-left: 25px; font-size: 1.7rem;" name="calendar-outline"></ion-icon></ion-button>
+
+<div class="container">
+  <h3 class="subtitle main-color-text center margin-5">{{(appointments.length === 0 ? 'COMPANIES.NO_APPOINTMENT_AT_SELECTED_DAY' : 'COMPANIES.APPOINTMENTS') | translate}}</h3>
+
+  <app-appointment-card class="width-100" *ngFor="let appointment of appointments" [appointment]="appointment" (deleteAppointment)="removeAppointment($event)" [role]="'manager'" [section]="'company'"></app-appointment-card>
+</div>

@@ -291,3 +291,62 @@ span {
   margin-top: 10px;
   margin-bottom: 10px;
 }
+
+// APPOINTMENTS
+
+.appointment-card {
+  margin: auto;
+  background-color: $secondColor;
+  color: $mainColor;
+  padding-left: 10px;
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+
+// CALENDAR
+.monthview-selected {
+  background-color: $secondColor !important;
+  font-weight: bold;
+  font-size: 21px;
+}
+
+.monthview-primary-with-event {
+  background-color: $secondColor !important;
+}
+
+.monthview-secondary-with-event {
+  background-color: #a9c5eb8e !important;
+}
+
+.calendar-events-card {
+  background-color: $secondColor;
+  margin-bottom: 5px;
+  color: $mainColor;
+  padding: 0 15px;
+  border: 2px solid $mainColor;
+  border-left: 25px solid;
+}
+
+.eventDate {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: $mainColor;
+  text-align: center;
+  font-weight: bold;
+  margin-top: 20px;
+  margin-bottom: 20px;
+  font-size: 1.2rem;
+  
+  button {
+    background: none;
+    outline: none;
+
+    ion-icon{
+      margin-left: 5px;
+      color: $mainColor;
+      font-size: 30px;
+      padding-top: 3px;
+    }
+  }
+}

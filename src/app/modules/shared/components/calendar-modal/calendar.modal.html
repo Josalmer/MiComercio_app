@@ -1,0 +1,45 @@
+<ion-content>
+  <app-page-layout>
+    <div layout-position="main">
+      <ion-fab vertical="top" horizontal="start" slot="fixed">
+        <ion-fab-button class="back-btn" color="maincolor" (click)="cancel()">
+          <ion-icon name="arrow-back-outline"></ion-icon>
+        </ion-fab-button>
+      </ion-fab>
+      <ion-row>
+        <ion-col>
+          <h2 class="title center">{{ company.name }}</h2>
+          <h2 class="subtitle margin-15 center">{{ getMonthName() | translate }}</h2>
+        </ion-col>
+      </ion-row>
+    </div>
+    <div layout-position="content" *ngIf="calendar" class="width-90 center margin-auto">
+      <calendar [eventSource]="eventSource"
+                [calendarMode]="calendar.mode"
+                [markDisabled]="markDisabled"
+                [monthviewEventDetailTemplate]="monthviewEventDetailTemplate"
+                [autoSelect]="false"
+                (onCurrentDateChanged)="onCurrentDateChanged($event)"
+                [currentDate]="calendar.today"
+                (onTimeSelected)="onTimeSelected($event)"
+                [startingDayMonth]="1">
+      </calendar>
+    </div>
+    <ng-template #monthviewEventDetailTemplate let-showEventDetail="showEventDetail" let-selectedDate="selectedDate" let-noEventsLabel="noEventsLabel">
+      <h4 class="eventDate">{{selectedDate.date | date: 'dd/MM/yyyy'}} <button (click)="manageDay(selectedDate.date)" *ngIf="selectedDate.events.length > 0 && manager()"><ion-icon name='arrow-forward-circle-outline'></ion-icon></button> </h4>
+
+      <h5 class="title center" *ngIf="selectedDate.events.length == 0 && selectedTime">{{'CALENDAR.NO_APPOINTMENTS' | translate}}</h5>
+
+      <ion-card class="calendar-events-card" (click)="requestAppointment(event)" *ngFor="let event of selectedDate.events" [ngStyle]="getCardtyle(event.freeSlot)">
+        <ion-row>
+          <ion-col>
+            <p>{{ ('CALENDAR.FROM' | translate) +  (event.startTime | date: ' HH:mm ') + ('CALENDAR.TO' | translate) + (event.endTime | date: ' HH:mm')}}</p>
+          </ion-col>
+          <ion-col style="text-align: end;">
+            <p>{{'CALENDAR.FREE' | translate}} {{ event.freeSlot }} {{'CALENDAR.OF' | translate}} {{ event.totalSlot }}</p>
+          </ion-col>
+        </ion-row>
+      </ion-card>
+    </ng-template>
+  </app-page-layout>
+</ion-content>

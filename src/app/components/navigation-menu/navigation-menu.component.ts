@@ -29,7 +29,7 @@ export class NavigationMenuComponent implements OnInit {
   }
 
   navigateToCalendar(): void {
-    // this.router.navigateByUrl('/calendar');
+    this.router.navigateByUrl('/calendar');
   }
 
   navigateToCompanies(): void {

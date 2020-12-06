@@ -8,17 +8,23 @@ import { TranslateModule } from '@ngx-translate/core';
 import { UserFormComponent } from './components/user-form/user-form.component';
 import { TranslationService } from 'src/app/services/translation.service';
 import { SearchBarComponent } from './components/search-bar/search-bar.component';
+import { NgCalendarModule } from 'ionic2-calendar';
+import { AppointmentCardComponent } from './components/appointment-card/appointment-card.component';
+import { CalendarModal } from './components/calendar-modal/calendar.modal';
 
 @NgModule({
   declarations: [
     HeaderComponent,
     PageLayoutComponent,
     UserFormComponent,
-    SearchBarComponent
+    SearchBarComponent,
+    AppointmentCardComponent,
+    CalendarModal
   ],
   imports: [
     CommonModule,
     FormsModule,
+    NgCalendarModule,
     ReactiveFormsModule,
     IonicModule,
     TranslateModule.forChild()
@@ -32,12 +38,14 @@ import { SearchBarComponent } from './components/search-bar/search-bar.component
     HeaderComponent,
     PageLayoutComponent,
     UserFormComponent,
-    SearchBarComponent
+    SearchBarComponent,
+    AppointmentCardComponent
   ],
   providers: [
     TranslationService
   ],
   entryComponents: [
+    CalendarModal
   ],
 })
 export class SharedModule { }
