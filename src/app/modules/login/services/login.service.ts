@@ -5,6 +5,7 @@ import { NavController } from '@ionic/angular';
 import { SessionService } from './session.service';
 import { tap } from 'rxjs/operators';
 import { UserService } from '../../../services/user.service';
+import { PushNotificationsService } from 'src/app/services/push-notifications.service';
 
 @Injectable({
   providedIn: 'root'
@@ -15,7 +16,8 @@ export class LoginService {
     private http: HttpClient,
     private navCtrl: NavController,
     private sessionService: SessionService,
-    private userService: UserService
+    private userService: UserService,
+    private pushNotifications: PushNotificationsService
   ) { }
 
   login(loginObject: {}): Observable<any> {
@@ -42,6 +44,7 @@ export class LoginService {
     const authToken = 'Bearer ' + response.auth_token;
     this.sessionService.setAuthToken(authToken);
     this.userService.requestUser();
+    this.pushNotifications.registerDevice();
     this.navCtrl.navigateRoot(['/']);
   }
 }
