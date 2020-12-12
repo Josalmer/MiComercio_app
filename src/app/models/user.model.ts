@@ -1,3 +1,4 @@
+import { NotificationPreference } from './notification-preference';
 import { PaymentPreference } from './payment-preference';
 
 export class User {
@@ -9,6 +10,7 @@ export class User {
   userRole: string;
   password: string;
   paymentPreference: PaymentPreference;
+  notificationPreference: NotificationPreference;
 
   constructor(user) {
     Object.assign(this, user);

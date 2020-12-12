@@ -1,5 +1,12 @@
+<div class="flex" style="margin-top: 30px; margin-bottom: 10px;">
+  <ion-row>
+    <ion-col>
+      <label class="title">{{ 'USER.PAYMENT_PREFERENCES' | translate }}</label>
+    </ion-col>
+  </ion-row>
+</div>
 <div class="container" text-center>
-  <ion-row style="margin-top: 10px;">
+  <ion-row>
     <ion-col>
     </ion-col>
   </ion-row>
@@ -38,6 +45,6 @@
 
 <div text-center>
   <ion-button [disabled]="invalidData()" (click)="updateData()" class="btn width-great" type="submit" color="maincolor">
-    {{ 'USER.SAVE_PAYMENT_PREFERENCES' | translate }}
+    {{ 'USER.SAVE_PREFERENCES' | translate }}
   </ion-button>
 </div>
