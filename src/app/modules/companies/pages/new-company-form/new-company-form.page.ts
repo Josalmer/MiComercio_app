@@ -2,6 +2,8 @@ import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { TranslateService } from '@ngx-translate/core';
 import { CompaniesService } from 'src/app/services/companies.service';
 import { ToastMessageService } from 'src/app/services/toast-messages.service';
+import { LoadingController } from '@ionic/angular';
+import { finalize } from 'rxjs/operators';
 
 @Component({
   selector: 'app-new-company-form',
@@ -16,10 +18,13 @@ export class NewCompanyFormPage implements OnInit {
 
   types: any;
 
+  loadingSpinner: any;
+
   constructor(
     private companiesService: CompaniesService,
     private toastMessageService: ToastMessageService,
-    private translate: TranslateService
+    private translate: TranslateService,
+    public loadingController: LoadingController
   ) { }
 
   ngOnInit(): void {
@@ -40,7 +45,10 @@ export class NewCompanyFormPage implements OnInit {
       company_type: this.type.id,
       logo: this.image
     };
-    this.companiesService.createCompany({ created_company_object }).subscribe(
+    this.presentLoading();
+    this.companiesService.createCompany({ created_company_object }).pipe(
+      finalize( () => this.loadingSpinner.dismiss() )
+    ).subscribe(
       response => this.backFromCreatingCompany.emit(),
       error => {
         if (error.error.name !== undefined) {
@@ -63,5 +71,13 @@ export class NewCompanyFormPage implements OnInit {
         reader.readAsDataURL(image);
       }
     });
+  }
+
+  async presentLoading() {
+    this.loadingSpinner = await this.loadingController.create({
+      message: 'Cargando imagen...',
+      showBackdrop: false
+    });
+    await this.loadingSpinner.present();
   }
 }
