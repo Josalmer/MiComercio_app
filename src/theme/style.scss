@@ -292,6 +292,12 @@ span {
   margin-bottom: 10px;
 }
 
+.notification-checkboxes {
+  white-space: pre-wrap !important;
+  font-size: 1.2rem !important;
+  color: $mainColor !important;
+}
+
 // APPOINTMENTS
 
 .appointment-card {

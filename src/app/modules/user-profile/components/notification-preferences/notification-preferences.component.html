@@ -1,0 +1,42 @@
+<div class="flex" style="margin-top: 30px; margin-bottom: 20px;">
+  <ion-row>
+    <ion-col>
+      <label class="title">{{ 'USER.NOTIFICATION_PREFERENCES' | translate }}</label>
+    </ion-col>
+  </ion-row>
+</div>
+<div class="width-great margin-auto" style="margin-bottom: 30px;">
+  <ion-list>
+    <ion-item>
+      <ion-label class="notification-checkboxes">{{ 'USER.ACTIVATED' | translate }}</ion-label>
+      <ion-checkbox color="maincolor" [(ngModel)]="notificationPreferences.active"></ion-checkbox>
+    </ion-item>
+    <ion-item *ngIf="!userIsManager && notificationPreferences.active">
+      <ion-label class="notification-checkboxes">{{ 'USER.user1WeekBefore' | translate }}</ion-label>
+      <ion-checkbox color="maincolor" [(ngModel)]="notificationPreferences.user1WeekBefore"></ion-checkbox>
+    </ion-item>
+    <ion-item *ngIf="!userIsManager && notificationPreferences.active">
+      <ion-label class="notification-checkboxes">{{ 'USER.user1DayBefore' | translate }}</ion-label>
+      <ion-checkbox color="maincolor" [(ngModel)]="notificationPreferences.user1DayBefore"></ion-checkbox>
+    </ion-item>
+    <ion-item *ngIf="!userIsManager && notificationPreferences.active">
+      <ion-label class="notification-checkboxes">{{ 'USER.user1HourBefore' | translate }}</ion-label>
+      <ion-checkbox color="maincolor" [(ngModel)]="notificationPreferences.user1HourBefore"></ion-checkbox>
+    </ion-item>
+    <ion-item *ngIf="!userIsManager && notificationPreferences.active">
+      <ion-label class="notification-checkboxes">{{ 'USER.userWhenManagerCancelAppointment' | translate }}</ion-label>
+      <ion-checkbox color="maincolor" [(ngModel)]="notificationPreferences.userWhenManagerCancelAppointment"></ion-checkbox>
+    </ion-item>
+    <ion-item *ngIf="userIsManager && notificationPreferences.active">
+      <ion-label class="notification-checkboxes">{{ 'USER.managerAppointmentRequested' | translate }}</ion-label>
+      <ion-checkbox color="maincolor" [(ngModel)]="notificationPreferences.managerAppointmentRequested"></ion-checkbox>
+    </ion-item>
+    <ion-item *ngIf="userIsManager && notificationPreferences.active">
+      <ion-label class="notification-checkboxes">{{ 'USER.managerAppointmentCancelled' | translate }}</ion-label>
+      <ion-checkbox color="maincolor" [(ngModel)]="notificationPreferences.managerAppointmentCancelled"></ion-checkbox>
+    </ion-item>
+  </ion-list>
+</div>
+<ion-button class="btn width-great" color="maincolor" (click)="updateData()">
+  {{ 'USER.SAVE_PREFERENCES' | translate }}
+</ion-button>

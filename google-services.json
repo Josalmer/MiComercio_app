@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "1026933857436",
+    "project_id": "micomercio-5a73a",
+    "storage_bucket": "micomercio-5a73a.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1026933857436:android:b30d60e3268f8b521d2159",
+        "android_client_info": {
+          "package_name": "tfg.micomercio.app"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1026933857436-oe1oqvaqq95kvfsf36anqvrkq9taid47.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDKYb91Z-zmps0rxmUJWjKcdBOy9rKvS8g"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1026933857436-oe1oqvaqq95kvfsf36anqvrkq9taid47.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

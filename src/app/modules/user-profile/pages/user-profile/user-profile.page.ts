@@ -6,7 +6,6 @@ import { SessionService } from 'src/app/modules/login/services/session.service';
 import { LoginService } from 'src/app/modules/login/services/login.service';
 import { NavController } from '@ionic/angular';
 import { User } from 'src/app/models/user.model';
-import { PaymentPreference } from 'src/app/models/payment-preference';
 
 @Component({
   selector: 'app-user-profile',
@@ -57,15 +56,30 @@ export class UserProfilePage implements OnInit {
     );
   }
 
-  updatePaymentPreference(_newPaymentPreference: PaymentPreference): void {
+  updatePaymentPreference(_newPaymentPreference: any): void {
     this.userService.updatePaymentPreferences({newPaymentPreference: _newPaymentPreference}).subscribe(
       response => {
-        this.translate.get("USER.CORRECTLY_EDITED").subscribe(
+        this.translate.get("USER.PAYMENT_PREFERENCES_EDITED").subscribe(
           translated => this.toastMessageService.showMessage(translated, 'success')
         );
       },
       error => {
-        this.translate.get("USER.EDIT_ERROR").subscribe(
+        this.translate.get("USER.PAYMENT_PREFERENCES_EDIT_ERROR").subscribe(
+          translated => this.toastMessageService.showMessage(translated, 'danger')
+        );
+      }
+    );
+  }
+
+  updateNotificationPreferences(_newNotificationPreference: any): void {
+    this.userService.updateNotificationPreferences({newNotificationPreference: _newNotificationPreference}).subscribe(
+      response => {
+        this.translate.get("USER.NOTIFICATION_PREFERENCES_EDITED").subscribe(
+          translated => this.toastMessageService.showMessage(translated, 'success')
+        );
+      },
+      error => {
+        this.translate.get("USER.NOTIFICATION_PREFERENCES_EDIT_ERROR").subscribe(
           translated => this.toastMessageService.showMessage(translated, 'danger')
         );
       }

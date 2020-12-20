@@ -5,6 +5,8 @@ import { CompaniesService } from 'src/app/services/companies.service';
 import { ToastMessageService } from 'src/app/services/toast-messages.service';
 import { TranslateService } from '@ngx-translate/core';
 import { AlertController } from '@ionic/angular';
+import { LoadingController } from '@ionic/angular';
+import { finalize } from 'rxjs/operators';
 
 @Component({
   selector: 'app-company-form',
@@ -17,12 +19,15 @@ export class CompanyFormComponent implements OnInit {
   form: FormGroup;
   published: boolean;
 
+  loadingSpinner: any;
+
   constructor(
     public fb: FormBuilder,
     private companiesService: CompaniesService,
     private toastMessageService: ToastMessageService,
     private translate: TranslateService,
-    private alertController: AlertController
+    private alertController: AlertController,
+    public loadingController: LoadingController
   ) { }
 
   ngOnInit() {
@@ -133,8 +138,19 @@ export class CompanyFormComponent implements OnInit {
 
   updateLogo(base64Image) {
     const edited_logo_object = { logo: base64Image };
-    this.companiesService.updateCompanyImage(this.company.id, edited_logo_object).subscribe(
+    this.presentLoading();
+    this.companiesService.updateCompanyImage(this.company.id, edited_logo_object).pipe(
+      finalize( () => this.loadingSpinner.dismiss() )
+    ).subscribe(
       response => this.company  = response
     );
+  }
+
+  async presentLoading() {
+    this.loadingSpinner = await this.loadingController.create({
+      message: 'Cargando imagen...',
+      showBackdrop: false
+    });
+    await this.loadingSpinner.present();
   }
 }
