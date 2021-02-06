@@ -3,7 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { NavController } from '@ionic/angular';
 import { SessionService } from './session.service';
-import { tap } from 'rxjs/operators';
+import { switchMap, tap } from 'rxjs/operators';
 import { UserService } from '../../../services/user.service';
 import { PushNotificationsService } from 'src/app/services/push-notifications.service';
 
@@ -20,9 +20,9 @@ export class LoginService {
     private pushNotifications: PushNotificationsService
   ) { }
 
-  login(loginObject: {}): Observable<any> {
+  login(loginObject: {}, socialLogin = ''): Observable<any> {
     return this.http.post('users/sign_in', loginObject).pipe(
-      tap(res => this.doLogin(res))
+      tap(res => this.doLogin(res, socialLogin))
     );
   }
 
@@ -40,11 +40,60 @@ export class LoginService {
     return this.http.post('users', creteAccountObject);
   }
 
-  doLogin = (response: any) => {
+  doLogin = (response: any, socialLogin: string) => {
     const authToken = 'Bearer ' + response.auth_token;
     this.sessionService.setAuthToken(authToken);
+    this.sessionService.setLoginMethod(socialLogin);
     this.userService.requestUser();
     this.pushNotifications.registerDevice();
     this.navCtrl.navigateRoot(['/']);
   }
+
+  simpleGoogleLogin(data: any) { // only for existing users or new normal users
+    const params = {
+      provider: 'GOOGLE',
+      social_token: data.id,
+      email: data.email,
+      name: data.givenName,
+      surname: data.familyName
+    };
+    this.http.post('social_login', params).pipe(
+      switchMap(response => this.login(
+        {
+          api_v1_user: {
+            provider: 'GOOGLE',
+            social_token: data.id
+          }
+        }, 'GOOGLE'))).subscribe();
+  }
+
+  // googleLogin(data: any): Observable<any> { // allows company manager creation via google login
+  //   let params = {
+  //     provider: 'GOOGLE',
+  //     social_token: data.id,
+  //     email: data.email,
+  //     name: data.givenName,
+  //     surname: data.familyName
+  //   };
+  //   return this.http.patch('social_login', params);
+  // }
+
+  // googleNewUser(data: any) { // allows company manager creation via google login
+  //   const params = {
+  //     provider: 'GOOGLE',
+  //     social_token: data.id,
+  //     email: data.email,
+  //     name: data.givenName,
+  //     surname: data.familyName,
+  //     organization_manager: data.organizationManager
+  //   };
+  //   this.http.post('social_login', params).pipe(
+  //     switchMap(response => this.login(
+  //       {
+  //         api_v1_user: {
+  //           provider: 'GOOGLE',
+  //           social_token: data.id
+  //         }
+  //       }, 'GOOGLE'))).subscribe();
+  // }
 }

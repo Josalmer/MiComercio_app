@@ -69,7 +69,8 @@
     "PASS_ERROR": "La contraseña debe tener 6 carácteres como mínimo",
     "PHONE_ERROR": "Teléfono incorrecto",
     "PASSWORDS_NOT_MATCH": "Las contraseñas no coinciden",
-    "INSERT_EMAIL": "Indique email para restablecer la contraseña"
+    "INSERT_EMAIL": "Indique email para restablecer la contraseña",
+    "LOGIN_WITH": "Iniciar sesión con"
   },
   "COMPANIES": {
     "NAME": "Nombre",

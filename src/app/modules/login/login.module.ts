@@ -5,6 +5,7 @@ import { NewSessionComponent } from './components/new-session/new-session.compon
 import { SharedModule } from '../shared/shared.module';
 import { NewUserComponent } from './components/new-user/new-user.component';
 import { RecoverPasswordComponent } from './components/recover-password/recover-password.component';
+import { SocialLoginComponent } from './components/social-login/social-login.component';
 
 const routes: Routes = [
   { path: '', component: LoginPage},
@@ -15,7 +16,8 @@ const routes: Routes = [
     LoginPage,
     NewSessionComponent,
     NewUserComponent,
-    RecoverPasswordComponent
+    RecoverPasswordComponent,
+    SocialLoginComponent
   ],
   imports: [
     SharedModule,

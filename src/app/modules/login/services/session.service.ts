@@ -7,6 +7,8 @@ import { Storage } from '@ionic/storage';
 export class SessionService {
   authToken: string;
   authStorageKey = 'auth_token';
+  loginMethod: string;
+  loginStorageKey = 'login_method';
 
   constructor(
     private storage: Storage
@@ -33,5 +35,28 @@ export class SessionService {
 
   isUserLogged(): boolean {
     return !!this.authToken;
+  }
+
+  async getLoginMethod(): Promise<string> {
+    if (!this.loginMethod) {
+      await this.storage.get(this.loginStorageKey).then(loginMethod => {
+        this.loginMethod = loginMethod;
+      });
+    }
+    return this.loginMethod;
+  }
+
+  setLoginMethod(loginMethod: string) {
+    this.storage.set(this.loginStorageKey, loginMethod);
+    this.loginMethod = loginMethod;
+  }
+
+  clearLoginMethod() {
+    this.storage.remove(this.loginStorageKey);
+    this.loginMethod = undefined;
+  }
+
+  loggedWithGoogle(): boolean {
+    return this.loginMethod === 'GOOGLE';
   }
 }

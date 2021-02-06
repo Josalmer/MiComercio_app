@@ -173,6 +173,21 @@ span {
   border-style: solid !important;
 }
 
+// LOGIN
+
+.social-buttons{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  margin-bottom: 20px;
+  margin-top: 10px;
+}
+
+.google-icon {
+  max-width: 18%;
+  margin: auto;
+}
+
 // COMPANIES
 
 .search-bar{

@@ -6,6 +6,7 @@ import { SessionService } from 'src/app/modules/login/services/session.service';
 import { LoginService } from 'src/app/modules/login/services/login.service';
 import { NavController } from '@ionic/angular';
 import { User } from 'src/app/models/user.model';
+import { Plugins } from '@capacitor/core';
 
 @Component({
   selector: 'app-user-profile',
@@ -86,10 +87,14 @@ export class UserProfilePage implements OnInit {
     );
   }
 
-  logout(): void {
+  async logout() {
+    if (this.sessionService.loggedWithGoogle()) {
+      await Plugins.GoogleAuth.signOut();
+    }
     this.loginService.logout().subscribe(
       response => {
         this.sessionService.clearAuthToken();
+        this.sessionService.clearLoginMethod();
         this.userService.deleteApplicationUser();
         this.navCtrl.navigateRoot(['/login']);
       }
