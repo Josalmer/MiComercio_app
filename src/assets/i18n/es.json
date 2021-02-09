@@ -146,7 +146,11 @@
     "CORRECTLY_CREATED": "Cita registrada con éxito",
     "CORRECTLY_CANCELLED": "Cita cancelada con éxito",
     "NOT_CANCELLED": "No se puedo cancelar la cita",
-    "CREATED_BY_MANAGER": "Creada por gestor el"
+    "CREATED_BY_MANAGER": "Creada por gestor el",
+    "SUCESSFULLY_EXPORTED": "Las citas se han exportado correctamente",
+    "ERROR_WHILE_EXPORTING": "Se ha producido un error durante la exportación",
+    "EXPORT_CONFIRMATION": "Exportar citas a Google Calendar",
+    "GMAIL_NEEDED": "Necesita un email de Gmail asociado a su cuenta para exportar sus citas a Google Calendar"
   },
   "CALENDAR": {
     "NO_APPOINTMENTS": "No hay citas para el día seleccionado",

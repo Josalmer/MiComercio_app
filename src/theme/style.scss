@@ -173,6 +173,10 @@ span {
   border-style: solid !important;
 }
 
+.bold-text {
+  font-weight: bold;
+}
+
 // LOGIN
 
 .social-buttons{
@@ -369,5 +373,16 @@ span {
       font-size: 30px;
       padding-top: 3px;
     }
+  }
+}
+
+.google-calendar-button {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  
+  .google-calendar-icon {
+    max-width: 85%;
+    margin: auto;
   }
 }

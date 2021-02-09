@@ -31,4 +31,8 @@ export class AppointmentsService {
   cancelAppointment(appointmentId: string): Observable<any> {
     return this.http.patch('cancel_appointment/' + appointmentId, {});
   }
+
+  exportAppointments(): Observable<any> {
+    return this.http.patch('export_appointments/', {});
+  }
 }
