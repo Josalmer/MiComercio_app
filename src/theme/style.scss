@@ -173,6 +173,25 @@ span {
   border-style: solid !important;
 }
 
+.bold-text {
+  font-weight: bold;
+}
+
+// LOGIN
+
+.social-buttons{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  margin-bottom: 20px;
+  margin-top: 10px;
+}
+
+.google-icon {
+  max-width: 18%;
+  margin: auto;
+}
+
 // COMPANIES
 
 .search-bar{
@@ -354,5 +373,16 @@ span {
       font-size: 30px;
       padding-top: 3px;
     }
+  }
+}
+
+.google-calendar-button {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  
+  .google-calendar-icon {
+    max-width: 85%;
+    margin: auto;
   }
 }

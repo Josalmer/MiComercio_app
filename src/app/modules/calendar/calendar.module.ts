@@ -4,6 +4,7 @@ import { SharedModule } from '../shared/shared.module';
 import { CalendarPage } from './pages/calendar/calendar.page';
 import { NgCalendarModule } from 'ionic2-calendar';
 import { CompanySelectorComponent } from './components/company-selector/company-selector.component';
+import { ExportAppointmentsButtonComponent } from './components/export-appointments-button/export-appointments-button.component';
 
 @NgModule({
   imports: [
@@ -18,7 +19,8 @@ import { CompanySelectorComponent } from './components/company-selector/company-
   ],
   declarations: [
     CalendarPage,
-    CompanySelectorComponent
+    CompanySelectorComponent,
+    ExportAppointmentsButtonComponent
   ]
 })
 export class CalendarModule {}

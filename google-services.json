@@ -14,7 +14,7 @@
       },
       "oauth_client": [
         {
-          "client_id": "1026933857436-oe1oqvaqq95kvfsf36anqvrkq9taid47.apps.googleusercontent.com",
+          "client_id": "1026933857436-2tpobhi0cnukc8jt3krspodraqnsd3kc.apps.googleusercontent.com",
           "client_type": 3
         }
       ],
@@ -27,8 +27,15 @@
         "appinvite_service": {
           "other_platform_oauth_client": [
             {
-              "client_id": "1026933857436-oe1oqvaqq95kvfsf36anqvrkq9taid47.apps.googleusercontent.com",
+              "client_id": "1026933857436-2tpobhi0cnukc8jt3krspodraqnsd3kc.apps.googleusercontent.com",
               "client_type": 3
+            },
+            {
+              "client_id": "1026933857436-4487op5aqu8notvlgpvqd2h9s00mpg93.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "tfg.micomercio.app"
+              }
             }
           ]
         }

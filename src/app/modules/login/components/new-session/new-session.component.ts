@@ -1,5 +1,6 @@
 import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+import { Platform } from '@ionic/angular';
 import { LoginService } from 'src/app/modules/login/services/login.service';
 import { ToastMessageService } from 'src/app/services/toast-messages.service';
 
@@ -15,7 +16,8 @@ export class NewSessionComponent implements OnInit {
   constructor(
     public fb: FormBuilder,
     private loginService: LoginService,
-    private toastMessageService: ToastMessageService
+    private toastMessageService: ToastMessageService,
+    private platform: Platform
   ) { }
 
   ngOnInit() {
@@ -54,5 +56,9 @@ export class NewSessionComponent implements OnInit {
 
   recoverPass() {
     this.selectAction.emit('recoverPass');
+  }
+
+  isAppleDevice(): boolean {
+    return (this.platform.is('cordova') && this.platform.is('ios'));
   }
 }

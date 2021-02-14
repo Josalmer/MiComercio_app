@@ -3,6 +3,7 @@ import { CalendarComponent } from 'ionic2-calendar';
 import { AppointmentsService } from 'src/app/services/appointments.service';
 import { UserService } from 'src/app/services/user.service';
 import { Router, ActivatedRoute } from '@angular/router';
+import { User } from 'src/app/models/user.model';
 
 const monthNames = ["January", "February", "March", "April", "May", "June",
   "July", "August", "September", "October", "November", "December"
@@ -14,6 +15,7 @@ const monthNames = ["January", "February", "March", "April", "May", "June",
 })
 export class CalendarPage implements OnInit {
   @ViewChild(CalendarComponent, null) myCalendar: CalendarComponent;
+  user: User;
   userRole = 'user';
 
   selectedCompany = 'all';
@@ -44,7 +46,10 @@ export class CalendarPage implements OnInit {
 
   loadUserRole(): void {
     this.userService.getApplicationUser().subscribe(
-      response => this.userRole = response.userRole
+      response => {
+        this.user = response;
+        this.userRole = this.user.userRole;
+      }
     );
   }
 
