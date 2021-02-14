@@ -66,34 +66,4 @@ export class LoginService {
           }
         }, 'GOOGLE'))).subscribe();
   }
-
-  // googleLogin(data: any): Observable<any> { // allows company manager creation via google login
-  //   let params = {
-  //     provider: 'GOOGLE',
-  //     social_token: data.id,
-  //     email: data.email,
-  //     name: data.givenName,
-  //     surname: data.familyName
-  //   };
-  //   return this.http.patch('social_login', params);
-  // }
-
-  // googleNewUser(data: any) { // allows company manager creation via google login
-  //   const params = {
-  //     provider: 'GOOGLE',
-  //     social_token: data.id,
-  //     email: data.email,
-  //     name: data.givenName,
-  //     surname: data.familyName,
-  //     organization_manager: data.organizationManager
-  //   };
-  //   this.http.post('social_login', params).pipe(
-  //     switchMap(response => this.login(
-  //       {
-  //         api_v1_user: {
-  //           provider: 'GOOGLE',
-  //           social_token: data.id
-  //         }
-  //       }, 'GOOGLE'))).subscribe();
-  // }
 }
