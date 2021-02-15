@@ -1,4 +1,5 @@
 import { Address } from './address.model';
+import { Assessment } from './assessment.model';
 import { Hour } from './hour.model';
 import { SpecialSchedule } from './special-schedule.model';
 
@@ -25,6 +26,8 @@ export class Company {
   validated: boolean;
   hours: Hour[];
   specialSchedules: SpecialSchedule[];
+  assessments: Assessment[];
+  pendingUserAssessment: boolean;
 
   constructor(company) {
     Object.assign(this, company);
