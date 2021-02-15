@@ -3,6 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import { BehaviorSubject, Observable } from 'rxjs';
 import { tap, filter } from 'rxjs/operators';
 import { SessionService } from '../modules/login/services/session.service';
+import { Assessment } from '../models/assessment.model';
 
 @Injectable({
     providedIn: 'root'
@@ -50,5 +51,13 @@ export class UserService {
 
     getApplicationUser(): Observable<any> {
         return this.applicationUser.asObservable().pipe( filter(x => x) );
+    }
+
+    getUserAssessments(): Observable<any> {
+        return this.http.get('assessments');
+    }
+
+    createAssessment(params: {}): Observable<any> {
+        return this.http.patch('assessments/1', params);
     }
 }

@@ -297,6 +297,25 @@ span {
   margin-bottom: 10px;
 }
 
+.assessment-recommendation {
+  min-width: 100%;
+  max-width: 100%;
+  padding: 1em;
+  margin: auto;
+  background-color: rgba(255, 255, 0, 0.5);
+  color: $mainColor;
+  font-weight: bold;
+  font-size: 1rem;
+  text-align: center;
+  margin-top: 5px;
+  margin-bottom: 10px;
+}
+
+.recommendation-star {
+  color: $mainColor;
+  font-size: 2.2rem;
+}
+
 // PROFILE
 
 .pending-card {
@@ -384,5 +403,49 @@ span {
   .google-calendar-icon {
     max-width: 85%;
     margin: auto;
+  }
+}
+
+// ASSESSMENTS CARDS
+
+.filled-stars {
+  color: yellow;
+  font-size: 1.8rem;
+}
+
+.empty-stars {
+  font-size: 1.8rem;
+}
+
+.filled-stars-input {
+  color: $mainColor;
+  font-size: 2rem;
+}
+
+.empty-stars-input {
+  color: $mainColor;
+  font-size: 2rem;
+}
+
+.assessment-card {
+  margin: auto;
+  background-color: $secondColor;
+  color: $mainColor;
+  padding-left: 10px;
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+
+.own-assessment {
+  background-color: rgba(128, 128, 128, 0.397);
+}
+
+.open-close-button {
+  justify-content: center;
+  align-items: center;
+  border-top: solid 1px;
+
+  ion-icon {
+    font-size: 2rem;
   }
 }

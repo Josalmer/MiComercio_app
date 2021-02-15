@@ -1,0 +1,31 @@
+<ion-content>
+  <app-page-layout>
+    <div layout-position="main">
+      <ion-fab vertical="top" horizontal="start" slot="fixed">
+        <ion-fab-button class="back-btn" color="maincolor" (click)="cancel()">
+          <ion-icon name="arrow-back-outline"></ion-icon>
+        </ion-fab-button>
+      </ion-fab>
+      <ion-row>
+        <ion-col>
+          <h2 class="title center">{{ company.name }}</h2>
+          <h2 class="subtitle margin-15 center">{{ 'COMPANIES.CREATE_ASSESSMENT' | translate }}</h2>
+        </ion-col>
+      </ion-row>
+    </div>
+    <div layout-position="content" class="width-great margin-auto">
+      <form padding [formGroup]="form">
+        <h4 class="minimum-text main-color-text">{{ 'COMPANIES.ASSESSMENT_TEXT' | translate }}</h4>
+        <ion-textarea class="input" formControlName="text" type="text" rows=10 margin-bottom></ion-textarea>
+      </form>
+      <app-stars-input class="width-100" (puntuationChanged)="puntuality = $event" text="COMPANIES.PUNTUALITY"></app-stars-input>
+      <app-stars-input class="width-100" (puntuationChanged)="attention = $event" text="COMPANIES.ATTENTION"></app-stars-input>
+      <app-stars-input class="width-100" (puntuationChanged)="satisfaction = $event" text="COMPANIES.SATISFACTION"></app-stars-input>
+    </div>
+    <div layout-position="footer" class="width-great margin-auto">
+      <ion-button class="btn width-100" color="maincolor" (click)="createAssessment()">
+        {{ 'COMMON.SEND' | translate }}
+      </ion-button>
+    </div>
+  </app-page-layout>
+</ion-content>

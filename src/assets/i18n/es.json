@@ -4,6 +4,7 @@
     "CONFIRM": "Confirmar",
     "CANCEL": "Cancelar",
     "DELETE": "Eliminar",
+    "SEND": "Enviar",
     "ACTION_ALERT": "Esta acción no se puede deshacer",
     "SEARCH": "Buscar",
     "FROM": "De",
@@ -54,7 +55,8 @@
     "user1HourBefore": "Recordatorio de citas una hora antes",
     "userWhenManagerCancelAppointment": "Si el negocio cancela mi cita",
     "managerAppointmentRequested": "Cuando un usuario solicita una cita",
-    "managerAppointmentCancelled": "Cuando un usuario cancela una cita"
+    "managerAppointmentCancelled": "Cuando un usuario cancela una cita",
+    "USER_ASSESSMENTS": "Valoraciones a negocios"
   },
   "LOGIN": {
     "LOGIN": "Login",
@@ -128,7 +130,16 @@
     "NAME_USED": "El nombre introducido ya esta en uso",
     "MINIMUM_DATA": "Para crear un negocio es necesario indicar su nombre y tipo. <br><br> Podrá completar el resto de información desde la vista de administración de negocio. <br><br> Su negocio no será visible para los usuarios hasta que lo marque como publicado desde la vista de administración de negocio.",
     "PENDING_COMPANY": "Los administradores de Mi Comercio aún no han verificado los datos de este negocio",
-    "LOADING_IMAGE": "Cargando imagen..."
+    "LOADING_IMAGE": "Cargando imagen...",
+    "ASSESSMENTS": "Valoraciones de clientes",
+    "CREATE_ASSESSMENT": "Valorar negocio",
+    "PUNTUALITY": "Puntualidad",
+    "SATISFACTION": "Satisfacción",
+    "ATTENTION": "Atención",
+    "SUGGEST_TO_ASSESSMENT": "Comparta con otros usuarios su reciente experiencia en {{ name }}",
+    "ASSESSMENT_TEXT": "Describa su experiencia",
+    "INCOMPLETE_ASSESSMENT": "Debe rellenar el formulario antes de enviarlo",
+    "NO_ASSESSMENTS": "Aún no han valorado su negocio"
   },
   "APPOINTMENTS": {
     "NAME": "Nombre",

@@ -3,6 +3,7 @@ import { RouterModule } from '@angular/router';
 import { SharedModule } from '../shared/shared.module';
 import { CompanyPage } from './pages/company/company.page';
 import { CompanyDataComponent } from './components/company-data/company-data.component';
+import { AssessmentFormModal } from './components/assessment-form/assessment-form.modal';
 
 @NgModule({
   imports: [
@@ -16,7 +17,8 @@ import { CompanyDataComponent } from './components/company-data/company-data.com
   ],
   declarations: [
     CompanyPage,
-    CompanyDataComponent
+    CompanyDataComponent,
+    AssessmentFormModal
   ]
 })
 export class CompanyModule {}

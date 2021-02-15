@@ -26,6 +26,23 @@
       <ion-button *ngIf="company.fistAvailableAppointment" class="btn width-100 margin-5" color='maincolor' (click)="requestFirstAvailableAppointment()">{{ 'COMPANIES.FIRST_AVAILABLE_APPOINTMENT' | translate }}: {{company.fistAvailableAppointment.start | date: 'dd/MM/yyyy  HH:mm' }}<ion-icon style="padding-left: 20px;" name="archive"></ion-icon></ion-button>
 
       <h5>{{company.description}}</h5>
+
+      <h3 class="subtitle center" *ngIf="company.assessments.length > 0">{{ 'COMPANIES.ASSESSMENTS' | translate }}</h3>
+      <ion-row *ngIf="company.pendingUserAssessment" (click)="newAssessment()">
+        <ion-col>
+          <ion-card class="assessment-recommendation">
+            <ion-row>
+              <ion-col size=10>
+                {{ 'COMPANIES.SUGGEST_TO_ASSESSMENT' | translate: {name: company.name} }}
+              </ion-col>
+              <ion-col size=2>
+                <ion-icon class="recommendation-star" name="star"></ion-icon>
+              </ion-col>
+            </ion-row>
+          </ion-card>
+        </ion-col>
+      </ion-row>
+      <app-assessment-card class="width-100" *ngFor="let assessment of company.assessments" [assessment]="assessment"></app-assessment-card>
     </div>
   </app-page-layout>
 </ion-content>
