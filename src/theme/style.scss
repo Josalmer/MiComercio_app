@@ -194,14 +194,37 @@ span {
 
 // COMPANIES
 
-.search-bar{
-  max-width: $greatWidth;
-  margin: auto;
+.search-wrapper {
+  max-width: 85%;
+  margin: 0 auto;
   padding: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 
-  .searchbar-input-container{
-    height: 44px;
-    margin-bottom: 20px;
+  .search-bar{
+    width: 87%;
+    color: $mainColor;
+  
+    .searchbar-input-container{
+      height: 44px;
+      .searchbar-input {
+        padding-left: 43px;
+        font-size: 1.3rem;
+      }
+      .searchbar-search-icon {
+        width: 30px;
+      }
+      .searchbar-clear-icon {
+        width: 28px;
+      }
+    }
+  }
+
+  .filter-button {
+    width: 13%;
+    font-size: 3.2rem;
+    color: $mainColor;
   }
 }
 
