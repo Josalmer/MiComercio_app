@@ -6,6 +6,7 @@ import { SpecialSchedule } from './special-schedule.model';
 export class Company {
   id: string;
   name: string;
+  averagePuntuation: number;
   fistAvailableAppointment: {
     start: Date,
     end: Date

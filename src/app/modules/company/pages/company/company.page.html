@@ -27,7 +27,15 @@
 
       <h5>{{company.description}}</h5>
 
-      <h3 class="subtitle center" *ngIf="company.assessments.length > 0">{{ 'COMPANIES.ASSESSMENTS' | translate }}</h3>
+      <ng-container *ngIf="company.assessments.length > 0">
+        <h3 class="subtitle center">{{ 'COMPANIES.ASSESSMENTS' | translate }}</h3>
+        <ion-row>
+          <ion-col>
+            <ion-icon class="filled-stars-input" name="star" *ngFor="let star of filledStars"></ion-icon>
+            <ion-icon class="empty-stars-input" name="star-outline" *ngFor="let star of emptyStars"></ion-icon>
+          </ion-col>
+        </ion-row>
+      </ng-container>
       <ion-row *ngIf="company.pendingUserAssessment" (click)="newAssessment()">
         <ion-col>
           <ion-card class="assessment-recommendation">
