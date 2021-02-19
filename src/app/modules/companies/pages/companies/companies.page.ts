@@ -1,10 +1,13 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { Company } from 'src/app/models/company.model';
 import { Router } from '@angular/router';
 import { CompaniesService } from 'src/app/services/companies.service';
 import { Address } from 'src/app/models/address.model';
 import { UtilsService } from 'src/app/services/utils.service';
-import { FormBuilder, FormGroup } from '@angular/forms';
+import { forkJoin } from 'rxjs';
+import { finalize } from 'rxjs/operators';
+import { ToastMessageService } from 'src/app/services/toast-messages.service';
+import { TranslateService } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-companies',
@@ -12,47 +15,62 @@ import { FormBuilder, FormGroup } from '@angular/forms';
 })
 export class CompaniesPage implements OnInit {
 
+  loaded = false;
+
   companies: Company[] = [];
   filteredCompanies: Company[] = [];
 
   showFilterModal: boolean = false;
-  filterForm: FormGroup;
+
+  search = '';
+
   orderBy = 'default';
+
+  companyTypes: string[];
+  companyLocations: string[];
+
+  bussinessType: string;
+  selectedLocation: string;
+
+  today = new Date().toISOString();
+  startDate: Date;
+  endDate: Date;
+
+  @ViewChild("endDateField") endDateField: any;
 
   constructor(
     private companiesService: CompaniesService,
     private router: Router,
     private utils: UtilsService,
-    public fb: FormBuilder
+    private toastMessageService: ToastMessageService,
+    private translate: TranslateService
   ) {}
 
   ngOnInit(): void {
-    this.loadCompanies();
-    this.initFilterForm();
+    this.loadData();
   }
 
-  loadCompanies(): void {
-    this.companiesService.getCompanies().subscribe(
-      response => {
-        this.companies = response.companies;
-        this.filteredCompanies = this.companies;
-        this.sortCompanies();
-      }
-    );
-  }
-
-  initFilterForm(): void {
-    this.filterForm = this.fb.group({
-      bussinessType: [''],
-      location: [''],
-      startDate: [''],
-      endDate: ['']
+  loadData(): void {
+    forkJoin([
+      this.companiesService.getCompanies(),
+      this.companiesService.getTypes(),
+      this.companiesService.getLocations()
+    ]).pipe(
+      finalize(() => this.loaded = true)
+    ).subscribe(([companies, types, locations]) => {
+      this.companies = companies.companies;
+      this.filteredCompanies = this.companies;
+      this.sortCompanies();
+      this.companyTypes = types.types;
+      this.companyLocations = locations;
     });
   }
 
   searchCompany(search: string): void {
-    this.filteredCompanies = search === '' ? this.companies : this.companies.filter(company => this.discardName(company.name, search));
-    this.sortCompanies();
+    if (search !== this.search) {
+      this.search = search;
+      this.applyFilter();
+    }
   }
 
   discardName(name, nameSearched) {
@@ -68,14 +86,24 @@ export class CompaniesPage implements OnInit {
   }
 
   resetFilters(): void {
-    // reset form
+    this.bussinessType = undefined;
+    this.selectedLocation = undefined;
+    this.startDate = undefined;
+    this.endDate = undefined;
     this.orderBy = 'default';
-    this.sortCompanies();
   }
 
   applyFilter(): void {
-    // check form
-    this.sortCompanies();
+    if (this.startDate && !this.endDate) {
+      this.translate.get("COMPANIES.FILTERS_MODAL.MANDATORY_END_DATE").subscribe(
+        translated => this.toastMessageService.showMessage(translated, 'danger')
+      );
+    } else {
+      this.filteredCompanies = this.search === '' ? this.companies : this.companies.filter(company => this.discardName(company.name, this.search));
+      this.filteredCompanies = this.bussinessType ? this.filteredCompanies.filter(company => company.type === this.bussinessType) : this.filteredCompanies;
+      this.filteredCompanies = this.selectedLocation ? this.filteredCompanies.filter(company => company.address?.town.toUpperCase() === this.selectedLocation.toUpperCase()) : this.filteredCompanies;
+      this.sortCompanies();
+    }
   }
 
   sortCompanies(): void {
@@ -98,5 +126,14 @@ export class CompaniesPage implements OnInit {
       }
     })
     this.showFilterModal = false;
+  }
+
+  checkEndDate(): void {
+    if (!this.endDate || this.startDate > this.endDate) {
+      this.endDate = undefined;
+      setTimeout(() => {
+        this.endDateField.open();
+      },200)
+    }
   }
 }

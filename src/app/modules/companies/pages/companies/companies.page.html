@@ -1,5 +1,5 @@
 <ion-content>
-  <app-page-layout>
+  <app-page-layout *ngIf="loaded">
     <div layout-position="main">
       <ion-row>
         <ion-col>
@@ -11,6 +11,14 @@
     </div>
 
     <div layout-position="content" *ngIf="!showFilterModal">
+      <ion-row *ngIf="bussinessType || selectedLocation || startDate" class="width-great margin-0-auto">
+        <ion-card class="filter-card" (click)="bussinessType = undefined; applyFilter()" *ngIf="bussinessType"><ion-icon name="close-circle-outline"></ion-icon> {{bussinessType}}</ion-card>
+        <ion-card class="filter-card" (click)="selectedLocation = undefined; applyFilter()" *ngIf="selectedLocation"><ion-icon name="close-circle-outline"></ion-icon>{{selectedLocation}}</ion-card>
+        <ion-card class="filter-card" (click)="startDate = undefined; endDate = undefined; applyFilter()" *ngIf="startDate && endDate">
+          <ion-icon name="close-circle-outline"></ion-icon>
+          {{startDate | date:'d/M/yy'}} - {{endDate | date:'d/M/yy'}}
+        </ion-card>
+      </ion-row>
       <ion-row *ngIf="filteredCompanies.length == 0">
         <h5 class="title margin-15 center flex"> {{ "COMPANIES.NO_SEARCH_MATCH" | translate }} </h5>
       </ion-row>
@@ -28,7 +36,7 @@
   </app-page-layout>
 </ion-content>
 
-<div class="modal-wrapper" *ngIf="filterForm && showFilterModal">
+<div class="modal-wrapper" *ngIf="loaded && showFilterModal">
   <div class="modal-backdrop" (click)="showFilterModal= false"></div>
   <div>
     <ion-card class="modal-content">
@@ -57,15 +65,26 @@
           <label class="minimum-text main-color-text">{{ "COMPANIES.FILTERS_MODAL.FIRST_APPOINTMENT" | translate }}</label>
         </ion-col>
       </ion-row>
-      <!-- <form [formGroup]="filterForm">
+      <div style="margin-top: 20px;">
         <label class="title">{{ "COMPANIES.FILTERS_MODAL.FILTER" | translate }}:</label>
-        <label class="minimum-text main-color-text">{{ "COMPANIES.FILTERS_MODAL.BUSSINESS_TYPE" | translate }}</label>
-        <label class="minimum-text main-color-text">{{ "COMPANIES.FILTERS_MODAL.LOCATION" | translate }}</label>
-        <label class="minimum-text main-color-text">{{ "COMPANIES.FILTERS_MODAL.APPOINTMENT_BEETWEEN" | translate }}</label>
-        <label class="minimum-text main-color-text">{{ "CALENDAR.FROM" | translate }}</label>
-        <label class="minimum-text main-color-text">{{ "CALENDAR.TO" | translate }}</label>
-        <label class="minimum-text main-color-text">{{ "CALENDAR.ALL" | translate }}</label>
-      </form> -->
+        <ion-select class="filter-select" [interfaceOptions]="{cssClass: 'filter-selector'}" [placeholder]="'COMPANIES.FILTERS_MODAL.BUSSINESS_TYPE' | translate" [(ngModel)]="bussinessType" cancelText="Cancelar">
+          <ion-select-option *ngFor="let type of companyTypes" [value]="type.name">{{type.name}}</ion-select-option>
+        </ion-select>
+        <ion-select class="filter-select" [interfaceOptions]="{cssClass: 'filter-selector'}" [placeholder]="'COMPANIES.FILTERS_MODAL.LOCATION' | translate" [(ngModel)]="selectedLocation" cancelText="Cancelar">
+          <ion-select-option *ngFor="let location of companyLocations" [value]="location">{{location}}</ion-select-option>
+        </ion-select>
+        <ion-row style="margin-top: 15px;">
+          <label class="minimum-text main-color-text">{{ "COMPANIES.FILTERS_MODAL.APPOINTMENT_BEETWEEN" | translate }}</label>
+        </ion-row>
+        <ion-row style="margin-top: 10px;">
+          <ion-col size=6>
+            <ion-datetime class="date-selector" [placeholder]="'CALENDAR.FROM' | translate" [(ngModel)]="startDate" displayFormat="D MMM YYYY" [min]="today" (ionChange)="checkEndDate()" doneText="OK" cancelText="Cancelar"></ion-datetime>
+          </ion-col>
+          <ion-col size=6>
+            <ion-datetime #endDateField class="date-selector" [placeholder]="'CALENDAR.TO' | translate" [(ngModel)]="endDate" displayFormat="D MMM YYYY" [disabled]="!startDate" [min]="startDate" doneText="OK" cancelText="Cancelar"></ion-datetime>
+          </ion-col>
+        </ion-row>
+      </div>
       <ion-row>
         <ion-col size=6>
           <ion-button class="btn width-100" color="maincolor" (click)="applyFilter()">

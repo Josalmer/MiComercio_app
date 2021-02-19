@@ -32,6 +32,10 @@ $greatWidth: 80%;
   color: $secondColor;
 }
 
+.margin-0-auto {
+  margin: 0 auto;
+}
+
 .width-great {
   min-width: $greatWidth;
   max-width: $greatWidth;
@@ -375,6 +379,60 @@ span {
   }
   label {
     line-height: 1.5rem;
+  }
+}
+
+.filter-select {
+  margin-top: 15px;
+  color: $mainColor;
+  font-size: 1.2rem;
+  border: solid 1px $mainColor;
+  border-radius: 10px;
+}
+
+.filter-selector {
+  font-size: 1.1rem;
+}
+
+.filter-selector .alert-wrapper {
+  color: $secondColor;
+
+  .alert-button-group {
+
+    button {
+      color: $mainColor;
+    }
+  }
+}
+
+[aria-checked=true].sc-ion-alert-ios .alert-radio-label.sc-ion-alert-ios {
+  color: $mainColor;
+}
+
+[aria-checked=true].sc-ion-alert-ios .alert-radio-inner.sc-ion-alert-ios {
+  color: $mainColor;
+}
+
+.date-selector {
+  color: $mainColor;
+  font-size: 1.2rem;
+  border: solid 1px $mainColor;
+  border-radius: 10px;
+}
+
+.filter-card {
+  display: flex;
+  align-items: center;
+  color: $mainColor;
+  background-color: $secondColor;
+  padding: 10px;
+  font-size: 1rem;
+  margin: 0 auto;
+  margin-top: 10px;
+
+  ion-icon {
+    margin-right: 10px;
+    font-size: 1.4rem;
   }
 }
 

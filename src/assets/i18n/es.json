@@ -151,7 +151,8 @@
       "APPOINTMENT_BEETWEEN": "Cita disponible",
       "DEFAULT": "Por defecto",
       "APPLY_FILTERS": "Aplicar filtros",
-      "RESET": "Resetear filtros"
+      "RESET": "Resetear filtros",
+      "MANDATORY_END_DATE": "Debes elegir una fecha de fin si eliges fecha de inicio"
     }
   },
   "APPOINTMENTS": {
