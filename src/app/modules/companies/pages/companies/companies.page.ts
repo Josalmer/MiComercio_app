@@ -8,6 +8,7 @@ import { forkJoin } from 'rxjs';
 import { finalize } from 'rxjs/operators';
 import { ToastMessageService } from 'src/app/services/toast-messages.service';
 import { TranslateService } from '@ngx-translate/core';
+import { CalendarEventsService } from 'src/app/services/calendar-events.service';
 
 @Component({
   selector: 'app-companies',
@@ -35,6 +36,7 @@ export class CompaniesPage implements OnInit {
   today = new Date().toISOString();
   startDate: Date;
   endDate: Date;
+  eventsInDate: any[];
 
   @ViewChild("endDateField") endDateField: any;
 
@@ -43,7 +45,8 @@ export class CompaniesPage implements OnInit {
     private router: Router,
     private utils: UtilsService,
     private toastMessageService: ToastMessageService,
-    private translate: TranslateService
+    private translate: TranslateService,
+    private eventsService: CalendarEventsService
   ) {}
 
   ngOnInit(): void {
@@ -102,7 +105,23 @@ export class CompaniesPage implements OnInit {
       this.filteredCompanies = this.search === '' ? this.companies : this.companies.filter(company => this.discardName(company.name, this.search));
       this.filteredCompanies = this.bussinessType ? this.filteredCompanies.filter(company => company.type === this.bussinessType) : this.filteredCompanies;
       this.filteredCompanies = this.selectedLocation ? this.filteredCompanies.filter(company => company.address?.town.toUpperCase() === this.selectedLocation.toUpperCase()) : this.filteredCompanies;
-      this.sortCompanies();
+      if (this.startDate && this.endDate) {
+        const start = new Date(this.startDate);
+        const end = new Date(this.endDate);
+        forkJoin(
+          this.filteredCompanies.map(company => this.eventsService.getEvents(company.id, start, end))
+        ).pipe(
+          finalize(() => {
+            this.eventsInDate.forEach((events, index) => this.filteredCompanies[index].withAppointmentInSelectedDate = events.events.length > 0)
+            this.filteredCompanies = this.filteredCompanies.filter(company => company.withAppointmentInSelectedDate);
+            this.sortCompanies();
+          })
+        ).subscribe(
+          events => this.eventsInDate = events
+        );
+      } else {
+        this.sortCompanies();
+      }
     }
   }
 

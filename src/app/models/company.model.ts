@@ -30,6 +30,8 @@ export class Company {
   assessments: Assessment[];
   pendingUserAssessment: boolean;
 
+  withAppointmentInSelectedDate: boolean;
+
   constructor(company) {
     Object.assign(this, company);
   }
