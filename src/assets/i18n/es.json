@@ -139,7 +139,20 @@
     "SUGGEST_TO_ASSESSMENT": "Comparta con otros usuarios su reciente experiencia en {{ name }}",
     "ASSESSMENT_TEXT": "Describa su experiencia",
     "INCOMPLETE_ASSESSMENT": "Debe rellenar el formulario antes de enviarlo",
-    "NO_ASSESSMENTS": "Aún no han valorado su negocio"
+    "NO_ASSESSMENTS": "Aún no han valorado su negocio",
+    "FILTERS_MODAL": {
+      "ORDER_BY": "Ordenar por",
+      "PUNTUATION": "Valoración",
+      "DISTANCE": "Distancia desde posición actual",
+      "FIRST_APPOINTMENT": "Primera cita disponible",
+      "FILTER": "Filtro",
+      "BUSSINESS_TYPE": "Tipo de negocio",
+      "LOCATION": "Ubicación",
+      "APPOINTMENT_BEETWEEN": "Cita disponible",
+      "DEFAULT": "Por defecto",
+      "APPLY_FILTERS": "Aplicar filtros",
+      "RESET": "Resetear filtros"
+    }
   },
   "APPOINTMENTS": {
     "NAME": "Nombre",

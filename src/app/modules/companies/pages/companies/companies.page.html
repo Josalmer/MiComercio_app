@@ -4,12 +4,13 @@
       <ion-row>
         <ion-col>
           <h2 class="title margin-15 center flex">{{ "COMPANIES.SEARCH_TITLE" | translate }}</h2>
-        </ion-col>      
+        </ion-col>
       </ion-row>
-      <app-search-bar (searchCriteria)="searchCompany($event)" [placeholder]="'COMMON.SEARCH' | translate" *ngIf="companies.length > 0"></app-search-bar>
+      <app-search-bar (searchCriteria)="searchCompany($event)" (openFilters)="showFilterModal = true"
+        [placeholder]="'COMMON.SEARCH' | translate" *ngIf="companies.length > 0"></app-search-bar>
     </div>
 
-    <div layout-position="content">
+    <div layout-position="content" *ngIf="!showFilterModal">
       <ion-row *ngIf="filteredCompanies.length == 0">
         <h5 class="title margin-15 center flex"> {{ "COMPANIES.NO_SEARCH_MATCH" | translate }} </h5>
       </ion-row>
@@ -26,3 +27,57 @@
     </div>
   </app-page-layout>
 </ion-content>
+
+<div class="modal-wrapper" *ngIf="filterForm && showFilterModal">
+  <div class="modal-backdrop" (click)="showFilterModal= false"></div>
+  <div>
+    <ion-card class="modal-content">
+      <label class="title">{{ "COMPANIES.FILTERS_MODAL.ORDER_BY" | translate }}:</label>
+      <ion-row style="margin-top: 15px">
+        <ion-col class="filter-radio-button">
+          <input name="orderBy" type="radio" [(ngModel)]="orderBy" [value]="'default'" />
+          <label class="minimum-text main-color-text">{{ "COMPANIES.FILTERS_MODAL.DEFAULT" | translate }}</label>
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col class="filter-radio-button">
+          <input name="orderBy" type="radio" [(ngModel)]="orderBy" [value]="'valoration'" />
+          <label class="minimum-text main-color-text">{{ "COMPANIES.FILTERS_MODAL.PUNTUATION" | translate }}</label>
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col class="filter-radio-button">
+          <input name="orderBy" type="radio" [(ngModel)]="orderBy" [value]="'distance'" />
+          <label class="minimum-text main-color-text">{{ "COMPANIES.FILTERS_MODAL.DISTANCE" | translate }}</label>
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col class="filter-radio-button">
+          <input name="orderBy" type="radio" [(ngModel)]="orderBy" [value]="'appointment'" />
+          <label class="minimum-text main-color-text">{{ "COMPANIES.FILTERS_MODAL.FIRST_APPOINTMENT" | translate }}</label>
+        </ion-col>
+      </ion-row>
+      <!-- <form [formGroup]="filterForm">
+        <label class="title">{{ "COMPANIES.FILTERS_MODAL.FILTER" | translate }}:</label>
+        <label class="minimum-text main-color-text">{{ "COMPANIES.FILTERS_MODAL.BUSSINESS_TYPE" | translate }}</label>
+        <label class="minimum-text main-color-text">{{ "COMPANIES.FILTERS_MODAL.LOCATION" | translate }}</label>
+        <label class="minimum-text main-color-text">{{ "COMPANIES.FILTERS_MODAL.APPOINTMENT_BEETWEEN" | translate }}</label>
+        <label class="minimum-text main-color-text">{{ "CALENDAR.FROM" | translate }}</label>
+        <label class="minimum-text main-color-text">{{ "CALENDAR.TO" | translate }}</label>
+        <label class="minimum-text main-color-text">{{ "CALENDAR.ALL" | translate }}</label>
+      </form> -->
+      <ion-row>
+        <ion-col size=6>
+          <ion-button class="btn width-100" color="maincolor" (click)="applyFilter()">
+            {{ 'COMPANIES.FILTERS_MODAL.APPLY_FILTERS' | translate }}
+          </ion-button>
+        </ion-col>
+        <ion-col size=6>
+          <ion-button class="btn width-100" color="secondcolor" (click)="resetFilters()">
+            {{ 'COMPANIES.FILTERS_MODAL.RESET' | translate }}
+          </ion-button>
+        </ion-col>
+      </ion-row>
+    </ion-card>
+  </div>
+</div>
