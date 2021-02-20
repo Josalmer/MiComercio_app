@@ -81,7 +81,7 @@
             <ion-datetime class="date-selector" [placeholder]="'CALENDAR.FROM' | translate" [(ngModel)]="startDate" displayFormat="D MMM YYYY" [min]="today" (ionChange)="checkEndDate()" doneText="OK" cancelText="Cancelar"></ion-datetime>
           </ion-col>
           <ion-col size=6>
-            <ion-datetime #endDateField class="date-selector" [placeholder]="'CALENDAR.TO' | translate" [(ngModel)]="endDate" displayFormat="D MMM YYYY" [disabled]="!startDate" [min]="startDate" doneText="OK" cancelText="Cancelar"></ion-datetime>
+            <ion-datetime #endDateField class="date-selector" [placeholder]="'CALENDAR.TO' | translate" [(ngModel)]="endDate" displayFormat="D MMM YYYY" [disabled]="!startDate" [min]="startDate" doneText="OK" [max]="maxDate" cancelText="Cancelar"></ion-datetime>
           </ion-col>
         </ion-row>
       </div>

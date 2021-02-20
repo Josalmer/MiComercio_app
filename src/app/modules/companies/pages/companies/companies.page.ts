@@ -36,6 +36,7 @@ export class CompaniesPage implements OnInit {
   today = new Date().toISOString();
   startDate: Date;
   endDate: Date;
+  maxDate: any;
   eventsInDate: any[];
 
   @ViewChild("endDateField") endDateField: any;
@@ -148,8 +149,11 @@ export class CompaniesPage implements OnInit {
   }
 
   checkEndDate(): void {
-    if (!this.endDate || this.startDate > this.endDate) {
+    if (this.startDate) {
       this.endDate = undefined;
+      this.maxDate = new Date(this.startDate);
+      this.maxDate.setDate(this.maxDate.getDate() + 10);
+      this.maxDate = this.maxDate.toISOString();
       setTimeout(() => {
         this.endDateField.open();
       },200)
