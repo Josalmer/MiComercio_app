@@ -42,25 +42,25 @@
     <ion-card class="modal-content">
       <label class="title">{{ "COMPANIES.FILTERS_MODAL.ORDER_BY" | translate }}:</label>
       <ion-row style="margin-top: 15px">
-        <ion-col class="filter-radio-button">
+        <ion-col class="filter-radio-button" (click)="orderBy = 'default'">
           <input name="orderBy" type="radio" [(ngModel)]="orderBy" [value]="'default'" />
           <label class="minimum-text main-color-text">{{ "COMPANIES.FILTERS_MODAL.DEFAULT" | translate }}</label>
         </ion-col>
       </ion-row>
       <ion-row>
-        <ion-col class="filter-radio-button">
+        <ion-col class="filter-radio-button" (click)="orderBy = 'valoration'">
           <input name="orderBy" type="radio" [(ngModel)]="orderBy" [value]="'valoration'" />
           <label class="minimum-text main-color-text">{{ "COMPANIES.FILTERS_MODAL.PUNTUATION" | translate }}</label>
         </ion-col>
       </ion-row>
       <ion-row>
-        <ion-col class="filter-radio-button">
-          <input name="orderBy" type="radio" [(ngModel)]="orderBy" [value]="'distance'" />
+        <ion-col class="filter-radio-button" (click)="checkPosition()">
+          <input name="orderBy" type="radio" [disabled]="!currentPosition" [(ngModel)]="orderBy" [value]="'distance'" />
           <label class="minimum-text main-color-text">{{ "COMPANIES.FILTERS_MODAL.DISTANCE" | translate }}</label>
         </ion-col>
       </ion-row>
       <ion-row>
-        <ion-col class="filter-radio-button">
+        <ion-col class="filter-radio-button" (click)="orderBy = 'appointment'">
           <input name="orderBy" type="radio" [(ngModel)]="orderBy" [value]="'appointment'" />
           <label class="minimum-text main-color-text">{{ "COMPANIES.FILTERS_MODAL.FIRST_APPOINTMENT" | translate }}</label>
         </ion-col>
@@ -73,16 +73,22 @@
         <ion-select class="filter-select" [interfaceOptions]="{cssClass: 'filter-selector'}" [placeholder]="'COMPANIES.FILTERS_MODAL.LOCATION' | translate" [(ngModel)]="selectedLocation" cancelText="Cancelar">
           <ion-select-option *ngFor="let location of companyLocations" [value]="location">{{location}}</ion-select-option>
         </ion-select>
-        <ion-row style="margin-top: 15px;">
-          <label class="minimum-text main-color-text">{{ "COMPANIES.FILTERS_MODAL.APPOINTMENT_BEETWEEN" | translate }}</label>
-        </ion-row>
         <ion-row style="margin-top: 10px;">
-          <ion-col size=6>
+          <ion-col size=2 style="display: flex; align-items: center;">
+            <ion-icon style="font-size: 2rem; width: 100%;" color="maincolor" name="time-outline"></ion-icon>
+          </ion-col>
+          <ion-col size=5>
             <ion-datetime class="date-selector" [placeholder]="'CALENDAR.FROM' | translate" [(ngModel)]="startDate" displayFormat="D MMM YYYY" [min]="today" (ionChange)="checkEndDate()" doneText="OK" cancelText="Cancelar"></ion-datetime>
           </ion-col>
-          <ion-col size=6>
+          <ion-col size=5>
             <ion-datetime #endDateField class="date-selector" [placeholder]="'CALENDAR.TO' | translate" [(ngModel)]="endDate" displayFormat="D MMM YYYY" [disabled]="!startDate" [min]="startDate" doneText="OK" [max]="maxDate" cancelText="Cancelar"></ion-datetime>
           </ion-col>
+        </ion-row>
+        <ion-row (click)="sliderClicked()">
+          <ion-range color="maincolor" [(ngModel)]="sliderPosition" (ionChange)="watchSlider()" [disabled]="!currentPosition" debounce="150" [max]="(DISTANCES.length - 1)" min=0 snaps="true" ticks="true" pin="false">
+            <ion-icon color="maincolor" name="globe" slot="start"></ion-icon>
+            <ion-label class="minimum-text main-color-text" slot="end">{{ distanceLimit }}</ion-label>
+          </ion-range>
         </ion-row>
       </div>
       <ion-row>

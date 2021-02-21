@@ -148,11 +148,13 @@
       "FILTER": "Filtro",
       "BUSSINESS_TYPE": "Tipo de negocio",
       "LOCATION": "Ubicación",
-      "APPOINTMENT_BEETWEEN": "Cita disponible",
+      "APPOINTMENT_BEETWEEN": "Disponibilidad",
       "DEFAULT": "Por defecto",
       "APPLY_FILTERS": "Aplicar filtros",
       "RESET": "Resetear filtros",
-      "MANDATORY_END_DATE": "Debes elegir una fecha de fin si eliges fecha de inicio"
+      "MANDATORY_END_DATE": "Debes elegir una fecha de fin si eliges fecha de inicio",
+      "LOCATION_NEEDED": "Debes permitir el acceso a tu ubicación para poder order por distancia desde posición actual",
+      "MAX_DISTANCE": "Distancia máxima"
     }
   },
   "APPOINTMENTS": {

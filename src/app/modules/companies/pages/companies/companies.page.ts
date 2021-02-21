@@ -9,6 +9,10 @@ import { finalize } from 'rxjs/operators';
 import { ToastMessageService } from 'src/app/services/toast-messages.service';
 import { TranslateService } from '@ngx-translate/core';
 import { CalendarEventsService } from 'src/app/services/calendar-events.service';
+import { Plugins } from '@capacitor/core';
+import { environment } from 'src/environments/environment';
+
+const { Geolocation } = Plugins;
 
 @Component({
   selector: 'app-companies',
@@ -39,6 +43,11 @@ export class CompaniesPage implements OnInit {
   maxDate: any;
   eventsInDate: any[];
 
+  currentPosition: any;
+  DISTANCES = ['1', '2', '3', '5', '10', '20', 'ထ'];
+  sliderPosition: number;
+  distanceLimit: string;
+
   @ViewChild("endDateField") endDateField: any;
 
   constructor(
@@ -52,6 +61,8 @@ export class CompaniesPage implements OnInit {
 
   ngOnInit(): void {
     this.loadData();
+    this.getCurrentPosition();
+    this.initalizeDistanceSlider();
   }
 
   loadData(): void {
@@ -68,6 +79,18 @@ export class CompaniesPage implements OnInit {
       this.companyTypes = types.types;
       this.companyLocations = locations;
     });
+  }
+
+  async getCurrentPosition() {
+    this.currentPosition = await Geolocation.getCurrentPosition();
+    if (environment.debug) {
+      this.toastMessageService.showMessage(`Current Position: lat=${this.currentPosition.coords.latitude}, long=${this.currentPosition.coords.longitude}`, 'secondary');
+    }
+  }
+
+  initalizeDistanceSlider(): void {
+    this.sliderPosition = this.DISTANCES.length - 1;
+    this.distanceLimit = this.DISTANCES[this.sliderPosition];
   }
 
   searchCompany(search: string): void {
@@ -94,6 +117,7 @@ export class CompaniesPage implements OnInit {
     this.selectedLocation = undefined;
     this.startDate = undefined;
     this.endDate = undefined;
+    this.initalizeDistanceSlider();
     this.orderBy = 'default';
   }
 
@@ -105,6 +129,7 @@ export class CompaniesPage implements OnInit {
     } else {
       this.filteredCompanies = this.search === '' ? this.companies : this.companies.filter(company => this.discardName(company.name, this.search));
       this.filteredCompanies = this.bussinessType ? this.filteredCompanies.filter(company => company.type === this.bussinessType) : this.filteredCompanies;
+      this.filteredCompanies = this.distanceLimit !== this.DISTANCES[this.DISTANCES.length - 1] ? this.filteredCompanies.filter(company => this.inRange(company)) : this.filteredCompanies;
       this.filteredCompanies = this.selectedLocation ? this.filteredCompanies.filter(company => company.address?.town.toUpperCase() === this.selectedLocation.toUpperCase()) : this.filteredCompanies;
       if (this.startDate && this.endDate) {
         const start = new Date(this.startDate);
@@ -141,7 +166,16 @@ export class CompaniesPage implements OnInit {
           } else {
             return 0;
           }
-        case 'distance': // pending
+        case 'distance':
+          if ((b.address.latitude && b.address.longitude) && (a.address.latitude && a.address.longitude)) {
+            return this.calculateDistance(a.address.latitude, a.address.longitude) - this.calculateDistance(b.address.latitude, b.address.longitude)
+          } else if ((b.address.latitude && b.address.longitude) && (!a.address.latitude || !a.address.longitude)) {
+            return 1;
+          } else if ((!b.address.latitude || !b.address.longitude) && (a.address.latitude && a.address.longitude)) {
+            return -1;
+          } else {
+            return 0;
+          }
         default:
       }
     })
@@ -152,11 +186,61 @@ export class CompaniesPage implements OnInit {
     if (this.startDate) {
       this.endDate = undefined;
       this.maxDate = new Date(this.startDate);
-      this.maxDate.setDate(this.maxDate.getDate() + 10);
+      this.maxDate.setDate(this.maxDate.getDate() + 5);
       this.maxDate = this.maxDate.toISOString();
       setTimeout(() => {
         this.endDateField.open();
       },200)
+    }
+  }
+
+  checkPosition(): void {
+    if (!this.currentPosition) {
+      this.translate.get("COMPANIES.FILTERS_MODAL.LOCATION_NEEDED").subscribe(
+        translated => this.toastMessageService.showMessage(translated, 'danger')
+      );
+    } else {
+      this.orderBy = 'distance';
+    }
+  }
+
+  calculateDistance(lat1, lon1): number { // Haversine formula, Fórmula del semiverseno
+    let lat2  = this.currentPosition.coords.latitude;
+    let lon2 = this.currentPosition.coords.longitude;
+
+    const r: number = 6371;
+    const dlat = (lat2 - lat1) * Math.PI / 180;
+    const dlon = (lon2 - lon1) * Math.PI /180;
+    lat1 = lat1 * Math.PI /180;
+    lat2 = lat2 * Math.PI /180;
+    const a = Math.sin(dlat/2) * Math.sin(dlat/2) +
+              Math.sin(dlon/2) * Math.sin(dlon/2) * Math.cos(lat1) * Math.cos(lat2);
+    const c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1-a));
+    const distance = r * c;
+    return distance;
+  }
+
+  updateDistanceLimit( value: string ) {
+    this.distanceLimit = value;
+  }
+
+  watchSlider() {
+    this.updateDistanceLimit(this.DISTANCES[this.sliderPosition]);
+  }
+
+  sliderClicked(): void {
+    if (!this.currentPosition) {
+      this.translate.get("COMPANIES.FILTERS_MODAL.LOCATION_NEEDED").subscribe(
+        translated => this.toastMessageService.showMessage(translated, 'danger')
+      );
+    }
+  }
+
+  inRange(company: Company): boolean {
+    if (company.address.latitude && company.address.longitude) {
+      return this.calculateDistance(company.address.latitude, company.address.longitude) < parseFloat(this.distanceLimit);
+    } else { 
+      return false;
     }
   }
 }
