@@ -14,6 +14,7 @@ import { CalendarModal } from './components/calendar-modal/calendar.modal';
 import { AssessmentCardComponent } from './components/assessment-card/assessment-card.component';
 import { StarsComponent } from './components/stars/stars.component';
 import { StarsInputComponent } from './components/stars-input/stars-input.component';
+import { LoadingSpinnerComponent } from './components/loading-spinner/loading-spinner.component';
 
 @NgModule({
   declarations: [
@@ -25,7 +26,8 @@ import { StarsInputComponent } from './components/stars-input/stars-input.compon
     CalendarModal,
     AssessmentCardComponent,
     StarsComponent,
-    StarsInputComponent
+    StarsInputComponent,
+    LoadingSpinnerComponent
   ],
   imports: [
     CommonModule,
@@ -48,7 +50,8 @@ import { StarsInputComponent } from './components/stars-input/stars-input.compon
     AppointmentCardComponent,
     AssessmentCardComponent,
     StarsComponent,
-    StarsInputComponent
+    StarsInputComponent,
+    LoadingSpinnerComponent
   ],
   providers: [
     TranslationService

@@ -1,5 +1,5 @@
 <ion-content>
-  <app-page-layout *ngIf="loaded">
+  <app-page-layout>
     <div layout-position="main">
       <ion-row>
         <ion-col>
@@ -7,31 +7,34 @@
         </ion-col>
       </ion-row>
       <app-search-bar (searchCriteria)="searchCompany($event)" (openFilters)="showFilterModal = true"
-        [placeholder]="'COMMON.SEARCH' | translate" *ngIf="companies.length > 0"></app-search-bar>
+        [placeholder]="'COMMON.SEARCH' | translate"></app-search-bar>
     </div>
 
-    <div layout-position="content" *ngIf="!showFilterModal">
-      <ion-row *ngIf="bussinessType || selectedLocation || startDate" class="width-great margin-0-auto">
-        <ion-card class="filter-card" (click)="bussinessType = undefined; applyFilter()" *ngIf="bussinessType"><ion-icon name="close-circle-outline"></ion-icon> {{bussinessType}}</ion-card>
-        <ion-card class="filter-card" (click)="selectedLocation = undefined; applyFilter()" *ngIf="selectedLocation"><ion-icon name="close-circle-outline"></ion-icon>{{selectedLocation}}</ion-card>
-        <ion-card class="filter-card" (click)="startDate = undefined; endDate = undefined; applyFilter()" *ngIf="startDate && endDate">
-          <ion-icon name="close-circle-outline"></ion-icon>
-          {{startDate | date:'d/M/yy'}} - {{endDate | date:'d/M/yy'}}
-        </ion-card>
-      </ion-row>
-      <ion-row *ngIf="filteredCompanies.length == 0">
-        <h5 class="title margin-15 center flex"> {{ "COMPANIES.NO_SEARCH_MATCH" | translate }} </h5>
-      </ion-row>
-      <ion-row *ngFor="let company of filteredCompanies" (click)="goToCompany(company.id)">
-        <ion-card class="company-card">
-          <div *ngIf="company.logo">
-            <img *ngIf="!company.validated" class="seal" src="../../../../assets/img/pendingVal.png" alt="">
-            <img class="card-img" [src]="company.logo" alt="">
-          </div>
-          <h2 class="title center flex">{{company.name}}</h2>
-          <h6 class="center flex margin-15" *ngIf="company.address">{{printDirection(company.address)}}</h6>
-        </ion-card>
-      </ion-row>
+    <div layout-position="content">
+      <app-loading-spinner *ngIf="!loaded"></app-loading-spinner>
+      <ng-container *ngIf="loaded && !showFilterModal">
+        <ion-row *ngIf="bussinessType || selectedLocation || startDate" class="width-great margin-0-auto">
+          <ion-card class="filter-card" (click)="bussinessType = undefined; applyFilter()" *ngIf="bussinessType"><ion-icon name="close-circle-outline"></ion-icon> {{bussinessType}}</ion-card>
+          <ion-card class="filter-card" (click)="selectedLocation = undefined; applyFilter()" *ngIf="selectedLocation"><ion-icon name="close-circle-outline"></ion-icon>{{selectedLocation}}</ion-card>
+          <ion-card class="filter-card" (click)="startDate = undefined; endDate = undefined; applyFilter()" *ngIf="startDate && endDate">
+            <ion-icon name="close-circle-outline"></ion-icon>
+            {{startDate | date:'d/M/yy'}} - {{endDate | date:'d/M/yy'}}
+          </ion-card>
+        </ion-row>
+        <ion-row *ngIf="filteredCompanies.length == 0">
+          <h5 class="title margin-15 center flex"> {{ "COMPANIES.NO_SEARCH_MATCH" | translate }} </h5>
+        </ion-row>
+        <ion-row *ngFor="let company of filteredCompanies" (click)="goToCompany(company.id)">
+          <ion-card class="company-card">
+            <div *ngIf="company.logo">
+              <img *ngIf="!company.validated" class="seal" src="../../../../assets/img/pendingVal.png" alt="">
+              <img class="card-img" [src]="company.logo" alt="">
+            </div>
+            <h2 class="title center flex">{{company.name}}</h2>
+            <h6 class="center flex margin-15" *ngIf="company.address">{{printDirection(company.address)}}</h6>
+          </ion-card>
+        </ion-row>
+      </ng-container>
     </div>
   </app-page-layout>
 </ion-content>
