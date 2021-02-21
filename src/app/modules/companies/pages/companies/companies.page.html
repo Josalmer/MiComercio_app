@@ -13,13 +13,14 @@
     <div layout-position="content">
       <app-loading-spinner *ngIf="!loaded"></app-loading-spinner>
       <ng-container *ngIf="loaded && !showFilterModal">
-        <ion-row *ngIf="bussinessType || selectedLocation || startDate" class="width-great margin-0-auto">
+        <ion-row *ngIf="bussinessType || selectedLocation || startDate || distanceLimit !== DISTANCES[DISTANCES.length - 1]" class="width-great margin-0-auto">
           <ion-card class="filter-card" (click)="bussinessType = undefined; applyFilter()" *ngIf="bussinessType"><ion-icon name="close-circle-outline"></ion-icon> {{bussinessType}}</ion-card>
           <ion-card class="filter-card" (click)="selectedLocation = undefined; applyFilter()" *ngIf="selectedLocation"><ion-icon name="close-circle-outline"></ion-icon>{{selectedLocation}}</ion-card>
           <ion-card class="filter-card" (click)="startDate = undefined; endDate = undefined; applyFilter()" *ngIf="startDate && endDate">
             <ion-icon name="close-circle-outline"></ion-icon>
             {{startDate | date:'d/M/yy'}} - {{endDate | date:'d/M/yy'}}
           </ion-card>
+          <ion-card class="filter-card" (click)="distanceLimit = DISTANCES[DISTANCES.length - 1]; sliderPosition = DISTANCES.length - 1; applyFilter()" *ngIf="distanceLimit !== DISTANCES[DISTANCES.length - 1]"><ion-icon name="close-circle-outline"></ion-icon> {{distanceLimit}} km</ion-card>
         </ion-row>
         <ion-row *ngIf="filteredCompanies.length == 0">
           <h5 class="title margin-15 center flex"> {{ "COMPANIES.NO_SEARCH_MATCH" | translate }} </h5>

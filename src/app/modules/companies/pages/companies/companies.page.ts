@@ -183,7 +183,7 @@ export class CompaniesPage implements OnInit {
   }
 
   checkEndDate(): void {
-    if (this.startDate) {
+    if (this.startDate && (!this.endDate || this.endDate < this.startDate)) {
       this.endDate = undefined;
       this.maxDate = new Date(this.startDate);
       this.maxDate.setDate(this.maxDate.getDate() + 5);
