@@ -29,7 +29,8 @@ export class CompaniesPage implements OnInit {
 
   search = '';
 
-  orderBy = 'default';
+  orderOptions = ['Valoración', 'Distancia', 'Disponiblidad cita']
+  orderBy: string;
 
   companyTypes: string[];
   companyLocations: string[];
@@ -118,7 +119,7 @@ export class CompaniesPage implements OnInit {
     this.startDate = undefined;
     this.endDate = undefined;
     this.initalizeDistanceSlider();
-    this.orderBy = 'default';
+    this.orderBy = undefined;
   }
 
   applyFilter(): void {
@@ -154,9 +155,9 @@ export class CompaniesPage implements OnInit {
   sortCompanies(): void {
     this.filteredCompanies = this.filteredCompanies.sort((a, b) => {
       switch (this.orderBy) {
-        case 'valoration':
+        case 'Valoración':
           return b.averagePuntuation - a.averagePuntuation;
-        case 'appointment':
+        case 'Disponiblidad cita':
           if (b.fistAvailableAppointment && a.fistAvailableAppointment) {
             return new Date(a.fistAvailableAppointment.start).getTime() - new Date(b.fistAvailableAppointment.start).getTime();
           } else if (a.fistAvailableAppointment && !b.fistAvailableAppointment) {
@@ -166,15 +167,22 @@ export class CompaniesPage implements OnInit {
           } else {
             return 0;
           }
-        case 'distance':
-          if ((b.address.latitude && b.address.longitude) && (a.address.latitude && a.address.longitude)) {
-            return this.calculateDistance(a.address.latitude, a.address.longitude) - this.calculateDistance(b.address.latitude, b.address.longitude)
-          } else if ((b.address.latitude && b.address.longitude) && (!a.address.latitude || !a.address.longitude)) {
-            return 1;
-          } else if ((!b.address.latitude || !b.address.longitude) && (a.address.latitude && a.address.longitude)) {
-            return -1;
+        case 'Distancia':
+          if (!this.currentPosition) {
+            this.translate.get("COMPANIES.FILTERS_MODAL.LOCATION_NEEDED").subscribe(
+              translated => this.toastMessageService.showMessage(translated, 'danger')
+            );
+            this.orderBy = undefined;
           } else {
-            return 0;
+            if ((b.address.latitude && b.address.longitude) && (a.address.latitude && a.address.longitude)) {
+              return this.calculateDistance(a.address.latitude, a.address.longitude) - this.calculateDistance(b.address.latitude, b.address.longitude)
+            } else if ((b.address.latitude && b.address.longitude) && (!a.address.latitude || !a.address.longitude)) {
+              return 1;
+            } else if ((!b.address.latitude || !b.address.longitude) && (a.address.latitude && a.address.longitude)) {
+              return -1;
+            } else {
+              return 0;
+            }
           }
         default:
       }
@@ -191,16 +199,6 @@ export class CompaniesPage implements OnInit {
       setTimeout(() => {
         this.endDateField.open();
       },200)
-    }
-  }
-
-  checkPosition(): void {
-    if (!this.currentPosition) {
-      this.translate.get("COMPANIES.FILTERS_MODAL.LOCATION_NEEDED").subscribe(
-        translated => this.toastMessageService.showMessage(translated, 'danger')
-      );
-    } else {
-      this.orderBy = 'distance';
     }
   }
 
@@ -230,7 +228,7 @@ export class CompaniesPage implements OnInit {
 
   sliderClicked(): void {
     if (!this.currentPosition) {
-      this.translate.get("COMPANIES.FILTERS_MODAL.LOCATION_NEEDED").subscribe(
+      this.translate.get("COMPANIES.FILTERS_MODAL.LOCATION_NEEDED_FILTER").subscribe(
         translated => this.toastMessageService.showMessage(translated, 'danger')
       );
     }

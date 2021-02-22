@@ -154,6 +154,7 @@
       "RESET": "Resetear filtros",
       "MANDATORY_END_DATE": "Debes elegir una fecha de fin si eliges fecha de inicio",
       "LOCATION_NEEDED": "Debes permitir el acceso a tu ubicación para poder order por distancia desde posición actual",
+      "LOCATION_NEEDED_FILTER": "Debes permitir el acceso a tu ubicación para poder filtrar por distancia desde posición actual",
       "MAX_DISTANCE": "Distancia máxima"
     }
   },

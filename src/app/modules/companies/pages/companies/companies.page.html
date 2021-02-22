@@ -45,30 +45,9 @@
   <div>
     <ion-card class="modal-content">
       <label class="title">{{ "COMPANIES.FILTERS_MODAL.ORDER_BY" | translate }}:</label>
-      <ion-row style="margin-top: 15px">
-        <ion-col class="filter-radio-button" (click)="orderBy = 'default'">
-          <input name="orderBy" type="radio" [(ngModel)]="orderBy" [value]="'default'" />
-          <label class="minimum-text main-color-text">{{ "COMPANIES.FILTERS_MODAL.DEFAULT" | translate }}</label>
-        </ion-col>
-      </ion-row>
-      <ion-row>
-        <ion-col class="filter-radio-button" (click)="orderBy = 'valoration'">
-          <input name="orderBy" type="radio" [(ngModel)]="orderBy" [value]="'valoration'" />
-          <label class="minimum-text main-color-text">{{ "COMPANIES.FILTERS_MODAL.PUNTUATION" | translate }}</label>
-        </ion-col>
-      </ion-row>
-      <ion-row>
-        <ion-col class="filter-radio-button" (click)="checkPosition()">
-          <input name="orderBy" type="radio" [disabled]="!currentPosition" [(ngModel)]="orderBy" [value]="'distance'" />
-          <label class="minimum-text main-color-text">{{ "COMPANIES.FILTERS_MODAL.DISTANCE" | translate }}</label>
-        </ion-col>
-      </ion-row>
-      <ion-row>
-        <ion-col class="filter-radio-button" (click)="orderBy = 'appointment'">
-          <input name="orderBy" type="radio" [(ngModel)]="orderBy" [value]="'appointment'" />
-          <label class="minimum-text main-color-text">{{ "COMPANIES.FILTERS_MODAL.FIRST_APPOINTMENT" | translate }}</label>
-        </ion-col>
-      </ion-row>
+      <ion-select class="filter-select" [interfaceOptions]="{cssClass: 'filter-selector'}" [placeholder]="'COMPANIES.FILTERS_MODAL.ORDER_BY' | translate" [(ngModel)]="orderBy" cancelText="Cancelar">
+        <ion-select-option *ngFor="let option of orderOptions" [value]="option">{{option}}</ion-select-option>
+      </ion-select>
       <div style="margin-top: 20px;">
         <label class="title">{{ "COMPANIES.FILTERS_MODAL.FILTER" | translate }}:</label>
         <ion-select class="filter-select" [interfaceOptions]="{cssClass: 'filter-selector'}" [placeholder]="'COMPANIES.FILTERS_MODAL.BUSSINESS_TYPE' | translate" [(ngModel)]="bussinessType" cancelText="Cancelar">
