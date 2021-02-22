@@ -51,7 +51,7 @@ export class AssessmentFormModal implements OnInit {
         attention: this.attention,
         satisfaction: this.satisfaction
       }
-      this.userService.createAssessment(params).subscribe(
+      this.userService.createAssessment(this.company.id, params).subscribe(
         _ => this.modalController.dismiss({created: true})
       );
     } else {

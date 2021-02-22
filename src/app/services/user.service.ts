@@ -57,7 +57,7 @@ export class UserService {
         return this.http.get('assessments');
     }
 
-    createAssessment(params: {}): Observable<any> {
-        return this.http.patch('assessments/1', params);
+    createAssessment(companyId: string, params: {}): Observable<any> {
+        return this.http.patch(`assessments/${companyId}`, params);
     }
 }
