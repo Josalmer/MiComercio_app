@@ -29,10 +29,9 @@ export class CompaniesPage implements OnInit {
 
   search = '';
 
-  orderOptions = ['Valoración', 'Distancia', 'Disponiblidad cita']
   orderBy: string;
 
-  companyTypes: string[];
+  companyTypes: any[];
   companyLocations: string[];
 
   bussinessType: string;
@@ -78,6 +77,7 @@ export class CompaniesPage implements OnInit {
       this.filteredCompanies = this.companies;
       this.sortCompanies();
       this.companyTypes = types.types;
+      console.log(this.companyTypes)
       this.companyLocations = locations;
     });
   }
@@ -111,6 +111,15 @@ export class CompaniesPage implements OnInit {
 
   printDirection(direction: Address): string {
     return this.utils.printShortDirection(direction);
+  }
+
+  toggleOrderBy(orderBy: string): void {
+    if (orderBy === this.orderBy) {
+      this.orderBy = null;
+    } else {
+      this.orderBy = orderBy;
+    }
+    this.sortCompanies();
   }
 
   resetFilters(): void {
@@ -155,9 +164,9 @@ export class CompaniesPage implements OnInit {
   sortCompanies(): void {
     this.filteredCompanies = this.filteredCompanies.sort((a, b) => {
       switch (this.orderBy) {
-        case 'Valoración':
+        case 'valoration':
           return b.averagePuntuation - a.averagePuntuation;
-        case 'Disponiblidad cita':
+        case 'appointment':
           if (b.fistAvailableAppointment && a.fistAvailableAppointment) {
             return new Date(a.fistAvailableAppointment.start).getTime() - new Date(b.fistAvailableAppointment.start).getTime();
           } else if (a.fistAvailableAppointment && !b.fistAvailableAppointment) {
@@ -167,7 +176,7 @@ export class CompaniesPage implements OnInit {
           } else {
             return 0;
           }
-        case 'Distancia':
+        case 'distance':
           if (!this.currentPosition) {
             this.translate.get("COMPANIES.FILTERS_MODAL.LOCATION_NEEDED").subscribe(
               translated => this.toastMessageService.showMessage(translated, 'danger')

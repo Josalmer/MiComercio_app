@@ -143,8 +143,8 @@
     "FILTERS_MODAL": {
       "ORDER_BY": "Ordenar por",
       "PUNTUATION": "Valoración",
-      "DISTANCE": "Distancia desde posición actual",
-      "FIRST_APPOINTMENT": "Primera cita disponible",
+      "DISTANCE": "Distancia",
+      "FIRST_APPOINTMENT": "Cita disponible",
       "FILTER": "Filtro",
       "BUSSINESS_TYPE": "Tipo de negocio",
       "LOCATION": "Ubicación",
