@@ -2,6 +2,7 @@ import { Component, Input, OnInit } from '@angular/core';
 import { AlertController } from '@ionic/angular';
 import { TranslateService } from '@ngx-translate/core';
 import { Company } from 'src/app/models/company.model';
+import { PaymentServicesService } from 'src/app/services/payment_services.service';
 import { ToastMessageService } from 'src/app/services/toast-messages.service';
 import { UtilsService } from 'src/app/services/utils.service';
 
@@ -21,6 +22,7 @@ export class BoostCompanySliderComponent implements OnInit {
     private translate: TranslateService,
     private utilsService: UtilsService,
     private alertController: AlertController,
+    private paymentServicesService: PaymentServicesService
   ) { }
 
   ngOnInit(): void {
@@ -59,13 +61,13 @@ export class BoostCompanySliderComponent implements OnInit {
         {
           text: translated.month,
           handler: data => {
-            console.log("1 mes")
+            this.postBoostCompany(1);
           }
         },
         {
           text: translated.year,
           handler: data => {
-            console.log("1 año")
+            this.postBoostCompany(12);
           }
         },
         {
@@ -78,5 +80,17 @@ export class BoostCompanySliderComponent implements OnInit {
     });
 
     await alert.present();
+  }
+
+  postBoostCompany(duration: number): void {
+    const params = {
+      company_id: this.company.id, 
+      cost: this.cost,
+      duration: duration,
+      boost_factor: this.sliderValue
+    };
+    this.paymentServicesService.boostCompany(params).subscribe(
+      response => this.company = response
+    )
   }
 }
