@@ -3,6 +3,7 @@ import { RouterModule } from '@angular/router';
 import { SharedModule } from '../shared/shared.module';
 import { NotificationPreferencesComponent } from './components/notification-preferences/notification-preferences.component';
 import { PaymentPreferencesComponent } from './components/payment-preferences/payment-preferences.component';
+import { UserAssessmentsComponent } from './components/user-assessments/user-assessments.component';
 import { UserProfilePage } from './pages/user-profile/user-profile.page';
 
 @NgModule({
@@ -18,7 +19,8 @@ import { UserProfilePage } from './pages/user-profile/user-profile.page';
   declarations: [
     UserProfilePage,
     PaymentPreferencesComponent,
-    NotificationPreferencesComponent
+    NotificationPreferencesComponent,
+    UserAssessmentsComponent
   ]
 })
 export class UserProfileModule {}

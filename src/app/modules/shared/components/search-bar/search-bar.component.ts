@@ -7,6 +7,7 @@ import { Component, Input, Output, EventEmitter } from '@angular/core';
 export class SearchBarComponent {
   @Input() placeholder: string;
   @Output() searchCriteria = new EventEmitter();
+  @Output() openFilters = new EventEmitter();
   search: string;
 
   constructor() {

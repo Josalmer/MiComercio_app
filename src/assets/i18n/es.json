@@ -4,6 +4,7 @@
     "CONFIRM": "Confirmar",
     "CANCEL": "Cancelar",
     "DELETE": "Eliminar",
+    "SEND": "Enviar",
     "ACTION_ALERT": "Esta acción no se puede deshacer",
     "SEARCH": "Buscar",
     "FROM": "De",
@@ -54,7 +55,8 @@
     "user1HourBefore": "Recordatorio de citas una hora antes",
     "userWhenManagerCancelAppointment": "Si el negocio cancela mi cita",
     "managerAppointmentRequested": "Cuando un usuario solicita una cita",
-    "managerAppointmentCancelled": "Cuando un usuario cancela una cita"
+    "managerAppointmentCancelled": "Cuando un usuario cancela una cita",
+    "USER_ASSESSMENTS": "Valoraciones a negocios"
   },
   "LOGIN": {
     "LOGIN": "Login",
@@ -128,7 +130,33 @@
     "NAME_USED": "El nombre introducido ya esta en uso",
     "MINIMUM_DATA": "Para crear un negocio es necesario indicar su nombre y tipo. <br><br> Podrá completar el resto de información desde la vista de administración de negocio. <br><br> Su negocio no será visible para los usuarios hasta que lo marque como publicado desde la vista de administración de negocio.",
     "PENDING_COMPANY": "Los administradores de Mi Comercio aún no han verificado los datos de este negocio",
-    "LOADING_IMAGE": "Cargando imagen..."
+    "LOADING_IMAGE": "Cargando imagen...",
+    "ASSESSMENTS": "Valoraciones de clientes",
+    "CREATE_ASSESSMENT": "Valorar negocio",
+    "PUNTUALITY": "Puntualidad",
+    "SATISFACTION": "Satisfacción",
+    "ATTENTION": "Atención",
+    "SUGGEST_TO_ASSESSMENT": "Comparta con otros usuarios su reciente experiencia en {{ name }}",
+    "ASSESSMENT_TEXT": "Describa su experiencia",
+    "INCOMPLETE_ASSESSMENT": "Debe rellenar el formulario antes de enviarlo",
+    "NO_ASSESSMENTS": "Aún no han valorado su negocio",
+    "FILTERS_MODAL": {
+      "ORDER_BY": "Ordenar por",
+      "PUNTUATION": "Valoración",
+      "DISTANCE": "Distancia",
+      "FIRST_APPOINTMENT": "Cita disponible",
+      "FILTER": "Filtro",
+      "BUSSINESS_TYPE": "Tipo de negocio",
+      "LOCATION": "Ubicación",
+      "APPOINTMENT_BEETWEEN": "Disponibilidad",
+      "DEFAULT": "Por defecto",
+      "APPLY_FILTERS": "Aplicar filtros",
+      "RESET": "Resetear filtros",
+      "MANDATORY_END_DATE": "Debes elegir una fecha de fin si eliges fecha de inicio",
+      "LOCATION_NEEDED": "Debes permitir el acceso a tu ubicación para poder order por distancia desde posición actual",
+      "LOCATION_NEEDED_FILTER": "Debes permitir el acceso a tu ubicación para poder filtrar por distancia desde posición actual",
+      "MAX_DISTANCE": "Distancia máxima"
+    }
   },
   "APPOINTMENTS": {
     "NAME": "Nombre",

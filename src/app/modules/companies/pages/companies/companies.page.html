@@ -4,25 +4,95 @@
       <ion-row>
         <ion-col>
           <h2 class="title margin-15 center flex">{{ "COMPANIES.SEARCH_TITLE" | translate }}</h2>
-        </ion-col>      
+        </ion-col>
       </ion-row>
-      <app-search-bar (searchCriteria)="searchCompany($event)" [placeholder]="'COMMON.SEARCH' | translate" *ngIf="companies.length > 0"></app-search-bar>
+      <app-search-bar (searchCriteria)="searchCompany($event)" (openFilters)="showFilterModal = true"
+        [placeholder]="'COMMON.SEARCH' | translate"></app-search-bar>
     </div>
 
     <div layout-position="content">
-      <ion-row *ngIf="filteredCompanies.length == 0">
-        <h5 class="title margin-15 center flex"> {{ "COMPANIES.NO_SEARCH_MATCH" | translate }} </h5>
-      </ion-row>
-      <ion-row *ngFor="let company of filteredCompanies" (click)="goToCompany(company.id)">
-        <ion-card class="company-card">
-          <div *ngIf="company.logo">
-            <img *ngIf="!company.validated" class="seal" src="../../../../assets/img/pendingVal.png" alt="">
-            <img class="card-img" [src]="company.logo" alt="">
-          </div>
-          <h2 class="title center flex">{{company.name}}</h2>
-          <h6 class="center flex margin-15" *ngIf="company.address">{{printDirection(company.address)}}</h6>
-        </ion-card>
-      </ion-row>
+      <app-loading-spinner *ngIf="!loaded"></app-loading-spinner>
+      <ng-container *ngIf="loaded && !showFilterModal">
+        <ion-row class="width-great margin-0-auto">
+          <ion-col size=4>
+            <ion-button class="btn" style="margin-top: 0px; margin-bottom: 0px;" [color]="orderBy === 'valoration' ? 'maincolor' : 'secondcolor'" (click)="toggleOrderBy('valoration')">{{'COMPANIES.FILTERS_MODAL.PUNTUATION' | translate}}</ion-button>
+          </ion-col>
+          <ion-col size=4>
+            <ion-button class="btn" style="margin-top: 0px; margin-bottom: 0px;" [color]="orderBy === 'distance' ? 'maincolor' : 'secondcolor'" (click)="toggleOrderBy('distance')">{{'COMPANIES.FILTERS_MODAL.DISTANCE' | translate}}</ion-button>
+          </ion-col>
+          <ion-col size=4>
+            <ion-button class="btn" style="margin-top: 0px; margin-bottom: 0px;" [color]="orderBy === 'appointment' ? 'maincolor' : 'secondcolor'" (click)="toggleOrderBy('appointment')">{{'COMPANIES.FILTERS_MODAL.FIRST_APPOINTMENT' | translate}}</ion-button>
+          </ion-col>
+        </ion-row>
+        <ion-row *ngIf="bussinessType || selectedLocation || startDate || distanceLimit !== DISTANCES[DISTANCES.length - 1]" class="width-great margin-0-auto">
+          <ion-card class="filter-card" (click)="bussinessType = undefined; applyFilter()" *ngIf="bussinessType"><ion-icon name="close-circle-outline"></ion-icon> {{bussinessType}}</ion-card>
+          <ion-card class="filter-card" (click)="selectedLocation = undefined; applyFilter()" *ngIf="selectedLocation"><ion-icon name="close-circle-outline"></ion-icon>{{selectedLocation}}</ion-card>
+          <ion-card class="filter-card" (click)="startDate = undefined; endDate = undefined; applyFilter()" *ngIf="startDate && endDate">
+            <ion-icon name="close-circle-outline"></ion-icon>
+            {{startDate | date:'d/M/yy'}} - {{endDate | date:'d/M/yy'}}
+          </ion-card>
+          <ion-card class="filter-card" (click)="distanceLimit = DISTANCES[DISTANCES.length - 1]; sliderPosition = DISTANCES.length - 1; applyFilter()" *ngIf="distanceLimit !== DISTANCES[DISTANCES.length - 1]"><ion-icon name="close-circle-outline"></ion-icon> {{distanceLimit}} km</ion-card>
+        </ion-row>
+        <ion-row *ngIf="filteredCompanies.length == 0">
+          <h5 class="title margin-15 center flex"> {{ "COMPANIES.NO_SEARCH_MATCH" | translate }} </h5>
+        </ion-row>
+        <ion-row *ngFor="let company of filteredCompanies" (click)="goToCompany(company.id)">
+          <ion-card class="company-card">
+            <div *ngIf="company.logo">
+              <img *ngIf="!company.validated" class="seal" src="../../../../assets/img/pendingVal.png" alt="">
+              <img class="card-img" [src]="company.logo" alt="">
+            </div>
+            <h2 class="title center flex">{{company.name}}</h2>
+            <h6 class="center flex margin-15" *ngIf="company.address">{{printDirection(company.address)}}</h6>
+          </ion-card>
+        </ion-row>
+      </ng-container>
     </div>
   </app-page-layout>
 </ion-content>
+
+<div class="modal-wrapper" *ngIf="loaded && showFilterModal">
+  <div class="modal-backdrop" (click)="showFilterModal= false"></div>
+  <div>
+    <ion-card class="modal-content">
+      <div style="margin-top: 20px;">
+        <label class="title">{{ "COMPANIES.FILTERS_MODAL.FILTER" | translate }}:</label>
+        <ion-select class="filter-select" [interfaceOptions]="{cssClass: 'filter-selector'}" [placeholder]="'COMPANIES.FILTERS_MODAL.BUSSINESS_TYPE' | translate" [(ngModel)]="bussinessType" cancelText="Cancelar">
+          <ion-select-option *ngFor="let type of companyTypes" [value]="type.name">{{type.name}}</ion-select-option>
+        </ion-select>
+        <ion-select class="filter-select" [interfaceOptions]="{cssClass: 'filter-selector'}" [placeholder]="'COMPANIES.FILTERS_MODAL.LOCATION' | translate" [(ngModel)]="selectedLocation" cancelText="Cancelar">
+          <ion-select-option *ngFor="let location of companyLocations" [value]="location">{{location}}</ion-select-option>
+        </ion-select>
+        <ion-row style="margin-top: 10px;">
+          <ion-col size=2 style="display: flex; align-items: center;">
+            <ion-icon style="font-size: 2rem; width: 100%;" color="maincolor" name="time-outline"></ion-icon>
+          </ion-col>
+          <ion-col size=5>
+            <ion-datetime class="date-selector" [placeholder]="'CALENDAR.FROM' | translate" [(ngModel)]="startDate" displayFormat="D MMM YYYY" [min]="today" (ionChange)="checkEndDate()" doneText="OK" cancelText="Cancelar"></ion-datetime>
+          </ion-col>
+          <ion-col size=5>
+            <ion-datetime #endDateField class="date-selector" [placeholder]="'CALENDAR.TO' | translate" [(ngModel)]="endDate" displayFormat="D MMM YYYY" [disabled]="!startDate" [min]="startDate" doneText="OK" [max]="maxDate" cancelText="Cancelar"></ion-datetime>
+          </ion-col>
+        </ion-row>
+        <ion-row (click)="sliderClicked()">
+          <ion-range color="maincolor" [(ngModel)]="sliderPosition" (ionChange)="watchSlider()" [disabled]="!currentPosition" debounce="150" [max]="(DISTANCES.length - 1)" min=0 snaps="true" ticks="true" pin="false">
+            <ion-icon color="maincolor" name="globe" slot="start"></ion-icon>
+            <ion-label class="minimum-text main-color-text" slot="end">{{ distanceLimit }}</ion-label>
+          </ion-range>
+        </ion-row>
+      </div>
+      <ion-row>
+        <ion-col size=6>
+          <ion-button class="btn width-100" color="maincolor" (click)="applyFilter()">
+            {{ 'COMPANIES.FILTERS_MODAL.APPLY_FILTERS' | translate }}
+          </ion-button>
+        </ion-col>
+        <ion-col size=6>
+          <ion-button class="btn width-100" color="secondcolor" (click)="resetFilters()">
+            {{ 'COMPANIES.FILTERS_MODAL.RESET' | translate }}
+          </ion-button>
+        </ion-col>
+      </ion-row>
+    </ion-card>
+  </div>
+</div>

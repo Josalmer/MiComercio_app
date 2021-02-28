@@ -11,6 +11,10 @@ import { SearchBarComponent } from './components/search-bar/search-bar.component
 import { NgCalendarModule } from 'ionic2-calendar';
 import { AppointmentCardComponent } from './components/appointment-card/appointment-card.component';
 import { CalendarModal } from './components/calendar-modal/calendar.modal';
+import { AssessmentCardComponent } from './components/assessment-card/assessment-card.component';
+import { StarsComponent } from './components/stars/stars.component';
+import { StarsInputComponent } from './components/stars-input/stars-input.component';
+import { LoadingSpinnerComponent } from './components/loading-spinner/loading-spinner.component';
 
 @NgModule({
   declarations: [
@@ -19,7 +23,11 @@ import { CalendarModal } from './components/calendar-modal/calendar.modal';
     UserFormComponent,
     SearchBarComponent,
     AppointmentCardComponent,
-    CalendarModal
+    CalendarModal,
+    AssessmentCardComponent,
+    StarsComponent,
+    StarsInputComponent,
+    LoadingSpinnerComponent
   ],
   imports: [
     CommonModule,
@@ -39,7 +47,11 @@ import { CalendarModal } from './components/calendar-modal/calendar.modal';
     PageLayoutComponent,
     UserFormComponent,
     SearchBarComponent,
-    AppointmentCardComponent
+    AppointmentCardComponent,
+    AssessmentCardComponent,
+    StarsComponent,
+    StarsInputComponent,
+    LoadingSpinnerComponent
   ],
   providers: [
     TranslationService

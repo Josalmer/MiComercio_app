@@ -1,0 +1,9 @@
+<ion-row>
+  <ion-col size='8' style="margin-top: 10px">
+    <ion-icon class="filled-stars" name="star" *ngFor="let star of filledStars"></ion-icon>
+    <ion-icon class="empty-stars" name="star-outline" *ngFor="let star of emptyStars"></ion-icon>
+  </ion-col>
+  <ion-col size='4'>
+    <h6>{{ text | translate }}</h6>
+  </ion-col>
+</ion-row>

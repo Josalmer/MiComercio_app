@@ -17,6 +17,10 @@ export class CompaniesService {
     return this.http.get('types');
   }
 
+  getLocations(): Observable<any> {
+    return this.http.get('locations');
+  }
+
   createCompany(params: any): Observable<any> {
     return this.http.post('companies', params);
   }

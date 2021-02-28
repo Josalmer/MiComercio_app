@@ -1,0 +1,35 @@
+<ion-card class="assessment-card" [ngClass]="!userView && ownAssessment() ? 'own-assessment' : ''">
+  <ion-row>
+    <ion-row class="width-100" *ngIf="userView">
+      <ion-col size=8>
+        <h3 class="subtitle" style="margin-left: 10px;">{{ assessment.companyName }}</h3>
+      </ion-col>
+      <ion-col size=4>
+        <h6>{{ assessment.filledAt | date: 'dd/MM/yy' }}</h6>
+      </ion-col>
+    </ion-row>
+    <ion-row class="width-100">
+      <ion-col size='8' style="margin-top: 10px">
+        <ion-icon class="filled-stars" name="star" *ngFor="let star of filledStars"></ion-icon>
+        <ion-icon class="empty-stars" name="star-outline" *ngFor="let star of emptyStars"></ion-icon>
+      </ion-col>
+      <ion-col size='4' *ngIf="!userView">
+        <h6>{{ assessment.filledAt | date: 'dd/MM/yy' }}</h6>
+      </ion-col>
+    </ion-row>
+  </ion-row>
+  <ion-row *ngIf="showDetails">
+    <ion-col size='10'>
+      <h5>{{ assessment.text }}</h5>
+    </ion-col>
+    <ion-col *ngIf="userView" size='2' class="card-right-icon">
+      <button (click)="navigate()"><ion-icon name='eye'></ion-icon></button>
+    </ion-col>
+    <app-stars class="width-100" [puntuation]="assessment.puntuality" text="COMPANIES.PUNTUALITY"></app-stars>
+    <app-stars class="width-100" [puntuation]="assessment.attention" text="COMPANIES.ATTENTION"></app-stars>
+    <app-stars class="width-100" [puntuation]="assessment.satisfaction" text="COMPANIES.SATISFACTION"></app-stars>
+  </ion-row>
+  <ion-row (click)="showDetails = !showDetails" class="open-close-button">
+    <ion-icon [name]="showDetails ? 'caret-up-outline' : 'caret-down-outline'"></ion-icon>
+  </ion-row>
+</ion-card>

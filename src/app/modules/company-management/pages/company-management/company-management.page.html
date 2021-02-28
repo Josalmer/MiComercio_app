@@ -19,17 +19,30 @@
       <h3 class="subtitle main-color-text center">{{ company.category + ' > ' + company.type }}</h3>
 
       <ion-row class="width-great margin-auto">
-        <ion-col size='6'>
+        <ion-col size='4'>
           <ion-button class="btn" style="margin-top: 0px; margin-bottom: 0px;" [color]="view === 'gestion' ? 'maincolor' : 'secondcolor'"  (click)="toggleView('gestion')"><ion-icon name='people-circle-outline'></ion-icon></ion-button>
         </ion-col>
-        <ion-col size='6'>
+        <ion-col size='4'>
           <ion-button class="btn" style="margin-top: 0px; margin-bottom: 0px;" [color]="view === 'edit' ? 'maincolor' : 'secondcolor'" (click)="toggleView('edit')"><ion-icon name='options-outline'></ion-icon></ion-button>
+        </ion-col>
+        <ion-col size='4'>
+          <ion-button class="btn" style="margin-top: 0px; margin-bottom: 0px;" [color]="view === 'opinion' ? 'maincolor' : 'secondcolor'" (click)="toggleView('opinion')"><ion-icon name='star-outline'></ion-icon></ion-button>
         </ion-col>
       </ion-row>
 
       <app-company-gestion [company]="company" [selectedDate]="selectedDate" (changeDate)="selectedDate = $event" (reloadCompany)="loadCompany()" *ngIf="view === 'gestion'"></app-company-gestion>
       <app-edit-company [company]="company" (reloadCompany)="loadCompany()" *ngIf="view === 'edit'"></app-edit-company>
-
+      <div class="container" style="margin-top: 20px;" *ngIf="view === 'opinion'">
+        <h3 class="subtitle center main-color-text" *ngIf="company.assessments.length === 0">{{ 'COMPANIES.NO_ASSESSMENTS' | translate }}</h3>
+        <ion-row *ngIf="company.assessments.length > 0">
+          <ion-col>
+            <ion-icon class="filled-stars-input" name="star" *ngFor="let star of filledStars"></ion-icon>
+            <ion-icon class="empty-stars-input" name="star-outline" *ngFor="let star of emptyStars"></ion-icon>
+          </ion-col>
+        </ion-row>
+        <app-assessment-card class="width-100" *ngFor="let assessment of company.assessments" [assessment]="assessment"></app-assessment-card>
+      </div>
+      
     </div>
   </app-page-layout>
 </ion-content>

@@ -9,6 +9,7 @@ import { TranslateService } from '@ngx-translate/core';
 import { ToastMessageService } from 'src/app/services/toast-messages.service';
 import { UtilsService } from 'src/app/services/utils.service';
 import { CalendarModal } from 'src/app/modules/shared/components/calendar-modal/calendar.modal';
+import { AssessmentFormModal } from '../../components/assessment-form/assessment-form.modal';
 
 @Component({
   selector: 'app-company',
@@ -19,6 +20,8 @@ export class CompanyPage implements OnInit {
   companyId: string;
   company: Company;
   userAppointments: Appointment[] = [];
+  filledStars: any;
+  emptyStars: any;
 
   constructor(
     private companiesService: CompaniesService,
@@ -43,6 +46,8 @@ export class CompanyPage implements OnInit {
     this.companiesService.getCompany(this.companyId).subscribe(
       response => {
         this.company = response;
+        this.filledStars = Array(this.company.averagePuntuation).fill(0);
+        this.emptyStars = Array(5 - this.company.averagePuntuation).fill(0);
         if (event) { event.target.complete(); }
       }
     );
@@ -126,6 +131,18 @@ export class CompanyPage implements OnInit {
         }
       }
     );
+  }
+
+  async newAssessment() {
+    const modal = await this.modalController.create({
+      component: AssessmentFormModal,
+      componentProps: { company: this.company }
+    });
+    await modal.present();
+    const { data } = await modal.onWillDismiss();
+    if ( data ) {
+      this.loadCompany();
+    }
   }
 
   refreshData(event): void {

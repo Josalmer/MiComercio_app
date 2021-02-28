@@ -32,6 +32,10 @@ $greatWidth: 80%;
   color: $secondColor;
 }
 
+.margin-0-auto {
+  margin: 0 auto;
+}
+
 .width-great {
   min-width: $greatWidth;
   max-width: $greatWidth;
@@ -194,14 +198,37 @@ span {
 
 // COMPANIES
 
-.search-bar{
-  max-width: $greatWidth;
-  margin: auto;
+.search-wrapper {
+  max-width: 85%;
+  margin: 0 auto;
   padding: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 
-  .searchbar-input-container{
-    height: 44px;
-    margin-bottom: 20px;
+  .search-bar{
+    width: 87%;
+    color: $mainColor;
+  
+    .searchbar-input-container{
+      height: 44px;
+      .searchbar-input {
+        padding-left: 43px;
+        font-size: 1.3rem;
+      }
+      .searchbar-search-icon {
+        width: 30px;
+      }
+      .searchbar-clear-icon {
+        width: 28px;
+      }
+    }
+  }
+
+  .filter-button {
+    width: 13%;
+    font-size: 3.2rem;
+    color: $mainColor;
   }
 }
 
@@ -297,6 +324,118 @@ span {
   margin-bottom: 10px;
 }
 
+.assessment-recommendation {
+  min-width: 100%;
+  max-width: 100%;
+  padding: 1em;
+  margin: auto;
+  background-color: rgba(255, 255, 0, 0.5);
+  color: $mainColor;
+  font-weight: bold;
+  font-size: 1rem;
+  text-align: center;
+  margin-top: 5px;
+  margin-bottom: 10px;
+}
+
+.recommendation-star {
+  color: $mainColor;
+  font-size: 2.2rem;
+}
+
+// FILTERS MODAL
+
+.modal-wrapper {
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  top: 0;
+  left: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 99;
+}
+
+.modal-content {
+  padding: 30px 30px;
+}
+
+.modal-backdrop {
+  z-index: -1;
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  background: rgba(199, 198, 195, 0.8);
+}
+
+.filter-radio-button {
+  display: flex;
+  align-items: center;
+  input {
+    margin-right: 10px;
+    width: 20px;
+    height: 1.5rem;
+  }
+  label {
+    line-height: 1.5rem;
+  }
+}
+
+.filter-select {
+  margin-top: 15px;
+  color: $mainColor;
+  font-size: 1.2rem;
+  border: solid 1px $mainColor;
+  border-radius: 10px;
+}
+
+.filter-selector {
+  font-size: 1.1rem;
+}
+
+.filter-selector .alert-wrapper {
+  color: $secondColor;
+
+  .alert-button-group {
+
+    button {
+      color: $mainColor;
+    }
+  }
+}
+
+[aria-checked=true].sc-ion-alert-ios .alert-radio-label.sc-ion-alert-ios {
+  color: $mainColor;
+}
+
+[aria-checked=true].sc-ion-alert-ios .alert-radio-inner.sc-ion-alert-ios {
+  color: $mainColor;
+}
+
+.date-selector {
+  color: $mainColor;
+  font-size: 1.2rem;
+  border: solid 1px $mainColor;
+  border-radius: 10px;
+}
+
+.filter-card {
+  display: flex;
+  align-items: center;
+  color: $mainColor;
+  background-color: $secondColor;
+  padding: 10px;
+  font-size: 1rem;
+  margin: 0 auto;
+  margin-top: 10px;
+
+  ion-icon {
+    margin-right: 10px;
+    font-size: 1.4rem;
+  }
+}
+
 // PROFILE
 
 .pending-card {
@@ -384,5 +523,49 @@ span {
   .google-calendar-icon {
     max-width: 85%;
     margin: auto;
+  }
+}
+
+// ASSESSMENTS CARDS
+
+.filled-stars {
+  color: yellow;
+  font-size: 1.8rem;
+}
+
+.empty-stars {
+  font-size: 1.8rem;
+}
+
+.filled-stars-input {
+  color: $mainColor;
+  font-size: 2rem;
+}
+
+.empty-stars-input {
+  color: $mainColor;
+  font-size: 2rem;
+}
+
+.assessment-card {
+  margin: auto;
+  background-color: $secondColor;
+  color: $mainColor;
+  padding-left: 10px;
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+
+.own-assessment {
+  background-color: rgba(128, 128, 128, 0.397);
+}
+
+.open-close-button {
+  justify-content: center;
+  align-items: center;
+  border-top: solid 1px;
+
+  ion-icon {
+    font-size: 2rem;
   }
 }
