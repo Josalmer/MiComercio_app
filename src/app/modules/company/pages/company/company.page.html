@@ -50,7 +50,9 @@
           </ion-card>
         </ion-col>
       </ion-row>
-      <app-assessment-card class="width-100" *ngFor="let assessment of company.assessments" [assessment]="assessment"></app-assessment-card>
+      <app-assessment-card class="width-100" *ngFor="let assessment of currentUserAssesments" [assessment]="assessment" [ownAssessment]="true"></app-assessment-card>
+      <h3 class="subtitle center" *ngIf="otherUsersAssessments.length > 0">{{ 'COMPANIES.OTHER_ASSESSMENTS' | translate }}</h3>
+      <app-assessment-card class="width-100" *ngFor="let assessment of otherUsersAssessments" [assessment]="assessment"></app-assessment-card>
     </div>
   </app-page-layout>
 </ion-content>
