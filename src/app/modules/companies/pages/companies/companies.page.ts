@@ -77,7 +77,6 @@ export class CompaniesPage implements OnInit {
       this.filteredCompanies = this.companies;
       this.sortCompanies();
       this.companyTypes = types.types;
-      console.log(this.companyTypes)
       this.companyLocations = locations;
     });
   }
@@ -194,6 +193,7 @@ export class CompaniesPage implements OnInit {
             }
           }
         default:
+          return b.boostFactor - a.boostFactor;
       }
     })
     this.showFilterModal = false;

@@ -1,0 +1,8 @@
+<div class="container" style="margin-top: 10px;">
+  <ion-label class="minimum-text main-color-text" slot="start">Mejora de posicionamiento</ion-label>
+  <ion-row (click)="sliderClicked()" class="width-100">
+    <ion-range color="maincolor" [(ngModel)]="sliderValue" [disabled]="company.boostValidity" max=100 min=1 pin="true" style="padding-top: 0px;">
+      <ion-icon color="maincolor" style="font-size: 2.2rem;" name="checkmark-circle-outline" slot="end" (click)="updateBoostFactor()"></ion-icon>
+    </ion-range>
+  </ion-row>
+</div>

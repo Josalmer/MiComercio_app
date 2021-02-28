@@ -131,7 +131,8 @@
     "MINIMUM_DATA": "Para crear un negocio es necesario indicar su nombre y tipo. <br><br> Podrá completar el resto de información desde la vista de administración de negocio. <br><br> Su negocio no será visible para los usuarios hasta que lo marque como publicado desde la vista de administración de negocio.",
     "PENDING_COMPANY": "Los administradores de Mi Comercio aún no han verificado los datos de este negocio",
     "LOADING_IMAGE": "Cargando imagen...",
-    "ASSESSMENTS": "Valoraciones de clientes",
+    "ASSESSMENTS": "Valoraciones",
+    "OTHER_ASSESSMENTS": "Valoraciones de otros usuarios",
     "CREATE_ASSESSMENT": "Valorar negocio",
     "PUNTUALITY": "Puntualidad",
     "SATISFACTION": "Satisfacción",
@@ -156,6 +157,13 @@
       "LOCATION_NEEDED": "Debes permitir el acceso a tu ubicación para poder order por distancia desde posición actual",
       "LOCATION_NEEDED_FILTER": "Debes permitir el acceso a tu ubicación para poder filtrar por distancia desde posición actual",
       "MAX_DISTANCE": "Distancia máxima"
+    },
+    "ALREADY_BOOSTED": "Ya disfruta de una mejora de posicionamiento en su negocio, podrá reovarlo a partir del {{ date }}",
+    "BOOST_FACTOR_FORM": {
+      "HEADER": "Mejora de posicionamiento",
+      "BODY": "Va a mejorar el posicionamiento de su negocio un {{ boostFactor }}% por un coste de {{ cost }} €/mes, elija el periodo de mejora",
+      "1_YEAR": "1 año",
+      "1_MONTH": "1 mes"
     }
   },
   "APPOINTMENTS": {
