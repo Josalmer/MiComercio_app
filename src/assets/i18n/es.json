@@ -190,6 +190,7 @@
   },
   "CALENDAR": {
     "NO_APPOINTMENTS": "No hay citas para el día seleccionado",
+    "NO_APPOINTMENTS_REQUESTED": "No hay citas solicitadas",
     "NO_EVENTS": "Sin eventos",
     "FROM": "De",
     "TO": "a",

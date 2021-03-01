@@ -34,11 +34,15 @@ export class AppointmentCardComponent {
   }
 
   calendar(): boolean {
-    return this.section === 'calendar';
+    return this.section === 'calendar' || this.section === 'calendarList';
   }
 
   company(): boolean {
     return this.section === 'company';
+  }
+
+  calendarList(): boolean {
+    return  this.section === 'calendarList';
   }
 
   toggleDetails(): void {

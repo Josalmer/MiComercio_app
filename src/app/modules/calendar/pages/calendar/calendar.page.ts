@@ -18,6 +18,8 @@ export class CalendarPage implements OnInit {
   user: User;
   userRole = 'user';
 
+  calendarView = true;
+
   selectedCompany = 'all';
   selectedTime: Date;
   currentDate: Date;
@@ -126,5 +128,10 @@ export class CalendarPage implements OnInit {
 
   manager(): boolean {
     return this.userRole === 'manager';
+  }
+
+  toggleCalendarView(): void {
+    console.log("click");
+    this.calendarView = !this.calendarView;
   }
 }
