@@ -15,6 +15,7 @@ import { AssessmentCardComponent } from './components/assessment-card/assessment
 import { StarsComponent } from './components/stars/stars.component';
 import { StarsInputComponent } from './components/stars-input/stars-input.component';
 import { LoadingSpinnerComponent } from './components/loading-spinner/loading-spinner.component';
+import { CompanySelectorComponent } from './components/company-selector/company-selector.component';
 
 @NgModule({
   declarations: [
@@ -27,7 +28,8 @@ import { LoadingSpinnerComponent } from './components/loading-spinner/loading-sp
     AssessmentCardComponent,
     StarsComponent,
     StarsInputComponent,
-    LoadingSpinnerComponent
+    LoadingSpinnerComponent,
+    CompanySelectorComponent
   ],
   imports: [
     CommonModule,
@@ -51,7 +53,8 @@ import { LoadingSpinnerComponent } from './components/loading-spinner/loading-sp
     AssessmentCardComponent,
     StarsComponent,
     StarsInputComponent,
-    LoadingSpinnerComponent
+    LoadingSpinnerComponent,
+    CompanySelectorComponent
   ],
   providers: [
     TranslationService
