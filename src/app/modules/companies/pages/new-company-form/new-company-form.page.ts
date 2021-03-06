@@ -4,14 +4,13 @@ import { CompaniesService } from 'src/app/services/companies.service';
 import { ToastMessageService } from 'src/app/services/toast-messages.service';
 import { LoadingController } from '@ionic/angular';
 import { finalize } from 'rxjs/operators';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-new-company-form',
   templateUrl: 'new-company-form.page.html'
 })
 export class NewCompanyFormPage implements OnInit {
-  @Output() backFromCreatingCompany = new EventEmitter();
-
   name: string;
   type: any;
   image: any;
@@ -24,7 +23,8 @@ export class NewCompanyFormPage implements OnInit {
     private companiesService: CompaniesService,
     private toastMessageService: ToastMessageService,
     private translate: TranslateService,
-    public loadingController: LoadingController
+    public loadingController: LoadingController,
+    private router: Router
   ) { }
 
   ngOnInit(): void {
@@ -49,7 +49,7 @@ export class NewCompanyFormPage implements OnInit {
     this.companiesService.createCompany({ created_company_object }).pipe(
       finalize( () => this.loadingSpinner.dismiss() )
     ).subscribe(
-      response => this.backFromCreatingCompany.emit(),
+      response => this.router.navigateByUrl(''),
       error => {
         if (error.error.name !== undefined) {
           this.translate.get("COMPANIES.NAME_USED").subscribe(

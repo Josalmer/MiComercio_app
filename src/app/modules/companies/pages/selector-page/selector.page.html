@@ -1,5 +1,4 @@
 <ion-content *ngIf="userRole">
-  <app-companies-management *ngIf="manager() && !creatingCompany" (createCompany)="creatingCompany = true"></app-companies-management>
-  <app-new-company-form *ngIf="manager() && creatingCompany" (backFromCreatingCompany)="creatingCompany = false"></app-new-company-form>
+  <app-companies-management *ngIf="manager()"></app-companies-management>
   <app-companies *ngIf="user()"></app-companies>
 </ion-content>

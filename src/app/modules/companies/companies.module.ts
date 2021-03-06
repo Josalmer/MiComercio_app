@@ -5,6 +5,7 @@ import { SharedModule } from '../shared/shared.module';
 import { CompaniesPage } from './pages/companies/companies.page';
 import { CompaniesManagementPage } from './pages/companies-management/companies-management.page';
 import { NewCompanyFormPage } from './pages/new-company-form/new-company-form.page';
+import { OfferFormPage } from './pages/offer-form/offer-form.page';
 
 @NgModule({
   imports: [
@@ -13,6 +14,14 @@ import { NewCompanyFormPage } from './pages/new-company-form/new-company-form.pa
       {
         path: '',
         component: SelectorPage
+      },
+      {
+        path: 'offer',
+        component: OfferFormPage
+      },
+      {
+        path: 'create',
+        component: NewCompanyFormPage
       }
     ])
   ],
@@ -20,7 +29,8 @@ import { NewCompanyFormPage } from './pages/new-company-form/new-company-form.pa
     SelectorPage,
     CompaniesPage,
     CompaniesManagementPage,
-    NewCompanyFormPage
+    NewCompanyFormPage,
+    OfferFormPage
   ]
 })
 export class CompaniesModule {}
