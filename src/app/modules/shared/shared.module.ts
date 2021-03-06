@@ -16,6 +16,7 @@ import { StarsComponent } from './components/stars/stars.component';
 import { StarsInputComponent } from './components/stars-input/stars-input.component';
 import { LoadingSpinnerComponent } from './components/loading-spinner/loading-spinner.component';
 import { CompanySelectorComponent } from './components/company-selector/company-selector.component';
+import { OfferCardComponent } from './components/offer-card/offer-card.component';
 
 @NgModule({
   declarations: [
@@ -29,7 +30,8 @@ import { CompanySelectorComponent } from './components/company-selector/company-
     StarsComponent,
     StarsInputComponent,
     LoadingSpinnerComponent,
-    CompanySelectorComponent
+    CompanySelectorComponent,
+    OfferCardComponent
   ],
   imports: [
     CommonModule,
@@ -54,7 +56,8 @@ import { CompanySelectorComponent } from './components/company-selector/company-
     StarsComponent,
     StarsInputComponent,
     LoadingSpinnerComponent,
-    CompanySelectorComponent
+    CompanySelectorComponent,
+    OfferCardComponent
   ],
   providers: [
     TranslationService

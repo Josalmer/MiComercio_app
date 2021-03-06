@@ -16,4 +16,8 @@ export class PaymentServicesService {
   createOffer(params: {}): Observable<any> {
     return this.http.patch('create_offer/', { params });
   }
+
+  getOffers(): Observable<any> {
+    return this.http.get('offers');
+  }
 }

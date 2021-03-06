@@ -1,0 +1,13 @@
+<ion-card class="offer-card">
+  <ion-row>
+    <ion-col size=10>
+      <h3 class="subtitle" style="margin-left: 10px;">{{ offer.companyName }}</h3>
+      <h4>{{ offer.text }}</h4>
+      <h5 *ngIf="offer.discount">{{ 'COMPANIES.OFFERS.DISCOUNT' | translate }}: {{ offer.discount }} % </h5>
+      <h5>{{ 'COMPANIES.OFFERS.VALIDITY' | translate }}: {{ offer.validity | date: 'dd/MM/yy' }}</h5>
+    </ion-col>
+    <ion-col size=2 class="card-right-icon">
+      <button (click)="navigate()"><ion-icon name='eye'></ion-icon></button>
+    </ion-col>
+  </ion-row>
+</ion-card>

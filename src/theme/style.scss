@@ -580,3 +580,15 @@ span {
     font-size: 2rem;
   }
 }
+
+// Offer cards
+
+.offer-card {
+  width: $greatWidth;
+  margin: 0 auto;
+  background-color: $secondColor;
+  color: $mainColor;
+  padding-left: 10px;
+  margin-top: 10px;
+  margin-bottom: 10px;
+}

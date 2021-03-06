@@ -167,7 +167,13 @@
       "1_MONTH": "1 mes"
     },
     "OFFERS": {
-      "OFFERS": "Ofertas a clientes"
+      "OFFERS": "Ofertas a clientes",
+      "NEW_OFFER": "Nueva oferta",
+      "VALIDITY": "Validez",
+      "DISCOUNT": "Descuento",
+      "OPTIONAL": "Opcional",
+      "PROMOTIONAL_MESSAGE": "Mensaje promocional",
+      "NO_OFFERS": "No hay ofertas activas"
     }
   },
   "APPOINTMENTS": {

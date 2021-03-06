@@ -1,4 +1,4 @@
-<ion-content>
+<ion-content *ngIf="offers">
   <app-page-layout>
     <div layout-position="main">
       <ion-row>
@@ -12,9 +12,19 @@
         </ion-col>
         <ion-col></ion-col>
       </ion-row>
+      <ion-row>
+        <ion-col class="width-great" style="margin: 0 auto;">
+          <ion-button routerLink="offer" class="btn width-100" color="maincolor">
+            {{ 'COMPANIES.OFFERS.NEW_OFFER' | translate }}
+          </ion-button>
+          <app-company-selector (selectCompany)="filterCompanies($event)"></app-company-selector>
+        </ion-col>
+      </ion-row>
     </div>
 
-    <div layout-position="content" class="container">
+    <div layout-position="content">
+      <h5 class="title margin-15 center flex" *ngIf="filteredOffers.length === 0">{{ 'COMPANIES.OFFERS.NO_OFFERS' | translate }}</h5>
+      <app-offer-card *ngFor="let offer of filteredOffers" [offer]="offer"></app-offer-card>
     </div>
   </app-page-layout>
 </ion-content>
