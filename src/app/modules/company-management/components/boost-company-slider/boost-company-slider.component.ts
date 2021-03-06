@@ -30,7 +30,11 @@ export class BoostCompanySliderComponent implements OnInit {
   }
 
   sliderClicked(): void {
-    if (this.company.boostValidity) {
+    if (!this.company.published) {
+      this.translate.get("COMPANIES.MUST_BE_PUBLISHED").subscribe(
+        translated => this.toastMessageService.showMessage(translated, 'secondary')
+      );
+    } else if (this.company.boostValidity) {
       let validityDate = this.utilsService.datePipe.transform(this.company.boostValidity, 'dd/MM/yy');
       this.translate.get("COMPANIES.ALREADY_BOOSTED", {date: validityDate}).subscribe(
         translated => this.toastMessageService.showMessage(translated, 'secondary')
@@ -39,7 +43,7 @@ export class BoostCompanySliderComponent implements OnInit {
   }
 
   updateBoostFactor(): void {
-    if (!this.company.boostValidity) {
+    if (!this.company.boostValidity && this.company.published) {
       this.cost = Math.round(100 * (5 + this.sliderValue * (20 / 100))) / 100;
       this.newBoostFactor();
     }
