@@ -2,10 +2,10 @@ import { Component, OnInit } from '@angular/core';
 import { UserService } from 'src/app/services/user.service';
 
 @Component({
-  selector: 'app-selector',
-  templateUrl: 'selector.page.html'
+  selector: 'app-companies',
+  templateUrl: 'companies.component.html'
 })
-export class SelectorPage implements OnInit {
+export class CompaniesComponent implements OnInit {
   userRole = 'user';
   creatingCompany = false;
 

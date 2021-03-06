@@ -15,7 +15,7 @@ import { environment } from 'src/environments/environment';
 const { Geolocation } = Plugins;
 
 @Component({
-  selector: 'app-companies',
+  selector: 'app-companies-page',
   templateUrl: 'companies.page.html'
 })
 export class CompaniesPage implements OnInit {
