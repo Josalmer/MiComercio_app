@@ -93,6 +93,7 @@ export class AppointmentCardComponent {
     const translated: any = {};
     this.translate.get('COMPANIES.ATTENTION').subscribe(response => translated.header = response);
     this.translate.get('APPOINTMENTS.CANCEL_CREATED_BY_MANAGER').subscribe(response => translated.message = response);
+    this.translate.get('APPOINTMENTS.DELETE_AND_WASAP').subscribe(response => translated.wasap = response);
     this.translate.get('COMMON.CANCEL').subscribe(response => translated.cancel = response);
     this.translate.get('COMMON.DELETE').subscribe(response => translated.delete = response);
 
@@ -101,6 +102,15 @@ export class AppointmentCardComponent {
       header: translated.header,
       message: translated.message,
       buttons: [
+        {
+          text: translated.wasap,
+          handler: () => {
+            const msg = "Han cancelado su cita en " + this.appointment.companyName;
+            const msgEncoded = encodeURI(msg);
+            window.open(`https://wa.me/34${this.appointment.userPhone}?text=${msgEncoded}`);
+            this.cancelAppointment();
+          }
+        },
         {
           text: translated.delete,
           handler: () => {

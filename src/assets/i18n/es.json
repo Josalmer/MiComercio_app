@@ -186,6 +186,7 @@
     "START_DATE": "Cita",
     "CANCEL": "Cancelar cita",
     "CANCEL_CREATED_BY_MANAGER": "Esta cita es de un cliente sin aplicación, si se cancela no será notificado",
+    "DELETE_AND_WASAP": "Cancelar cita y avisar por WhatsApp",
     "NEW_APPOINTMENT": "Solicitar cita",
     "APPOINTMENT_DATE": "Fecha y hora de la cita",
     "APPOINTMENT_AT": "Hora de la cita: ",
