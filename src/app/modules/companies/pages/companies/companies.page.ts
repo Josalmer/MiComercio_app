@@ -250,4 +250,9 @@ export class CompaniesPage implements OnInit {
       return false;
     }
   }
+
+  goToOffers(): void {
+    this.showFilterModal = false;
+    this.router.navigateByUrl('companies/offer')
+  }
 }

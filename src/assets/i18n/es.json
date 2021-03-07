@@ -175,7 +175,8 @@
       "PROMOTIONAL_MESSAGE": "Mensaje promocional",
       "NO_OFFERS": "No hay ofertas activas",
       "CREATE_OFFER": "Crear oferta",
-      "COST": "Coste del servicio: 20 €"
+      "COST": "Coste del servicio: 20 €",
+      "GO_TO_OFFERS": "Ofertas"
     }
   },
   "APPOINTMENTS": {

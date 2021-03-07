@@ -56,6 +56,9 @@
   <div>
     <ion-card class="modal-content">
       <div style="margin-top: 20px;">
+        <ion-button class="btn width-100" color="maincolor" (click)="goToOffers()">
+          {{ 'COMPANIES.OFFERS.GO_TO_OFFERS' | translate }}
+        </ion-button>
         <label class="title">{{ "COMPANIES.FILTERS_MODAL.FILTER" | translate }}:</label>
         <ion-select class="filter-select" [interfaceOptions]="{cssClass: 'filter-selector'}" [placeholder]="'COMPANIES.FILTERS_MODAL.BUSSINESS_TYPE' | translate" [(ngModel)]="bussinessType" cancelText="Cancelar">
           <ion-select-option *ngFor="let type of companyTypes" [value]="type.name">{{type.name}}</ion-select-option>

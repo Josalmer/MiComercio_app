@@ -8,11 +8,11 @@
           </ion-fab-button>
         </ion-col>
         <ion-col style="flex:3;">
-          <h2 class="title margin-15 center flex">{{ "COMPANIES.OFFERS.OFFERS" | translate }}</h2>
+          <h2 class="title margin-15 center flex">{{ (manager() ? "COMPANIES.OFFERS.OFFERS" : 'COMPANIES.OFFERS.GO_TO_OFFERS') | translate }}</h2>
         </ion-col>
         <ion-col></ion-col>
       </ion-row>
-      <ion-row>
+      <ion-row *ngIf="manager()">
         <ion-col class="width-great" style="margin: 0 auto;">
           <ion-button class="btn width-100" color="maincolor" (click)="newOfferForm()">
             {{ 'COMPANIES.OFFERS.NEW_OFFER' | translate }}
