@@ -1,0 +1,29 @@
+<ion-content>
+  <app-page-layout>
+    <div layout-position="main">
+      <ion-fab vertical="top" horizontal="start" slot="fixed">
+        <ion-fab-button class="back-btn" color="maincolor" (click)="cancel()">
+          <ion-icon name="arrow-back-outline"></ion-icon>
+        </ion-fab-button>
+      </ion-fab>
+      <ion-row style="margin-top: 20px;">
+        <ion-col>
+          <h2 class="title center">{{ 'COMPANIES.OFFERS.NEW_OFFER' | translate }}</h2>
+        </ion-col>
+      </ion-row>
+    </div>
+    <div layout-position="content" class="width-great margin-0-auto">
+      <app-company-selector (selectCompany)="selectCompany($event)" [offerForm]="true"></app-company-selector>
+      <form padding [formGroup]="form">
+        <h4 class="minimum-text main-color-text">{{ 'COMPANIES.OFFERS.PROMOTIONAL_MESSAGE' | translate }}</h4>
+        <ion-textarea class="input" formControlName="text" type="text" rows=8 margin-bottom></ion-textarea>
+        <h4 class="minimum-text main-color-text">{{ 'COMPANIES.OFFERS.DISCOUNT' | translate }} ({{ 'COMPANIES.OFFERS.OPTIONAL' | translate }})</h4>
+        <ion-input class="input" formControlName="discount" type="number" placeholder=0 text-center margin-bottom></ion-input>
+        <h4 class="minimum-text main-color-text">{{ 'COMPANIES.OFFERS.VALIDITY' | translate }} ({{ 'COMPANIES.OFFERS.OPTIONAL' | translate }})</h4>
+        <ion-datetime class="input" [placeholder]="'COMPANIES.OFFERS.VALIDITY' | translate" formControlName="validity" displayFormat="D MMM YYYY" [min]="today" doneText="Ok" cancelText="Cancelar"></ion-datetime>
+      </form>
+      <h4 class="minimum-text main-color-text center">{{ 'COMPANIES.OFFERS.COST' | translate }}</h4>
+      <ion-button class="btn width-great" [disabled]="!form.valid" color='maincolor' (click)="create()">{{ 'COMPANIES.OFFERS.CREATE_OFFER' | translate }}</ion-button>
+    </div>
+  </app-page-layout>
+</ion-content>

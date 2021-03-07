@@ -10,11 +10,11 @@ export class PaymentServicesService {
   constructor( private http: HttpClient ) { }
 
   boostCompany(params: {}): Observable<any> {
-    return this.http.patch('boost_company/', { params });
+    return this.http.patch('boost_company/', params);
   }
 
   createOffer(params: {}): Observable<any> {
-    return this.http.patch('create_offer/', { params });
+    return this.http.patch('create_offer/', params);
   }
 
   getOffers(): Observable<any> {

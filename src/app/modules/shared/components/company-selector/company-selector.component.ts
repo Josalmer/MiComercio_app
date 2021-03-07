@@ -1,4 +1,4 @@
-import { Component, OnInit, Output, EventEmitter } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter, Input } from '@angular/core';
 import { Company } from 'src/app/models/company.model';
 import { CompaniesService } from 'src/app/services/companies.service';
 
@@ -7,6 +7,7 @@ import { CompaniesService } from 'src/app/services/companies.service';
   templateUrl: './company-selector.component.html'
 })
 export class CompanySelectorComponent implements OnInit {
+  @Input() offerForm: boolean = false;
   @Output() selectCompany = new EventEmitter();
   managerCompanies: Company[];
 

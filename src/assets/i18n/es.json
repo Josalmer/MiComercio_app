@@ -173,7 +173,9 @@
       "DISCOUNT": "Descuento",
       "OPTIONAL": "Opcional",
       "PROMOTIONAL_MESSAGE": "Mensaje promocional",
-      "NO_OFFERS": "No hay ofertas activas"
+      "NO_OFFERS": "No hay ofertas activas",
+      "CREATE_OFFER": "Crear oferta",
+      "COST": "Coste del servicio: 20 €"
     }
   },
   "APPOINTMENTS": {

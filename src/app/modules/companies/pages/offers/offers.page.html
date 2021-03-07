@@ -14,7 +14,7 @@
       </ion-row>
       <ion-row>
         <ion-col class="width-great" style="margin: 0 auto;">
-          <ion-button routerLink="offer" class="btn width-100" color="maincolor">
+          <ion-button class="btn width-100" color="maincolor" (click)="newOfferForm()">
             {{ 'COMPANIES.OFFERS.NEW_OFFER' | translate }}
           </ion-button>
           <app-company-selector (selectCompany)="filterCompanies($event)"></app-company-selector>
