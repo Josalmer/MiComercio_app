@@ -39,6 +39,7 @@ export class CalendarPage implements OnInit {
 
   ngOnInit() {
     this.route.params.subscribe(_ => {
+      this.calendarView = true;
       this.unFilteredEvents = [];
       this.eventSource = this.unFilteredEvents;
       this.initializeCalendar();
@@ -131,7 +132,6 @@ export class CalendarPage implements OnInit {
   }
 
   toggleCalendarView(): void {
-    console.log("click");
     this.calendarView = !this.calendarView;
   }
 }
