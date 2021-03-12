@@ -130,18 +130,24 @@ export class AppointmentCardComponent {
   }
 
   cancelAppointment(): void {
-    this.appointmentsService.cancelAppointment(this.appointment.id).subscribe(
-      response => {
-        this.deleteAppointment.emit(this.appointment.id);
-        this.translate.get("APPOINTMENTS.CORRECTLY_CANCELLED").subscribe(
-          translated => this.toastMessageService.showMessage(translated, 'success')
-        );
-      },
-      error => {
-        this.translate.get("APPOINTMENTS.NOT_CANCELLED").subscribe(
-          translated => this.toastMessageService.showMessage(translated, 'danger')
-        );
-      }
-    );
+    if (this.canCancel()) {
+      this.appointmentsService.cancelAppointment(this.appointment.id).subscribe(
+        response => {
+          this.deleteAppointment.emit(this.appointment.id);
+          this.translate.get("APPOINTMENTS.CORRECTLY_CANCELLED").subscribe(
+            translated => this.toastMessageService.showMessage(translated, 'success')
+          );
+        },
+        error => {
+          this.translate.get("APPOINTMENTS.NOT_CANCELLED").subscribe(
+            translated => this.toastMessageService.showMessage(translated, 'danger')
+          );
+        }
+      );
+    }
+  }
+
+  canCancel(): boolean {
+    return new Date() < new Date(this.appointment.startDate);
   }
 }

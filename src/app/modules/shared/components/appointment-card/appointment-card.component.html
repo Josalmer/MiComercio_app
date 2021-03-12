@@ -16,7 +16,7 @@
       <h6 class="margin-5" *ngIf="user() || showDetails">{{ appointment.requestedAt | date: 'dd/MM/yyyy  HH:mm' }}</h6>
     </ion-col>
     <ion-col size='2' class="card-right-icon">
-      <button (click)="cancel()" *ngIf="company()"><ion-icon name='trash'></ion-icon></button>
+      <button (click)="cancel()" *ngIf="company() && canCancel()"><ion-icon name='trash'></ion-icon></button>
       <button (click)="navigate()" *ngIf="calendar()"><ion-icon name='eye'></ion-icon></button>
     </ion-col>
   </ion-row>
