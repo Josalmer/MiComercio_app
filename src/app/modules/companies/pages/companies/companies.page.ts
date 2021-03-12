@@ -112,13 +112,16 @@ export class CompaniesPage implements OnInit {
     return this.utils.printShortDirection(direction);
   }
 
-  toggleOrderBy(orderBy: string): void {
+  async toggleOrderBy(orderBy: string) {
     if (orderBy === this.orderBy) {
       this.orderBy = null;
     } else {
       this.orderBy = orderBy;
     }
     this.sortCompanies();
+    if (orderBy === 'distance' && !this.currentPosition) {
+      this.currentPosition = await Geolocation.getCurrentPosition();
+    }
   }
 
   resetFilters(): void {
@@ -235,11 +238,12 @@ export class CompaniesPage implements OnInit {
     this.updateDistanceLimit(this.DISTANCES[this.sliderPosition]);
   }
 
-  sliderClicked(): void {
+  async sliderClicked() {
     if (!this.currentPosition) {
       this.translate.get("COMPANIES.FILTERS_MODAL.LOCATION_NEEDED_FILTER").subscribe(
         translated => this.toastMessageService.showMessage(translated, 'danger')
       );
+      this.currentPosition = await Geolocation.getCurrentPosition();
     }
   }
 
