@@ -116,7 +116,9 @@ export class CalendarPage implements OnInit {
     } else {
       this.eventSource = this.unFilteredEvents;
     }
-    this.myCalendar.loadEvents();
+    if (this.calendarView) {
+      this.myCalendar.loadEvents();
+    }
   }
 
   getMonthName(): string {
@@ -131,7 +133,15 @@ export class CalendarPage implements OnInit {
     return this.userRole === 'manager';
   }
 
-  toggleCalendarView(): void {
-    this.calendarView = !this.calendarView;
+  toggleCalendarView(active: boolean): void {
+    this.calendarView = active;
+    if (this.calendarView !== active) {
+      this.calendarView = active;
+      if (this.calendarView) {
+        setTimeout(() => {
+          this.myCalendar.loadEvents();
+        }, 50)
+      }
+    }
   }
 }

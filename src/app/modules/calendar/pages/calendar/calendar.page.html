@@ -1,13 +1,18 @@
 <ion-content>
   <app-page-layout>
     <div layout-position="main">
-      <ion-button class="toggle-calendar-view-button" color="secondcolor" (click)="toggleCalendarView()">
-        <ion-icon [name]="calendarView ? 'list-outline' : 'calendar-outline'"></ion-icon>
-      </ion-button>
       <ion-row>
         <ion-col>
           <h2 class="subtitle margin-15 center" *ngIf="calendarView">{{ getMonthName() | translate }}</h2>
           <h2 class="subtitle margin-15 center" *ngIf="!calendarView">{{ 'COMPANIES.APPOINTMENTS' | translate }}</h2>
+        </ion-col>
+      </ion-row>
+      <ion-row class="width-90 margin-auto">
+        <ion-col size='6'>
+          <ion-button class="btn" style="margin-top: 0px; margin-bottom: 0px;" [color]="calendarView ? 'maincolor' : 'secondcolor'"  (click)="toggleCalendarView(true)"><ion-icon name='calendar-outline'></ion-icon></ion-button>
+        </ion-col>
+        <ion-col size='6'>
+          <ion-button class="btn" style="margin-top: 0px; margin-bottom: 0px;" [color]="!calendarView ? 'maincolor' : 'secondcolor'" (click)="toggleCalendarView(false)"><ion-icon name='list-outline'></ion-icon></ion-button>
         </ion-col>
       </ion-row>
       <ion-row>
