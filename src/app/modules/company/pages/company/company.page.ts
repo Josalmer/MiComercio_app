@@ -10,6 +10,8 @@ import { ToastMessageService } from 'src/app/services/toast-messages.service';
 import { UtilsService } from 'src/app/services/utils.service';
 import { CalendarModal } from 'src/app/modules/shared/components/calendar-modal/calendar.modal';
 import { AssessmentFormModal } from '../../components/assessment-form/assessment-form.modal';
+import { Assessment } from 'src/app/models/assessment.model';
+import { UserService } from 'src/app/services/user.service';
 
 @Component({
   selector: 'app-company',
@@ -22,6 +24,10 @@ export class CompanyPage implements OnInit {
   userAppointments: Appointment[] = [];
   filledStars: any;
   emptyStars: any;
+  currentUserId: string;
+
+  currentUserAssesments: Assessment[];
+  otherUsersAssessments: Assessment[];
 
   constructor(
     private companiesService: CompaniesService,
@@ -31,13 +37,14 @@ export class CompanyPage implements OnInit {
     private translate: TranslateService,
     private alertController: AlertController,
     private toastMessageService: ToastMessageService,
-    private utilsService: UtilsService
+    private utilsService: UtilsService,
+    private userService: UserService
   ) { }
 
   ngOnInit() {
     this.route.params.subscribe(params => {
       this.companyId = params['id'];
-      this.loadCompany();
+      this.loadUserId();
       this.loadUserAppointments();
     });
   }
@@ -46,9 +53,20 @@ export class CompanyPage implements OnInit {
     this.companiesService.getCompany(this.companyId).subscribe(
       response => {
         this.company = response;
+        this.currentUserAssesments = this.company.assessments.filter(x => x.userId === this.currentUserId)
+        this.otherUsersAssessments = this.company.assessments.filter(x => x.userId !== this.currentUserId)
         this.filledStars = Array(this.company.averagePuntuation).fill(0);
         this.emptyStars = Array(5 - this.company.averagePuntuation).fill(0);
         if (event) { event.target.complete(); }
+      }
+    );
+  }
+
+  loadUserId(): void {
+    this.userService.getApplicationUser().subscribe(
+      response => {
+        this.currentUserId = response.id;
+        this.loadCompany();
       }
     );
   }

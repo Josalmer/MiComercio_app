@@ -10,8 +10,6 @@ import { Company } from 'src/app/models/company.model';
   templateUrl: 'companies-management.page.html'
 })
 export class CompaniesManagementPage implements OnInit {
-  @Output() createCompany = new EventEmitter();
-
   userCompanies: Company[] = [];
 
   constructor(

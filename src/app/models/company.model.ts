@@ -29,6 +29,8 @@ export class Company {
   specialSchedules: SpecialSchedule[];
   assessments: Assessment[];
   pendingUserAssessment: boolean;
+  boostFactor: number;
+  boostValidity: number;
 
   withAppointmentInSelectedDate: boolean;
 

@@ -3,16 +3,25 @@
     <div layout-position="main">
       <ion-row>
         <ion-col>
-          <app-company-selector *ngIf="manager()" (selectCompany)="filterCompanies($event)"></app-company-selector>
+          <h2 class="subtitle margin-15 center" *ngIf="calendarView">{{ getMonthName() | translate }}</h2>
+          <h2 class="subtitle margin-15 center" *ngIf="!calendarView">{{ 'COMPANIES.APPOINTMENTS' | translate }}</h2>
+        </ion-col>
+      </ion-row>
+      <ion-row class="width-90 margin-auto">
+        <ion-col size='6'>
+          <ion-button class="btn" style="margin-top: 0px; margin-bottom: 0px;" [color]="calendarView ? 'maincolor' : 'secondcolor'"  (click)="toggleCalendarView(true)"><ion-icon name='calendar-outline'></ion-icon></ion-button>
+        </ion-col>
+        <ion-col size='6'>
+          <ion-button class="btn" style="margin-top: 0px; margin-bottom: 0px;" [color]="!calendarView ? 'maincolor' : 'secondcolor'" (click)="toggleCalendarView(false)"><ion-icon name='list-outline'></ion-icon></ion-button>
         </ion-col>
       </ion-row>
       <ion-row>
         <ion-col>
-          <h2 class="subtitle margin-15 center">{{ getMonthName() | translate }}</h2>
+          <app-company-selector *ngIf="manager()" (selectCompany)="filterCompanies($event)"></app-company-selector>
         </ion-col>
       </ion-row>
     </div>
-    <div layout-position="content" *ngIf="calendar" class="width-90 center margin-auto">
+    <div layout-position="content" *ngIf="calendarView && calendar" class="width-90 center margin-auto">
       <calendar [eventSource]="eventSource" [calendarMode]="calendar.mode" [markDisabled]="markDisabled"
         [monthviewEventDetailTemplate]="monthviewEventDetailTemplate" [autoSelect]="false"
         (onCurrentDateChanged)="onCurrentDateChanged($event)" [currentDate]="calendar.today"
@@ -31,6 +40,17 @@
       </app-appointment-card>
 
     </ng-template>
+
+    <div layout-position="content" *ngIf="!calendarView && eventSource" class="width-90 center margin-auto">
+      <ion-row>
+        <h2 class="subtitle margin-15 center" *ngIf="eventSource.length === 0">{{ 'CALENDAR.NO_APPOINTMENTS_REQUESTED' | translate }}</h2>
+        <ion-col>
+          <app-appointment-card class="width-100" *ngFor="let appointment of eventSource"
+          [appointment]="appointment" (navigateToCompany)="navigate($event)" [role]="userRole" [section]="'calendarList'">
+        </app-appointment-card>
+        </ion-col>
+      </ion-row>
+    </div>
   </app-page-layout>
   <app-export-appointments-button [user]="user"></app-export-appointments-button>
 </ion-content>

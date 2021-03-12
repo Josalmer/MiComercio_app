@@ -11,8 +11,11 @@
     <div layout-position="content">
 
       <div text-center>
-        <ion-button (click)="createCompany.emit()" class="btn width-great" color="maincolor">
+        <ion-button routerLink="create" class="btn width-great" color="maincolor">
           {{ 'COMPANIES.ADD_COMPANY' | translate }}
+        </ion-button>
+        <ion-button routerLink="offer" class="btn width-great" color="maincolor">
+          {{ 'COMPANIES.OFFERS.OFFERS' | translate }}
         </ion-button>
       </div>
 

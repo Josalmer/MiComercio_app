@@ -15,7 +15,7 @@ import { environment } from 'src/environments/environment';
 const { Geolocation } = Plugins;
 
 @Component({
-  selector: 'app-companies',
+  selector: 'app-companies-page',
   templateUrl: 'companies.page.html'
 })
 export class CompaniesPage implements OnInit {
@@ -77,7 +77,6 @@ export class CompaniesPage implements OnInit {
       this.filteredCompanies = this.companies;
       this.sortCompanies();
       this.companyTypes = types.types;
-      console.log(this.companyTypes)
       this.companyLocations = locations;
     });
   }
@@ -113,13 +112,16 @@ export class CompaniesPage implements OnInit {
     return this.utils.printShortDirection(direction);
   }
 
-  toggleOrderBy(orderBy: string): void {
+  async toggleOrderBy(orderBy: string) {
     if (orderBy === this.orderBy) {
       this.orderBy = null;
     } else {
       this.orderBy = orderBy;
     }
     this.sortCompanies();
+    if (orderBy === 'distance' && !this.currentPosition) {
+      this.currentPosition = await Geolocation.getCurrentPosition();
+    }
   }
 
   resetFilters(): void {
@@ -142,6 +144,7 @@ export class CompaniesPage implements OnInit {
       this.filteredCompanies = this.distanceLimit !== this.DISTANCES[this.DISTANCES.length - 1] ? this.filteredCompanies.filter(company => this.inRange(company)) : this.filteredCompanies;
       this.filteredCompanies = this.selectedLocation ? this.filteredCompanies.filter(company => company.address?.town.toUpperCase() === this.selectedLocation.toUpperCase()) : this.filteredCompanies;
       if (this.startDate && this.endDate) {
+        this.loaded = false;
         const start = new Date(this.startDate);
         const end = new Date(this.endDate);
         forkJoin(
@@ -151,6 +154,7 @@ export class CompaniesPage implements OnInit {
             this.eventsInDate.forEach((events, index) => this.filteredCompanies[index].withAppointmentInSelectedDate = events.events.length > 0)
             this.filteredCompanies = this.filteredCompanies.filter(company => company.withAppointmentInSelectedDate);
             this.sortCompanies();
+            this.loaded = true;
           })
         ).subscribe(
           events => this.eventsInDate = events
@@ -194,6 +198,7 @@ export class CompaniesPage implements OnInit {
             }
           }
         default:
+          return b.boostFactor - a.boostFactor;
       }
     })
     this.showFilterModal = false;
@@ -235,11 +240,12 @@ export class CompaniesPage implements OnInit {
     this.updateDistanceLimit(this.DISTANCES[this.sliderPosition]);
   }
 
-  sliderClicked(): void {
+  async sliderClicked() {
     if (!this.currentPosition) {
       this.translate.get("COMPANIES.FILTERS_MODAL.LOCATION_NEEDED_FILTER").subscribe(
         translated => this.toastMessageService.showMessage(translated, 'danger')
       );
+      this.currentPosition = await Geolocation.getCurrentPosition();
     }
   }
 
@@ -249,5 +255,10 @@ export class CompaniesPage implements OnInit {
     } else { 
       return false;
     }
+  }
+
+  goToOffers(): void {
+    this.showFilterModal = false;
+    this.router.navigateByUrl('companies/offer')
   }
 }

@@ -1,0 +1,30 @@
+<ion-content *ngIf="offers">
+  <app-page-layout>
+    <div layout-position="main">
+      <ion-row>
+        <ion-col>
+          <ion-fab-button class="back-btn" color="maincolor" routerLink="">
+            <ion-icon name="arrow-back-outline"></ion-icon>
+          </ion-fab-button>
+        </ion-col>
+        <ion-col style="flex:3;">
+          <h2 class="title margin-15 center flex">{{ (manager() ? "COMPANIES.OFFERS.OFFERS" : 'COMPANIES.OFFERS.GO_TO_OFFERS') | translate }}</h2>
+        </ion-col>
+        <ion-col></ion-col>
+      </ion-row>
+      <ion-row *ngIf="manager()">
+        <ion-col class="width-great" style="margin: 0 auto;">
+          <ion-button class="btn width-100" color="maincolor" (click)="newOfferForm()">
+            {{ 'COMPANIES.OFFERS.NEW_OFFER' | translate }}
+          </ion-button>
+          <app-company-selector (selectCompany)="filterCompanies($event)"></app-company-selector>
+        </ion-col>
+      </ion-row>
+    </div>
+
+    <div layout-position="content">
+      <h5 class="title margin-15 center flex" *ngIf="filteredOffers.length === 0">{{ 'COMPANIES.OFFERS.NO_OFFERS' | translate }}</h5>
+      <app-offer-card *ngFor="let offer of filteredOffers" [offer]="offer"></app-offer-card>
+    </div>
+  </app-page-layout>
+</ion-content>

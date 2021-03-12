@@ -18,6 +18,8 @@ export class CalendarPage implements OnInit {
   user: User;
   userRole = 'user';
 
+  calendarView = true;
+
   selectedCompany = 'all';
   selectedTime: Date;
   currentDate: Date;
@@ -37,6 +39,7 @@ export class CalendarPage implements OnInit {
 
   ngOnInit() {
     this.route.params.subscribe(_ => {
+      this.calendarView = true;
       this.unFilteredEvents = [];
       this.eventSource = this.unFilteredEvents;
       this.initializeCalendar();
@@ -113,7 +116,9 @@ export class CalendarPage implements OnInit {
     } else {
       this.eventSource = this.unFilteredEvents;
     }
-    this.myCalendar.loadEvents();
+    if (this.calendarView) {
+      this.myCalendar.loadEvents();
+    }
   }
 
   getMonthName(): string {
@@ -126,5 +131,17 @@ export class CalendarPage implements OnInit {
 
   manager(): boolean {
     return this.userRole === 'manager';
+  }
+
+  toggleCalendarView(active: boolean): void {
+    this.calendarView = active;
+    if (this.calendarView !== active) {
+      this.calendarView = active;
+      if (this.calendarView) {
+        setTimeout(() => {
+          this.myCalendar.loadEvents();
+        }, 50)
+      }
+    }
   }
 }

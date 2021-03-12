@@ -8,6 +8,7 @@ import { CompanyGestionComponent } from './components/company-gestion/company-ge
 import { ScheduleModal } from './components/schedule-modal/schedule.modal';
 import { SpecialSchedulesComponent } from './components/special-schedules/special-schedules.component';
 import { WeekDayComponent } from './components/week-day/week-day.component';
+import { BoostCompanySliderComponent } from './components/boost-company-slider/boost-company-slider.component';
 
 @NgModule({
   imports: [
@@ -26,7 +27,8 @@ import { WeekDayComponent } from './components/week-day/week-day.component';
     CompanyGestionComponent,
     ScheduleModal,
     SpecialSchedulesComponent,
-    WeekDayComponent
+    WeekDayComponent,
+    BoostCompanySliderComponent
   ],
   entryComponents: [
   ]

@@ -8,3 +8,6 @@
 <div class="width-great margin-auto" style="margin-bottom: 30px;">
   <app-assessment-card *ngFor="let assessment of assessments" [assessment]="assessment" [userView]="true"></app-assessment-card>
 </div>
+<ion-row class="width-great margin-0-auto" *ngIf="assessments && assessments.length === 0">
+  <h5 class="subtitle center" style="margin-bottom: 40px;"> {{ "USER.USER_NO_ASSESSMENTS" | translate }} </h5>
+</ion-row>
