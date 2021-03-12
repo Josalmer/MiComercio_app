@@ -144,6 +144,7 @@ export class CompaniesPage implements OnInit {
       this.filteredCompanies = this.distanceLimit !== this.DISTANCES[this.DISTANCES.length - 1] ? this.filteredCompanies.filter(company => this.inRange(company)) : this.filteredCompanies;
       this.filteredCompanies = this.selectedLocation ? this.filteredCompanies.filter(company => company.address?.town.toUpperCase() === this.selectedLocation.toUpperCase()) : this.filteredCompanies;
       if (this.startDate && this.endDate) {
+        this.loaded = false;
         const start = new Date(this.startDate);
         const end = new Date(this.endDate);
         forkJoin(
@@ -153,6 +154,7 @@ export class CompaniesPage implements OnInit {
             this.eventsInDate.forEach((events, index) => this.filteredCompanies[index].withAppointmentInSelectedDate = events.events.length > 0)
             this.filteredCompanies = this.filteredCompanies.filter(company => company.withAppointmentInSelectedDate);
             this.sortCompanies();
+            this.loaded = true;
           })
         ).subscribe(
           events => this.eventsInDate = events
