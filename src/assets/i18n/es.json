@@ -56,7 +56,8 @@
     "userWhenManagerCancelAppointment": "Si el negocio cancela mi cita",
     "managerAppointmentRequested": "Cuando un usuario solicita una cita",
     "managerAppointmentCancelled": "Cuando un usuario cancela una cita",
-    "USER_ASSESSMENTS": "Valoraciones a negocios"
+    "USER_ASSESSMENTS": "Valoraciones a negocios",
+    "USER_NO_ASSESSMENTS": "Aún no ha valorado ningún negocio"
   },
   "LOGIN": {
     "LOGIN": "Login",
