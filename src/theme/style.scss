@@ -232,6 +232,10 @@ span {
   }
 }
 
+.company-wrapper {
+  position: relative;
+}
+
 .company-card {
   min-width: $greatWidth;
   max-width: $greatWidth;
@@ -310,6 +314,43 @@ span {
   position: absolute;
   right: 0;
   max-width: 4em;
+}
+
+.promoted, .pending-validation {
+  position: absolute;
+  font-weight: bold;
+  border-radius: 5px;
+  font-size: 1em;
+  padding: 4px;
+  background-color: rgba(199, 198, 195, 0.80);
+}
+
+.promoted {
+  right: 10px;
+  top: 115px;
+}
+
+.pending-validation {
+  color: red;
+  width: 100px;
+  right: 10px;
+  top: 10px;
+}
+
+.favorite {
+  display: flex;
+  align-items: center;
+  z-index: 99;
+  width: 38px;
+  height: 38px;
+  position: absolute;
+  left: 55px;
+  top: 20px;
+  font-size: 2em;
+  color: yellow;
+  padding: 5px;
+  border-radius: 20px;
+  background-color: rgba(199, 198, 195, 0.80);
 }
 
 .pending-company-card {

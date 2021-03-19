@@ -36,10 +36,12 @@
         <ion-row *ngIf="filteredCompanies.length === 0">
           <h5 class="title margin-15 center flex"> {{ "COMPANIES.NO_SEARCH_MATCH" | translate }} </h5>
         </ion-row>
-        <ion-row *ngFor="let company of filteredCompanies" (click)="goToCompany(company.id)">
-          <ion-card class="company-card">
+        <ion-row *ngFor="let company of filteredCompanies" class="company-wrapper">
+          <span class="favorite" (click)="toggleFavorite(company)"><ion-icon [name]="company.addedToFavorites ? 'star' : 'star-outline'"></ion-icon></span>
+          <ion-card class="company-card" (click)="goToCompany(company.id)">
             <div *ngIf="company.logo">
-              <img *ngIf="!company.validated" class="seal" src="../../../../assets/img/pendingVal.png" alt="">
+              <span *ngIf="company.boostFactor > 0" class="promoted">Promoted</span>
+              <span *ngIf="!company.validated" class="pending-validation">Pendiente de validación</span>
               <img class="card-img" [src]="company.logo" alt="">
             </div>
             <h2 class="title center flex">{{company.name}}</h2>

@@ -31,6 +31,7 @@ export class Company {
   pendingUserAssessment: boolean;
   boostFactor: number;
   boostValidity: number;
+  addedToFavorites: boolean;
 
   withAppointmentInSelectedDate: boolean;
 

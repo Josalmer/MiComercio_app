@@ -261,4 +261,16 @@ export class CompaniesPage implements OnInit {
     this.showFilterModal = false;
     this.router.navigateByUrl('companies/offer')
   }
+
+  toggleFavorite(company: Company): void {
+    if (company.addedToFavorites) {
+      this.companiesService.removeFavorites(company.id).subscribe(
+        response => company.addedToFavorites = false
+      )
+    } else {
+      this.companiesService.addFavorites({id: company.id}).subscribe(
+        response => company.addedToFavorites = true
+      )
+    }
+  }
 }

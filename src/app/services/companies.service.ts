@@ -44,4 +44,12 @@ export class CompaniesService {
   updateCompanyImage(id, params): Observable<any> {
     return this.http.patch('company_image/' + id, params);
   }
+
+  removeFavorites(id: string): Observable<any> {
+    return this.http.delete('favorite_companies/' + id);
+  }
+
+  addFavorites(params: {}): Observable<any> {
+    return this.http.post('favorite_companies', params);
+  }
 }
