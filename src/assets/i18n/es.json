@@ -239,5 +239,9 @@
     "OCTOBER": "Octubre",
     "NOVEMBER": "Noviembre",
     "DECEMBER": "Diciembre"
+  },
+  "USE_TERMS": {
+    "LINK": "Términos y Condiciones de uso",
+    "ACCEPT": "Acepto las condiciones y términos de uso"
   }
 }

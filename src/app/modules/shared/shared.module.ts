@@ -17,6 +17,7 @@ import { StarsInputComponent } from './components/stars-input/stars-input.compon
 import { LoadingSpinnerComponent } from './components/loading-spinner/loading-spinner.component';
 import { CompanySelectorComponent } from './components/company-selector/company-selector.component';
 import { OfferCardComponent } from './components/offer-card/offer-card.component';
+import { UseTermsModal } from './components/use-terms-modal/use-terms.modal';
 
 @NgModule({
   declarations: [
@@ -31,7 +32,8 @@ import { OfferCardComponent } from './components/offer-card/offer-card.component
     StarsInputComponent,
     LoadingSpinnerComponent,
     CompanySelectorComponent,
-    OfferCardComponent
+    OfferCardComponent,
+    UseTermsModal
   ],
   imports: [
     CommonModule,
@@ -57,7 +59,8 @@ import { OfferCardComponent } from './components/offer-card/offer-card.component
     StarsInputComponent,
     LoadingSpinnerComponent,
     CompanySelectorComponent,
-    OfferCardComponent
+    OfferCardComponent,
+    UseTermsModal
   ],
   providers: [
     TranslationService

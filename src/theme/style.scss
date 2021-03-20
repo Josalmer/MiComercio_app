@@ -628,7 +628,7 @@ span {
   }
 }
 
-// Offer cards
+// OFFER CARDS
 
 .offer-card {
   width: $greatWidth;
@@ -638,4 +638,24 @@ span {
   padding-left: 10px;
   margin-top: 10px;
   margin-bottom: 10px;
+}
+
+// USE TERMS
+
+.use-terms{
+  width: $greatWidth;
+  display: flex;
+  flex-direction: column;
+  margin: 0 auto;
+}
+
+.accept-terms {
+  display: flex;
+  align-items: center;
+  color: $mainColor;
+
+  ion-label {
+    margin-left: 20px;
+  }
+
 }

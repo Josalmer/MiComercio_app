@@ -4,9 +4,10 @@ import { ToastMessageService } from 'src/app/services/toast-messages.service';
 import { TranslateService } from '@ngx-translate/core';
 import { SessionService } from 'src/app/modules/login/services/session.service';
 import { LoginService } from 'src/app/modules/login/services/login.service';
-import { NavController } from '@ionic/angular';
+import { ModalController, NavController } from '@ionic/angular';
 import { User } from 'src/app/models/user.model';
 import { Plugins } from '@capacitor/core';
+import { UseTermsModal } from 'src/app/modules/shared/components/use-terms-modal/use-terms.modal';
 
 @Component({
   selector: 'app-user-profile',
@@ -22,7 +23,8 @@ export class UserProfilePage implements OnInit {
     private translate: TranslateService,
     private sessionService: SessionService,
     private loginService: LoginService,
-    private navCtrl: NavController
+    private navCtrl: NavController,
+    private modalController: ModalController
   ) { }
 
   ngOnInit() {
@@ -107,5 +109,12 @@ export class UserProfilePage implements OnInit {
 
   pendingValidation(): boolean {
     return !this.pendingPaymentData() && !this.user.paymentPreference.validated;
+  }
+
+  async openUseTerms() {
+    const modal = await this.modalController.create({
+      component: UseTermsModal
+    });
+    await modal.present();
   }
 }

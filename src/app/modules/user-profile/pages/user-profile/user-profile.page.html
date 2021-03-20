@@ -44,10 +44,11 @@
       <app-payment-preferences *ngIf="view === 'payment'" (updatePreferences)="updatePaymentPreference($event)" [paymentPreferences]="user.paymentPreference"></app-payment-preferences>
       <app-notification-preferences *ngIf="view === 'notification'" (updateNotificationPreferences)="updateNotificationPreferences($event)" [userIsManager]="user.userRole === 'manager'" [notificationPreferences]="user.notificationPreference"></app-notification-preferences>
       <app-user-assessments *ngIf="view === 'assessments'"></app-user-assessments>
-      <div text-center>
+      <div text-center *ngIf="view === 'personal'">
         <ion-button class="btn width-great" (click)="logout()" color="danger">
           {{ 'USER.LOGOUT' | translate }}
         </ion-button>
+        <h3 class="minimum-text main-color-text center" (click)="openUseTerms()">{{ 'USE_TERMS.LINK' | translate }}</h3>
       </div>
     </div>
   </app-page-layout>
