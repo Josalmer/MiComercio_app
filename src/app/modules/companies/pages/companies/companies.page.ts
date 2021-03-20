@@ -36,6 +36,7 @@ export class CompaniesPage implements OnInit {
 
   bussinessType: string;
   selectedLocation: string;
+  onlyFavorites: boolean = false;
 
   today = new Date().toISOString();
   startDate: Date;
@@ -129,6 +130,7 @@ export class CompaniesPage implements OnInit {
     this.selectedLocation = undefined;
     this.startDate = undefined;
     this.endDate = undefined;
+    this.onlyFavorites = false;
     this.initalizeDistanceSlider();
     this.orderBy = undefined;
   }
@@ -140,6 +142,7 @@ export class CompaniesPage implements OnInit {
       );
     } else {
       this.filteredCompanies = this.search === '' ? this.companies : this.companies.filter(company => this.discardName(company.name, this.search));
+      this.filteredCompanies = this.onlyFavorites ? this.filteredCompanies.filter(company => company.addedToFavorites) : this.filteredCompanies;
       this.filteredCompanies = this.bussinessType ? this.filteredCompanies.filter(company => company.type === this.bussinessType) : this.filteredCompanies;
       this.filteredCompanies = this.distanceLimit !== this.DISTANCES[this.DISTANCES.length - 1] ? this.filteredCompanies.filter(company => this.inRange(company)) : this.filteredCompanies;
       this.filteredCompanies = this.selectedLocation ? this.filteredCompanies.filter(company => company.address?.town.toUpperCase() === this.selectedLocation.toUpperCase()) : this.filteredCompanies;

@@ -477,6 +477,23 @@ span {
   }
 }
 
+.favorite-title-wrapper {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+
+.favorite-filter {
+  display: flex;
+  align-items: center;
+  color: $mainColor;
+
+  ion-label {
+    margin-right: 20px;
+  }
+}
+
 // PROFILE
 
 .pending-card {
