@@ -9,6 +9,7 @@ export class User {
   phone: string;
   userRole: string;
   password: string;
+  showTutorial: boolean;
   paymentPreference: PaymentPreference;
   notificationPreference: NotificationPreference;
 

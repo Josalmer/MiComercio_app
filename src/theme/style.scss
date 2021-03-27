@@ -657,5 +657,36 @@ span {
   ion-label {
     margin-left: 20px;
   }
+}
 
+// TUTORIAL
+
+.tutorial-wrapper {
+  height: 100%;
+  display: flex;
+  justify-content: space-between;
+  flex-direction: column;
+}
+
+.slider {
+  height: 100%;
+}
+
+.slide, .tutorial-slide {
+  padding: 30px 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.tutorial-img {
+  width: 75%;
+}
+
+.tutorial-slide {
+  padding: 70px 20px
+}
+
+.tutorial-logo {
+    width: 50%;
 }

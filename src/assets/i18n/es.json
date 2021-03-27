@@ -243,5 +243,14 @@
   "USE_TERMS": {
     "LINK": "Términos y Condiciones de uso",
     "ACCEPT": "Acepto las condiciones y términos de uso"
+  },
+  "TUTORIAL": {
+    "BACK": "Volver al tutorial",
+    "FINISH": "Entendido, ir a la aplicación",
+    "SEE_AGAIN": "Puede volver a ver el tutorial desde su perfil personal",
+    "user": {
+      "welcome": "Bienvenido a MiComercio",
+      "1": "Navega facilmente entre la vista de tus citas, negocios y tu perfil con el menu inferior de tabs"
+    }
   }
 }

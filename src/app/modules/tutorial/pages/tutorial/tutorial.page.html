@@ -1,0 +1,14 @@
+<ion-content fullscreen class="tutorial-wrapper">
+  <ion-slides class="slider" color="maincolor" pager="true">
+    <ion-slide class="slide" *ngFor="let slide of content">
+      <h2 class="title center">{{ slide.top | translate }}</h2>
+      <ion-img class="tutorial-img" [src]="slide.image"></ion-img>
+      <h3 class="minimum-text main-color-text center">{{ slide.bot | translate }}</h3>
+    </ion-slide>
+    <ion-slide class="tutorial-slide">
+      <h2 class="minimum-text main-color-text center">{{ "TUTORIAL.SEE_AGAIN" | translate }}</h2>
+      <ion-img class="tutorial-logo" src="../../../../../assets/img/logo.png"></ion-img>
+      <ion-button (click)="turnOff()" class="btn width-great" color="maincolor">{{ "TUTORIAL.FINISH" | translate }}</ion-button>
+    </ion-slide>
+  </ion-slides>
+</ion-content>
