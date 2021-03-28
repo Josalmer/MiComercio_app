@@ -46,7 +46,15 @@ export class LoginService {
     this.sessionService.setLoginMethod(socialLogin);
     this.userService.requestUser();
     this.pushNotifications.registerDevice();
-    this.navCtrl.navigateRoot(['/']);
+    this.userService.getApplicationUser().subscribe(
+      user => {
+        if (!user.showTutorial) {
+          this.navCtrl.navigateRoot(['/']);
+        } else {
+          this.navCtrl.navigateRoot(['/tutorial']);
+        }
+      }
+    );
   }
 
   simpleGoogleLogin(data: any) { // only for existing users or new normal users

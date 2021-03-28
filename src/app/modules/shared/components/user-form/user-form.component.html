@@ -23,6 +23,10 @@
     <ion-input class="input" formControlName="phone" type="tel" [placeholder]="'USER.PHONE' | translate" text-center margin-bottom></ion-input>
     <ion-input class="input" formControlName="password" type="password" [placeholder]="'USER.PASSWORD' | translate" text-center margin-bottom *ngIf="newUser"></ion-input>
     <ion-input class="input" formControlName="confirmPass" type="password" [placeholder]="'USER.REPEAT_PASS' | translate" text-center margin-bottom *ngIf="newUser"></ion-input>
+    <span class="accept-terms" *ngIf="newUser">
+      <ion-checkbox color="maincolor" slot="start" formControlName="acceptTerms"></ion-checkbox>
+      <ion-label class="minimum-text main-color-text" (click)="openUseTerms()">{{ 'USE_TERMS.ACCEPT' | translate }}</ion-label>
+    </span>
 
     <ion-text color="danger" class="bold" *ngIf="form.get('email').hasError('email') && form.get('email').touched">{{ 'LOGIN.EMAIL_ERROR' | translate }}</ion-text>
     <ion-text color="danger" class="bold" *ngIf="newUser && form.get('password').hasError('minlength') && form.get('password').touched">{{ 'LOGIN.PASS_ERROR' | translate }}</ion-text>

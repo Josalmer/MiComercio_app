@@ -157,7 +157,9 @@
       "MANDATORY_END_DATE": "Debes elegir una fecha de fin si eliges fecha de inicio",
       "LOCATION_NEEDED": "Debes permitir el acceso a tu ubicación para poder order por distancia desde posición actual",
       "LOCATION_NEEDED_FILTER": "Debes permitir el acceso a tu ubicación para poder filtrar por distancia desde posición actual",
-      "MAX_DISTANCE": "Distancia máxima"
+      "MAX_DISTANCE": "Distancia máxima",
+      "FAVORITES": "Favoritos",
+      "ONLY_FAVORITES": "Solo Favoritos"
     },
     "ALREADY_BOOSTED": "Ya disfruta de una mejora de posicionamiento en su negocio, podrá reovarlo a partir del {{ date }}",
     "MUST_BE_PUBLISHED": "Antes de mejorar el posicionamiento de su negocio debe publicarlo",
@@ -237,5 +239,18 @@
     "OCTOBER": "Octubre",
     "NOVEMBER": "Noviembre",
     "DECEMBER": "Diciembre"
+  },
+  "USE_TERMS": {
+    "LINK": "Términos y Condiciones de uso",
+    "ACCEPT": "Acepto las condiciones y términos de uso"
+  },
+  "TUTORIAL": {
+    "BACK": "Volver al tutorial",
+    "FINISH": "Entendido, ir a la aplicación",
+    "SEE_AGAIN": "Puede volver a ver el tutorial desde su perfil personal",
+    "user": {
+      "welcome": "Bienvenido a MiComercio",
+      "1": "Navega facilmente entre la vista de tus citas, negocios y tu perfil con el menu inferior de tabs"
+    }
   }
 }

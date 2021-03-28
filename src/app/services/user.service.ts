@@ -60,4 +60,8 @@ export class UserService {
     createAssessment(companyId: string, params: {}): Observable<any> {
         return this.http.patch(`assessments/${companyId}`, params);
     }
+
+    turnOffTutorial(): Observable<any> {
+      return this.http.patch('show_tutorial_off', {});
+    }
 }

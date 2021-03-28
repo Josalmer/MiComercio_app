@@ -24,9 +24,10 @@
             <ion-button class="btn" style="margin-top: 0px; margin-bottom: 0px;" [color]="orderBy === 'appointment' ? 'maincolor' : 'secondcolor'" (click)="toggleOrderBy('appointment')">{{'COMPANIES.FILTERS_MODAL.FIRST_APPOINTMENT' | translate}}</ion-button>
           </ion-col>
         </ion-row>
-        <ion-row *ngIf="bussinessType || selectedLocation || startDate || distanceLimit !== DISTANCES[DISTANCES.length - 1]" class="width-great margin-0-auto">
+        <ion-row *ngIf="bussinessType || selectedLocation || startDate || onlyFavorites || distanceLimit !== DISTANCES[DISTANCES.length - 1]" class="width-great margin-0-auto">
           <ion-card class="filter-card" (click)="bussinessType = undefined; applyFilter()" *ngIf="bussinessType"><ion-icon name="close-circle-outline"></ion-icon> {{bussinessType}}</ion-card>
           <ion-card class="filter-card" (click)="selectedLocation = undefined; applyFilter()" *ngIf="selectedLocation"><ion-icon name="close-circle-outline"></ion-icon>{{selectedLocation}}</ion-card>
+          <ion-card class="filter-card" (click)="onlyFavorites = false; applyFilter()" *ngIf="onlyFavorites"><ion-icon name="close-circle-outline"></ion-icon>{{'COMPANIES.FILTERS_MODAL.ONLY_FAVORITES' | translate}}</ion-card>
           <ion-card class="filter-card" (click)="startDate = undefined; endDate = undefined; applyFilter()" *ngIf="startDate && endDate">
             <ion-icon name="close-circle-outline"></ion-icon>
             {{startDate | date:'d/M/yy'}} - {{endDate | date:'d/M/yy'}}
@@ -36,10 +37,12 @@
         <ion-row *ngIf="filteredCompanies.length === 0">
           <h5 class="title margin-15 center flex"> {{ "COMPANIES.NO_SEARCH_MATCH" | translate }} </h5>
         </ion-row>
-        <ion-row *ngFor="let company of filteredCompanies" (click)="goToCompany(company.id)">
-          <ion-card class="company-card">
+        <ion-row *ngFor="let company of filteredCompanies" class="company-wrapper">
+          <span class="favorite" (click)="toggleFavorite(company)"><ion-icon [name]="company.addedToFavorites ? 'star' : 'star-outline'"></ion-icon></span>
+          <ion-card class="company-card" (click)="goToCompany(company.id)">
             <div *ngIf="company.logo">
-              <img *ngIf="!company.validated" class="seal" src="../../../../assets/img/pendingVal.png" alt="">
+              <span *ngIf="company.boostFactor > 0" class="promoted">Promoted</span>
+              <span *ngIf="!company.validated" class="pending-validation">Pendiente de validación</span>
               <img class="card-img" [src]="company.logo" alt="">
             </div>
             <h2 class="title center flex">{{company.name}}</h2>
@@ -59,7 +62,13 @@
         <ion-button class="btn width-100" color="maincolor" (click)="goToOffers()">
           {{ 'COMPANIES.OFFERS.GO_TO_OFFERS' | translate }}
         </ion-button>
-        <label class="title">{{ "COMPANIES.FILTERS_MODAL.FILTER" | translate }}:</label>
+        <ion-row class="favorite-title-wrapper">
+          <label class="title">{{ "COMPANIES.FILTERS_MODAL.FILTER" | translate }}:</label>
+          <span class="favorite-filter">
+            <ion-label>{{ 'COMPANIES.FILTERS_MODAL.FAVORITES' | translate }}</ion-label>
+            <ion-checkbox color="maincolor" slot="end" [(ngModel)]="onlyFavorites"></ion-checkbox>
+          </span>
+        </ion-row>
         <ion-select class="filter-select" [interfaceOptions]="{cssClass: 'filter-selector'}" [placeholder]="'COMPANIES.FILTERS_MODAL.BUSSINESS_TYPE' | translate" [(ngModel)]="bussinessType" cancelText="Cancelar">
           <ion-select-option *ngFor="let type of companyTypes" [value]="type.name">{{type.name}}</ion-select-option>
         </ion-select>

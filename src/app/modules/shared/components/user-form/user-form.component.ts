@@ -1,6 +1,8 @@
 import { Component, OnInit, Output, EventEmitter, Input } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+import { ModalController } from '@ionic/angular';
 import { User } from 'src/app/models/user.model';
+import { UseTermsModal } from '../use-terms-modal/use-terms.modal';
 
 @Component({
   selector: 'app-user-form',
@@ -15,7 +17,8 @@ export class UserFormComponent implements OnInit {
   form: FormGroup;
 
   constructor(
-    public fb: FormBuilder
+    public fb: FormBuilder,
+    private modalController: ModalController
   ) { }
 
   ngOnInit() {
@@ -32,7 +35,8 @@ export class UserFormComponent implements OnInit {
       surname: ['', [Validators.required]],
       phone: ['', [Validators.required, Validators.pattern('^[0-9]*$')]],
       password: ['', [Validators.required, Validators.minLength(6)]],
-      confirmPass: ['', [Validators.required]]
+      confirmPass: ['', [Validators.required]],
+      acceptTerms: [false, [Validators.required, Validators.requiredTrue]]
     }, { validator: this.checkPasswords });
   }
 
@@ -79,5 +83,12 @@ export class UserFormComponent implements OnInit {
     const confirmPass = group.get('confirmPass').value;
 
     return pass === confirmPass ? null : { notSame: true };
+  }
+
+  async openUseTerms() {
+    const modal = await this.modalController.create({
+      component: UseTermsModal
+    });
+    await modal.present();
   }
 }
