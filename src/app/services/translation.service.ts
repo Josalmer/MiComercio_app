@@ -39,4 +39,9 @@ export class TranslationService {
   private validLanguage(language) {
     return /(en|es)/gi.test(language);
   }
+
+  clearLanguage() {
+    this.storage.remove(this.STORAGE_KEY);
+    this.defaultLanguage = undefined;
+  }
 }

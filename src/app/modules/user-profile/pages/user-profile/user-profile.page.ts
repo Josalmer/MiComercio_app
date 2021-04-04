@@ -8,6 +8,7 @@ import { ModalController, NavController } from '@ionic/angular';
 import { User } from 'src/app/models/user.model';
 import { Plugins } from '@capacitor/core';
 import { UseTermsModal } from 'src/app/modules/shared/components/use-terms-modal/use-terms.modal';
+import { TranslationService } from 'src/app/services/translation.service';
 
 @Component({
   selector: 'app-user-profile',
@@ -24,7 +25,8 @@ export class UserProfilePage implements OnInit {
     private sessionService: SessionService,
     private loginService: LoginService,
     private navCtrl: NavController,
-    private modalController: ModalController
+    private modalController: ModalController,
+    private translationService: TranslationService,
   ) { }
 
   ngOnInit() {
@@ -97,6 +99,7 @@ export class UserProfilePage implements OnInit {
       response => {
         this.sessionService.clearAuthToken();
         this.sessionService.clearLoginMethod();
+        this.translationService.clearLanguage();
         this.userService.deleteApplicationUser();
         this.navCtrl.navigateRoot(['/login']);
       }
