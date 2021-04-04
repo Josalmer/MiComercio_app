@@ -1,17 +1,42 @@
 import { Injectable } from '@angular/core';
+import { Storage } from '@ionic/storage';
 import { TranslateService } from '@ngx-translate/core';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class TranslationService {
-  defaultLanguage = 'es';
+  readonly STORAGE_KEY = 'language';
+
+  defaultLanguage: string;
 
   constructor(
-    private translateService: TranslateService,
-  ) { }
+    private storage: Storage,
+    private _translate: TranslateService,
+  ) {
+    const navigatorLanguage = navigator.language.split('-')[0];
+    this.defaultLanguage = this.validLanguage(navigatorLanguage) ? navigatorLanguage : 'es';
+  }
 
   public async init() {
-    this.translateService.use(this.defaultLanguage);
+    const language = await this.getLanguage();
+    this.setLanguage(language ? language : this.defaultLanguage);
+  }
+
+  public setLanguage(language) {
+    this.saveLanguage(language);
+    this._translate.use(language);
+  }
+
+  public async getLanguage() {
+    return await this.storage.get(this.STORAGE_KEY);
+  }
+
+  private saveLanguage(language) {
+    this.storage.set(this.STORAGE_KEY, this.validLanguage(language) ? language : this.defaultLanguage);
+  }
+
+  private validLanguage(language) {
+    return /(en|es)/gi.test(language);
   }
 }
