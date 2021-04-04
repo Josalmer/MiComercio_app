@@ -1,4 +1,4 @@
-<div class="container" text-center>
+<div class="container" text-center *ngIf="selectedLanguage">
   <ion-row style="margin-top: 10px;">
     <ion-col>
       <label class="minimum-text main-color-text">{{ 'USER.ACCOUNT_TYPE' | translate }}</label>
@@ -33,6 +33,9 @@
     <ion-text color="danger" class="bold" *ngIf="newUser && form.get('phone').hasError('pattern') && form.get('phone').touched">{{ 'LOGIN.PHONE_ERROR' | translate }}</ion-text>
     <ion-text color="danger" class="bold" *ngIf="newUser && form.hasError('notSame') && form.get('confirmPass').touched">{{ 'LOGIN.PASSWORDS_NOT_MATCH' | translate }}</ion-text>
   </div>
+  <ion-select *ngIf="!newUser" class="language-select" [interfaceOptions]="{cssClass: 'filter-selector'}" cancelText="Cancelar" [value]="selectedLanguage" (ionChange)="setLanguage($event.detail.value)">
+    <ion-select-option *ngFor="let language of languages" [value]="language.code">{{language.name}}</ion-select-option>
+  </ion-select>
   <div text-center>
     <ion-button [disabled]="form.invalid" class="btn width-great" type="submit" color="maincolor">
       {{ (newUser ? 'LOGIN.CREATE_ACCOUNT' : 'USER.EDIT_PROFILE') | translate }}
