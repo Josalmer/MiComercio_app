@@ -26,7 +26,7 @@ export class UserProfilePage implements OnInit {
     private loginService: LoginService,
     private navCtrl: NavController,
     private modalController: ModalController,
-    private translationService: TranslationService,
+    private translationService: TranslationService
   ) { }
 
   ngOnInit() {
@@ -119,5 +119,9 @@ export class UserProfilePage implements OnInit {
       component: UseTermsModal
     });
     await modal.present();
+  }
+
+  reload() {
+    window.location.reload();
   }
 }

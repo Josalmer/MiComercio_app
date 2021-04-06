@@ -13,6 +13,7 @@ export class UserFormComponent implements OnInit {
   @Input() newUser: boolean;
   @Input() user: User;
   @Output() userEmitter = new EventEmitter();
+  @Output() langEmitter = new EventEmitter();
 
   userRole: string;
   form: FormGroup;
@@ -99,8 +100,9 @@ export class UserFormComponent implements OnInit {
   
   setLanguage(languageCode: string) {
     if (this.selectedLanguage !== languageCode) {
+      this.selectedLanguage = languageCode;
       this.translationService.setLanguage(languageCode);
-      window.location.reload();
+      this.langEmitter.emit();
     }
   }
 }

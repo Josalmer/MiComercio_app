@@ -8,6 +8,8 @@ import { TranslateService } from '@ngx-translate/core';
 export class TranslationService {
   readonly STORAGE_KEY = 'language';
 
+  selectedLanguage: string;
+
   defaultLanguage: string;
 
   constructor(
@@ -25,7 +27,12 @@ export class TranslationService {
 
   public setLanguage(language) {
     this.saveLanguage(language);
+    this.selectedLanguage = language;
     this._translate.use(language);
+  }
+
+  public getSavedLanguage() {
+    return this.selectedLanguage;
   }
 
   public async getLanguage() {
