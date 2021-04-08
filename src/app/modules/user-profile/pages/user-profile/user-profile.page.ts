@@ -122,6 +122,8 @@ export class UserProfilePage implements OnInit {
   }
 
   reload() {
-    window.location.reload();
+    setTimeout(() => {
+      window.location.reload()
+    }, 150);
   }
 }
