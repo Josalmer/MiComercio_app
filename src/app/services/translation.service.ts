@@ -32,7 +32,7 @@ export class TranslationService {
   }
 
   public getSavedLanguage() {
-    return this.selectedLanguage;
+    return this.selectedLanguage || this.defaultLanguage;
   }
 
   public async getLanguage() {
