@@ -2,6 +2,7 @@ import { Component, OnInit, Output, EventEmitter, Input } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { ModalController } from '@ionic/angular';
 import { User } from 'src/app/models/user.model';
+import { TranslationService } from 'src/app/services/translation.service';
 import { UseTermsModal } from '../use-terms-modal/use-terms.modal';
 
 @Component({
@@ -12,17 +13,22 @@ export class UserFormComponent implements OnInit {
   @Input() newUser: boolean;
   @Input() user: User;
   @Output() userEmitter = new EventEmitter();
+  @Output() langEmitter = new EventEmitter();
 
   userRole: string;
   form: FormGroup;
+  selectedLanguage: string;
+  languages = [{name: 'Español', code: 'es'}, {name: 'English', code: 'en'}]
 
   constructor(
     public fb: FormBuilder,
-    private modalController: ModalController
+    private modalController: ModalController,
+    private translationService: TranslationService
   ) { }
 
-  ngOnInit() {
+  async ngOnInit() {
     this.newUser ? this.createNewUserForm() : this.createEditUserForm();
+    this.selectedLanguage = await this.translationService.getLanguage();
   }
 
   createNewUserForm(): void {
@@ -90,5 +96,13 @@ export class UserFormComponent implements OnInit {
       component: UseTermsModal
     });
     await modal.present();
+  }
+  
+  setLanguage(languageCode: string) {
+    if (this.selectedLanguage !== languageCode) {
+      this.selectedLanguage = languageCode;
+      this.translationService.setLanguage(languageCode);
+      this.langEmitter.emit();
+    }
   }
 }

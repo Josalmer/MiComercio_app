@@ -514,6 +514,15 @@ span {
   color: $mainColor !important;
 }
 
+.language-select {
+  width: $greatWidth;
+  margin: 0 auto;
+  color: $mainColor;
+  font-size: 1.2rem;
+  border: solid 1px $mainColor;
+  border-radius: 10px;
+}
+
 // APPOINTMENTS
 
 .appointment-card {

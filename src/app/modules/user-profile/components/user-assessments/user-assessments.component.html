@@ -5,6 +5,7 @@
     </ion-col>
   </ion-row>
 </div>
+<app-loading-spinner *ngIf="!loaded"></app-loading-spinner>
 <div class="width-great margin-auto" style="margin-bottom: 30px;">
   <app-assessment-card *ngFor="let assessment of assessments" [assessment]="assessment" [userView]="true"></app-assessment-card>
 </div>

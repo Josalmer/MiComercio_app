@@ -14,7 +14,7 @@ const monthNames = ["January", "February", "March", "April", "May", "June",
   templateUrl: 'calendar.page.html'
 })
 export class CalendarPage implements OnInit {
-  @ViewChild(CalendarComponent, null) myCalendar: CalendarComponent;
+  @ViewChild(CalendarComponent) myCalendar: CalendarComponent;
   user: User;
   userRole = 'user';
 

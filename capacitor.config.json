@@ -11,19 +11,14 @@
       "forceCodeForRefreshToken" : true
     },
     "SplashScreen": {
-      "launchShowDuration": 0
-    }
-  },
-  "cordova": {
-    "preferences": {
-      "ScrollEnabled": "false",
-      "BackupWebStorage": "none",
-      "SplashMaintainAspectRatio": "true",
-      "FadeSplashScreenDuration": "300",
-      "SplashShowOnlyFirstTime": "false",
-      "SplashScreen": "screen",
-      "SplashScreenDelay": "3000",
-      "ShowSplashScreenSpinner": "false"
+      "launchShowDuration": 0,
+      "launchAutoHide": true,
+      "backgroundColor": "#ffffffff",
+      "androidSplashResourceName": "splash",
+      "androidScaleType": "CENTER_CROP",
+      "showSpinner": false,
+      "splashFullScreen": true,
+      "splashImmersive": true
     }
   }
 }

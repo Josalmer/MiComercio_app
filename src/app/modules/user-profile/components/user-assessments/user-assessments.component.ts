@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { finalize } from 'rxjs/operators';
 import { Assessment } from 'src/app/models/assessment.model';
 import { UserService } from 'src/app/services/user.service';
 
@@ -8,13 +9,16 @@ import { UserService } from 'src/app/services/user.service';
 })
 export class UserAssessmentsComponent implements OnInit {
   assessments: Assessment[];
+  loaded = false;
 
   constructor(
     private userService: UserService
   ) { }
 
   ngOnInit(): void {
-    this.userService.getUserAssessments().subscribe(
+    this.userService.getUserAssessments().pipe(
+        finalize(() => this.loaded = true)
+    ).subscribe(
       response => this.assessments = response.assessments
     );
   }

@@ -18,7 +18,7 @@ const monthNames = ["January", "February", "March", "April", "May", "June",
   templateUrl: './calendar.modal.html'
 })
 export class CalendarModal implements OnInit {
-  @ViewChild(CalendarComponent, null) myCalendar: CalendarComponent;
+  @ViewChild(CalendarComponent) myCalendar: CalendarComponent;
   @Input() company: Company;
   userRole = 'user';
 

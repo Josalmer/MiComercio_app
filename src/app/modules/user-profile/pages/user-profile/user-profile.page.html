@@ -40,7 +40,7 @@
         </ion-row>
       </div>
 
-      <app-user-form *ngIf="view === 'personal'" (userEmitter)="updateUser($event)" [user]="user" [newUser]="false"></app-user-form>
+      <app-user-form *ngIf="view === 'personal'" (userEmitter)="updateUser($event)" (langEmitter)="reload()" [user]="user" [newUser]="false"></app-user-form>
       <app-payment-preferences *ngIf="view === 'payment'" (updatePreferences)="updatePaymentPreference($event)" [paymentPreferences]="user.paymentPreference"></app-payment-preferences>
       <app-notification-preferences *ngIf="view === 'notification'" (updateNotificationPreferences)="updateNotificationPreferences($event)" [userIsManager]="user.userRole === 'manager'" [notificationPreferences]="user.notificationPreference"></app-notification-preferences>
       <app-user-assessments *ngIf="view === 'assessments'"></app-user-assessments>
