@@ -248,9 +248,33 @@
     "BACK": "Back to tutorial",
     "FINISH": "Understood, go to application",
     "SEE_AGAIN": "You can view the tutorial again from your personal profile",
+    "welcome": "Welcome to MiComercio.",
+    "1": "Easily navigate between the view of your appointments, business and your profile with the bottom menu tabs",
     "user": {
-      "welcome": "Welcome to MyCommerce",
-      "1": "Easily navigate between the view of your appointments, business and your profile with the bottom menu tabs."
+      "2-top": "With just one click sort the business listing",
+      "2-bot": "Sort by rating from other customers, distance from your current location or time to appointment.",
+      "3-top": "Access the filter menu",
+      "3-bot": "Where you can combine the necessary filters to find the business you are looking for",
+      "4-top": "Request appointment",
+      "4-bot": "From the page of each business you can request the first available appointment or choose your appointment for the right moment",
+      "5-top": "Check your appointments",
+      "5-bot": "You can consult your requested appointments, navigate to them to modify them or export them to Google Calendar",
+      "6-top": "Configure your preferences",
+      "6-bot": "You can configure when to receive notifications on your phone from the personal profile."
+    },
+    "manager": {
+      "2-top": "Create new business",
+      "2-bot": "You will only need to indicate the name and type, you can optionally upload an image, it will not be visible initially",
+      "3-top": "Complete and publish your business",
+      "3-bot": "Complete the rest of the necessary information and publish your business so that it is visible to users",
+      "4-top": "Define the opening hours",
+      "4-bot": "You can add periods with special opening hours and define the opening hours for each day of the week",
+      "5-top": "Manage your business appointments",
+      "5-bot": "You can view and manage appointments for a business, you can also request appointments for customers without an application",
+      "6-top": "View your appointments",
+      "6-bot": "You can check your business appointments, navigate to them to modify them or export them to Google Calendar.",
+      "7-top": "Configure your preferences",
+      "7-bot": "You can configure when to receive notifications on your phone from the personal profile."
     }
   }
 }

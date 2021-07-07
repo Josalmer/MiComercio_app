@@ -248,9 +248,33 @@
     "BACK": "Volver al tutorial",
     "FINISH": "Entendido, ir a la aplicación",
     "SEE_AGAIN": "Puede volver a ver el tutorial desde su perfil personal",
+    "welcome": "Bienvenido a MiComercio",
+    "1": "Navega facilmente entre la vista de tus citas, negocios y tu perfil con el menu inferior de tabs",
     "user": {
-      "welcome": "Bienvenido a MiComercio",
-      "1": "Navega facilmente entre la vista de tus citas, negocios y tu perfil con el menu inferior de tabs"
+      "2-top": "Con solo un clic ordena el listado de negocios",
+      "2-bot": "Ordena por valoración de otros clientes, distancia desde tu posición actual o tiempo hasta cita",
+      "3-top": "Accede al menu de filtrado",
+      "3-bot": "Donde podrás combinar los filtros necesarios para encontrar el negocio que buscas",
+      "4-top": "Solicita cita",
+      "4-bot": "Desde la página de cada negocio puedes solicitar la primera cita disponible o elegir tu cita para el momento adecuado",
+      "5-top": "Consulta tus citas",
+      "5-bot": "Puedes consultar tus citas solicitadas, navegar a las mismas para modificarlas o exportarlas a Google Calendar",
+      "6-top": "Configura tus preferencias",
+      "6-bot": "Puedes configurar cuando recibir notificaciones en tu teléfono desde el perfil personal"
+    },
+    "manager": {
+      "2-top": "Crea nuevos negocios",
+      "2-bot": "Solo necesitaras indicar el nombre y tipo, podrás subir una imagen opcionalmente, no será visible inicialmente",
+      "3-top": "Completa y publica tu negocio",
+      "3-bot": "Completa el resto de información necesaria y publica tu negocio para que sea visible por los usuarios",
+      "4-top": "Define el horario de apertura",
+      "4-bot": "Puedes añadir periodos con horario especial y definir las horas de apertura para cada día de la semana",
+      "5-top": "Gestiona las citas de tu negocio",
+      "5-bot": "Puedes ver y gestionar las citas de un negocio, también puedes pedir citas para clientes sin aplicación",
+      "6-top": "Consulta tus citas",
+      "6-bot": "Puedes consultar las citas de tus negocios, navegar a las mismas para modificarlas o exportarlas a Google Calendar",
+      "7-top": "Configura tus preferencias",
+      "7-bot": "Puedes configurar cuando recibir notificaciones en tu teléfono desde el perfil personal"
     }
   }
 }
