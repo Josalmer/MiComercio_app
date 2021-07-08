@@ -10,15 +10,12 @@ export class TranslationService {
 
   selectedLanguage: string;
 
-  defaultLanguage: string;
+  defaultLanguage: string = 'es';
 
   constructor(
     private storage: Storage,
     private _translate: TranslateService,
-  ) {
-    const navigatorLanguage = navigator.language.split('-')[0];
-    this.defaultLanguage = this.validLanguage(navigatorLanguage) ? navigatorLanguage : 'es';
-  }
+  ) {}
 
   public async init() {
     const language = await this.getLanguage();
@@ -31,12 +28,12 @@ export class TranslationService {
     this._translate.use(language);
   }
 
-  public getSavedLanguage() {
-    return this.selectedLanguage || this.defaultLanguage;
-  }
-
   public async getLanguage() {
     return await this.storage.get(this.STORAGE_KEY);
+  }
+
+  public async getCurrentLanguage() {
+    return this._translate.currentLang;
   }
 
   private saveLanguage(language) {

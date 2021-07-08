@@ -28,7 +28,7 @@ export class UserFormComponent implements OnInit {
 
   async ngOnInit() {
     this.newUser ? this.createNewUserForm() : this.createEditUserForm();
-    this.selectedLanguage = await this.translationService.getLanguage();
+    this.selectedLanguage = await this.translationService.getCurrentLanguage();
   }
 
   createNewUserForm(): void {
